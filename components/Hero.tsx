@@ -2,43 +2,66 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen">
-
+    <section className="relative h-screen overflow-hidden">
+      {/* Background */}
       <Image
-        src="/images/herogravireba.png"
+        src="/images/hero3.png"
         alt="Okami Winery"
         fill
-        className="object-cover"
         priority
+        className="object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/50"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/45"></div>
 
-      <div className="relative z-10 flex h-full items-center justify-center text-center text-white">
+      {/* Content */}
+      <div className="relative z-10 flex h-full items-center justify-center px-6">
+        <div className="max-w-3xl text-center">
 
-        <div>
-
-          <p className="uppercase tracking-[0.5em] text-yellow-400">
-            Georgian Premium Winery
+          <p className="mb-8 text-xs uppercase tracking-[0.45em] text-yellow-400">
+            A Legacy of Georgian Winemaking
           </p>
 
-          <h1 className="mt-6 text-8xl md:text-9xl font-bold tracking-[0.35em] drop-shadow-2xl">
-            OKAMI
-          </h1>
-
-          <p className="mt-6 text-2xl text-gray-200">
-            From the Heart of Georgia to the World
+          <p
+            className="text-lg md:text-2xl leading-9 md:leading-[1.9] font-light text-white/60"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            In the heart of Georgia, where vineyards have flourished for
+            centuries, <strong className="text-white/90">Okami Winery</strong> continues a
+            legacy shaped by tradition, respect for the land, and the pursuit
+            of excellence.
           </p>
 
-          <button className="mt-10 rounded-full border border-yellow-500 px-10 py-4 text-yellow-400 hover:bg-yellow-500 hover:text-black transition-all duration-500">
-
-            Explore Wines
-          </button>
+          <p
+            className="mt-8 text-lg md:text-2xl leading-9 md:leading-[1.9] font-light text-white/60"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Every vineyard, every harvest, and every bottle reflects the soul
+            of the Okami Microzone, crafted to share the authentic spirit of
+            Georgian wine with the world.
+          </p>
 
         </div>
-
       </div>
 
+      {/* Scroll Down */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-10 w-10 text-white/70"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
