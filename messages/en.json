@@ -1,0 +1,42 @@
+{
+  "navbar": {
+    "home": "Home",
+    "story": "Story",
+    "discover": "Discover",
+    "wines": "Wines",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "eyebrow": "A Legacy of Georgian Winemaking",
+    "title": "OKAMI WINERY",
+    "description": "Crafted in the historic Okami Microzone, where tradition, terroir and excellence meet.",
+    "button": "Discover Wines"
+  },
+
+  "story": {
+    "eyebrow": "Our Story",
+    "title": "A Heritage Rooted in Georgia",
+    "description1": "Okami Winery stands in one of Georgia's historic winemaking regions, where generations of passionate winemakers have cultivated vineyards with dedication, patience and deep respect for the land.",
+    "description2": "Every vineyard, every harvest and every bottle reflects the identity of the Okami Microzone, preserving the traditions of Georgian winemaking while embracing innovation for future generations."
+  },
+
+  "discover": {
+    "eyebrow": "Explore Our Estate",
+    "title": "Discover Okami",
+    "description": "Discover the beauty of Okami Winery through our vineyards, historic cellars, production spaces and the timeless atmosphere that defines our estate."
+  },
+
+  "wines": {
+    "eyebrow": "Crafted with Passion",
+    "title": "Signature Wines",
+    "description": "Every bottle reflects the unique terroir of Georgia, carefully crafted to express authenticity, elegance and timeless winemaking traditions.",
+    "button": "Discover"
+  },
+
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Visit Okami Winery",
+    "description": "We would be delighted to welcome you to our winery and share the spirit of Georgian winemaking."
+  }
+}

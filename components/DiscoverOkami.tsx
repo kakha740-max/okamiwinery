@@ -61,17 +61,38 @@ export default function DiscoverOkami() {
           {images.map((image) => (
 
             <div
-              key={image}
-              className="group relative overflow-hidden rounded-3xl border border-yellow-500/30"
-            >
+  key={image}
+  className="
+    group
+    relative
+    overflow-hidden
+    rounded-3xl
+    border
+    border-yellow-500/30
+    transition-all
+    duration-500
+    hover:border-yellow-500
+    hover:shadow-[0_0_40px_rgba(200,161,90,0.25)]
+  "
+>
 
               <Image
-                src={`/images/${image}`}
-                alt={image}
-                width={700}
-                height={500}
-                className="h-80 w-full object-cover transition duration-700 group-hover:scale-110"
-              />
+  src={`/images/${image}`}
+  alt={image}
+  width={700}
+  height={500}
+  className="
+    h-80
+    w-full
+    object-cover
+    transition-all
+    duration-1000
+    ease-out
+    group-hover:scale-115
+    group-hover:brightness-110
+    cursor-zoom-in
+  "
+/>
 
               {/* Overlay */}
 

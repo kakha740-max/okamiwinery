@@ -2,121 +2,119 @@ import Image from "next/image";
 
 export default function Wines() {
   return (
-    <section className="bg-white py-28">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="bg-[#050505] py-32">
+      <div className="mx-auto max-w-7xl px-8">
 
-        <div className="text-center mb-20">
-          <p className="uppercase tracking-[0.4em] text-yellow-500">
+        {/* Heading */}
+        <div className="mb-24 text-center">
+
+          <p className="uppercase tracking-[0.45em] text-[#C8A15A]">
             Our Collection
           </p>
 
-          <h2 className="mt-4 text-5xl font-bold text-black">
-            Featured Wines
+          <h2
+            className="mt-6 text-5xl md:text-6xl font-light text-white"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Premium Georgian Wines
           </h2>
 
-          <p className="mt-6 text-gray-600 max-w-3xl mx-auto">
-            Discover premium wines crafted from Georgia's finest vineyards,
-            combining centuries of tradition with modern winemaking excellence.
+          <div className="mx-auto mt-8 h-px w-32 bg-[#C8A15A]" />
+
+          <p
+            className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-white/70"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Crafted from selected grapes, nurtured by tradition and elevated by
+            time. Discover the essence of Okami in every bottle.
           </p>
+
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* Bottles */}
+        <div className="grid grid-cols-1 gap-20 md:grid-cols-3 items-end">
 
-          {/* Wine 1 */}
-          <div className="group rounded-3xl overflow-hidden shadow-xl bg-white">
+          {/* Bottle 1 */}
+          <div className="text-center">
 
-            <div className="relative h-[450px]">
+            <Image
+              src="/images/botli1.png"
+              alt="Saperavi"
+              width={240}
+              height={700}
+              className="mx-auto transition duration-500 hover:scale-105"
+            />
 
-              <Image
-                src="/images/hero.png"
-                alt="Saperavi"
-                fill
-                className="object-cover group-hover:scale-110 transition duration-700"
-              />
+            <h3
+              className="mt-10 text-3xl text-white"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
+              Saperavi
+            </h3>
 
-            </div>
+            <p className="mt-2 text-white/60">
+              Dry Red Wine
+            </p>
 
-            <div className="p-8">
-
-              <h3 className="text-2xl font-bold">
-                Saperavi
-              </h3>
-
-              <p className="mt-4 text-gray-600 leading-8">
-                Powerful Georgian red wine with rich aromas and elegant structure.
-              </p>
-
-              <button className="mt-8 rounded-full border border-yellow-500 px-6 py-3 text-yellow-500 hover:bg-yellow-500 hover:text-white transition">
-                View Wine
-              </button>
-
-            </div>
+            <button className="mt-8 border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] text-sm text-white transition hover:bg-[#C8A15A] hover:text-black">
+              Discover →
+            </button>
 
           </div>
 
-          {/* Wine 2 */}
+          {/* Bottle 2 */}
+          <div className="text-center">
 
-          <div className="group rounded-3xl overflow-hidden shadow-xl bg-white">
+            <Image
+              src="/images/botli2.png"
+              alt="Chinuri"
+              width={280}
+              height={760}
+              className="mx-auto transition duration-500 hover:scale-105"
+            />
 
-            <div className="relative h-[450px]">
+            <h3
+              className="mt-10 text-4xl text-white"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
+              Chinuri
+            </h3>
 
-              <Image
-                src="/images/hero.png"
-                alt="Rkatsiteli"
-                fill
-                className="object-cover group-hover:scale-110 transition duration-700"
-              />
+            <p className="mt-2 text-white/60">
+              Dry White Wine
+            </p>
 
-            </div>
-
-            <div className="p-8">
-
-              <h3 className="text-2xl font-bold">
-                Rkatsiteli
-              </h3>
-
-              <p className="mt-4 text-gray-600 leading-8">
-                Elegant white wine expressing freshness, minerality and balance.
-              </p>
-
-              <button className="mt-8 rounded-full border border-yellow-500 px-6 py-3 text-yellow-500 hover:bg-yellow-500 hover:text-white transition">
-                View Wine
-              </button>
-
-            </div>
+            <button className="mt-8 border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] text-sm text-white transition hover:bg-[#C8A15A] hover:text-black">
+              Discover →
+            </button>
 
           </div>
 
-          {/* Wine 3 */}
+          {/* Bottle 3 */}
+          <div className="text-center">
 
-          <div className="group rounded-3xl overflow-hidden shadow-xl bg-white">
+            <Image
+              src="/images/botli5.png"
+              alt="Reserve"
+              width={240}
+              height={700}
+              className="mx-auto transition duration-500 hover:scale-105"
+            />
 
-            <div className="relative h-[450px]">
+            <h3
+              className="mt-10 text-3xl text-white"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
+              Reserve
+            </h3>
 
-              <Image
-                src="/images/hero.png"
-                alt="Kisi"
-                fill
-                className="object-cover group-hover:scale-110 transition duration-700"
-              />
+            <p className="mt-2 text-white/60">
+              Premium Collection
+            </p>
 
-            </div>
-
-            <div className="p-8">
-
-              <h3 className="text-2xl font-bold">
-                Kisi
-              </h3>
-
-              <p className="mt-4 text-gray-600 leading-8">
-                A premium Georgian variety with exceptional aroma and character.
-              </p>
-
-              <button className="mt-8 rounded-full border border-yellow-500 px-6 py-3 text-yellow-500 hover:bg-yellow-500 hover:text-white transition">
-                View Wine
-              </button>
-
-            </div>
+            <button className="mt-8 border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] text-sm text-white transition hover:bg-[#C8A15A] hover:text-black">
+              Discover →
+            </button>
 
           </div>
 

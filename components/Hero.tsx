@@ -12,35 +12,49 @@ export default function Hero() {
         className="object-cover"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/45"></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/35" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center px-6">
-        <div className="max-w-3xl text-center">
+      <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pb-20 md:px-20 md:pb-24">
+        <div className="max-w-2xl border-l-2 border-[#C8A15A] pl-8">
 
-          <p className="mb-8 text-xs uppercase tracking-[0.45em] text-yellow-400">
+          {/* Subtitle */}
+          <p className="mb-5 text-sm uppercase tracking-[0.45em] text-[#C8A15A]">
             A Legacy of Georgian Winemaking
           </p>
 
+          {/* Main Title */}
+          <h1
+  className="leading-none"
+  style={{ fontFamily: "Georgia, serif" }}
+>
+  <span className="block text-5xl md:text-7xl font-light tracking-[0.12em] text-white">
+    OKAMI
+  </span>
+
+  <span className="mt-2 block text-2xl md:text-3xl font-light tracking-[0.45em] text-white/90">
+    WINERY
+  </span>
+</h1>
+
+          {/* Decorative Line */}
+          <div className="mt-8 mb-8 h-px w-32 bg-[#C8A15A]" />
+
+          {/* Description */}
           <p
-            className="text-lg md:text-2xl leading-9 md:leading-[1.9] font-light text-white/60"
+            className="text-lg md:text-2xl leading-9 text-white/80"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            In the heart of Georgia, where vineyards have flourished for
-            centuries, <strong className="text-white/90">Okami Winery</strong> continues a
-            legacy shaped by tradition, respect for the land, and the pursuit
-            of excellence.
+            Crafted in the historic Okami Microzone,
+            where tradition, heritage and excellence
+            come together in every bottle.
           </p>
 
-          <p
-            className="mt-8 text-lg md:text-2xl leading-9 md:leading-[1.9] font-light text-white/60"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            Every vineyard, every harvest, and every bottle reflects the soul
-            of the Okami Microzone, crafted to share the authentic spirit of
-            Georgian wine with the world.
-          </p>
+          {/* Button */}
+          <button className="mt-10 border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.3em] text-sm text-white transition-all duration-300 hover:bg-[#C8A15A] hover:text-black">
+            Discover More
+          </button>
 
         </div>
       </div>
