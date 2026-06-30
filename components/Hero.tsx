@@ -48,7 +48,7 @@ export default function Hero() {
           >
             Crafted in the historic Okami Microzone,
             where tradition, heritage and excellence
-            come together in every bottle.
+            come together in every bottle. ბარო ბიჯო იკაკია და ბექაია
           </p>
 
           {/* Button */}
