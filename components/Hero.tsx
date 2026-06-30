@@ -1,19 +1,22 @@
-import Image from "next/image";
-
 export default function Hero() {
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background */}
-      <Image
-        src="/images/hero3.png"
-        alt="Okami Winery"
-        fill
-        priority
-        className="object-cover"
-      />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/35" />
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover animate-fade"
+      >
+        <source src="/video/okamivideo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/20" />
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-end justify-start px-5 pb-16 sm:px-8 sm:pb-20 md:px-20 md:pb-24">
@@ -43,16 +46,16 @@ export default function Hero() {
 
           {/* Description */}
           <p
-            className="text-base sm:text-lg md:text-2xl leading-7 sm:leading-8 md:leading-9 text-white/80"
+            className="text-base sm:text-lg md:text-2xl leading-7 sm:leading-8 md:leading-9 text-white/85"
             style={{ fontFamily: "Georgia, serif" }}
           >
             Crafted in the historic Okami Microzone,
             where tradition, heritage and excellence
-            come together in every bottle. ბარო ბიჯო იკაკია და ბექაია
+            come together in every bottle.
           </p>
 
           {/* Button */}
-          <button className="mt-8 md:mt-10 w-full sm:w-auto border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] md:tracking-[0.3em] text-sm text-white transition-all duration-300 hover:bg-[#C8A15A] hover:text-black">
+          <button className="mt-8 md:mt-10 w-full sm:w-auto border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] md:tracking-[0.3em] text-sm text-white transition-all duration-500 hover:bg-[#C8A15A] hover:text-black">
             Discover More
           </button>
 
@@ -60,7 +63,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Down */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 md:h-10 md:w-10 text-white/70"
@@ -76,6 +79,7 @@ export default function Hero() {
           />
         </svg>
       </div>
+
     </section>
   );
 }
