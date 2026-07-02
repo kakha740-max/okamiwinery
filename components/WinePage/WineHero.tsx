@@ -61,7 +61,7 @@ export default function WineHero({ wine }: WineHeroProps) {
             <Image
               src={wine.image}
               alt={wine.name}
-              width={350}
+              width={320}
               height={850}
               priority
               className="relative z-10 object-contain transition duration-700 hover:scale-[1.02]"
