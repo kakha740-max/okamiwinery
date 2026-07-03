@@ -1,7 +1,5 @@
-import { wines } from "../data/wines";
-
 import FeaturedHeader from "./FeaturedHeader";
-import WineCard from "./WineCard";
+import ProductRail from "./ProductRail";
 
 export default function FeaturedWines() {
   return (
@@ -10,20 +8,8 @@ export default function FeaturedWines() {
 
         <FeaturedHeader />
 
-        <div className="mt-20 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
-
-          {wines.map((wine) => (
-
-            <WineCard
-              key={wine.id}
-              slug={wine.slug}
-              image={wine.image}
-              name={wine.name}
-              subtitle={wine.subtitle}
-            />
-
-          ))}
-
+        <div className="mt-20">
+          <ProductRail />
         </div>
 
       </div>

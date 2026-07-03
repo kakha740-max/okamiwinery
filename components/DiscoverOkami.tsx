@@ -1,49 +1,33 @@
-import Image from "next/image";
-
-const images = [
-  "story1.png",
-  "story2.png",
-  "story3.png",
-  "story4.png",
-  "story5.png",
-  "story6.png",
-  "story7.png",
-  "story8.png",
-  "story9.png",
-];
+import Gallery from "./DiscoverGallery/Gallery";
 
 export default function DiscoverOkami() {
   return (
     <section className="bg-[#050505] py-20 md:py-28">
-
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
 
         {/* Heading */}
-        <div className="mb-14 md:mb-20 text-center">
 
-          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.45em] text-yellow-500">
+        <div className="mb-14 text-center md:mb-20">
+
+          <p className="text-xs uppercase tracking-[0.3em] text-yellow-500 sm:text-sm sm:tracking-[0.45em]">
             Explore Our Estate
           </p>
 
           <h2
-            className="mt-5 md:mt-6 text-4xl sm:text-5xl md:text-6xl font-light text-white"
+            className="mt-5 text-4xl font-light text-white sm:text-5xl md:mt-6 md:text-6xl"
             style={{ fontFamily: "Georgia, serif" }}
           >
             Discover Okami
           </h2>
 
-          <div className="mt-6 md:mt-8 flex items-center justify-center gap-3 sm:gap-5">
-
-            <div className="h-px w-14 sm:w-24 bg-yellow-500"></div>
-
-            <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
-
-            <div className="h-px w-14 sm:w-24 bg-yellow-500"></div>
-
+          <div className="mt-6 flex items-center justify-center gap-3 sm:gap-5 md:mt-8">
+            <div className="h-px w-14 bg-yellow-500 sm:w-24" />
+            <div className="h-2 w-2 rounded-full bg-yellow-500" />
+            <div className="h-px w-14 bg-yellow-500 sm:w-24" />
           </div>
 
           <p
-            className="mx-auto mt-8 md:mt-10 max-w-3xl text-base sm:text-lg leading-7 sm:leading-9 text-white/60"
+            className="mx-auto mt-8 max-w-3xl text-base leading-7 text-white/60 sm:text-lg sm:leading-9 md:mt-10"
             style={{ fontFamily: "Georgia, serif" }}
           >
             Discover the beauty of Okami Winery through our vineyards,
@@ -55,70 +39,9 @@ export default function DiscoverOkami() {
 
         {/* Gallery */}
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-          {images.map((image) => (
-
-            <div
-              key={image}
-              className="
-                group
-                relative
-                overflow-hidden
-                rounded-3xl
-                border
-                border-yellow-500/30
-                transition-all
-                duration-500
-                hover:border-yellow-500
-                hover:shadow-[0_0_40px_rgba(200,161,90,0.25)]
-              "
-            >
-
-              <Image
-                src={`/images/${image}`}
-                alt={image}
-                width={700}
-                height={500}
-                className="
-                  h-64
-                  sm:h-72
-                  lg:h-80
-                  w-full
-                  object-cover
-                  transition-all
-                  duration-1000
-                  ease-out
-                  group-hover:scale-110
-                  group-hover:brightness-110
-                  cursor-zoom-in
-                "
-              />
-
-              {/* Overlay */}
-
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-500 group-hover:bg-black/45">
-
-                <div className="translate-y-8 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-
-                  <div className="rounded-full border border-yellow-500 px-6 py-3 uppercase tracking-[0.25em] text-xs sm:px-8 sm:text-sm text-yellow-400">
-
-                    View Photo
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
+        <Gallery />
 
       </div>
-
     </section>
   );
 }

@@ -24,7 +24,7 @@ export default function WineCard({
           border
           border-[#C8A15A]/15
           bg-[#0B0B0B]
-          p-8
+          p-6
           transition-all
           duration-500
           hover:-translate-y-2
@@ -33,12 +33,14 @@ export default function WineCard({
         "
       >
         {/* Bottle */}
-        <div className="flex h-[300px] items-center justify-center overflow-hidden">
+
+        <div className="flex h-[260px] items-center justify-center overflow-hidden">
+
           <Image
             src={image}
             alt={name}
-            width={190}
-            height={380}
+            width={160}
+            height={320}
             className="
               h-full
               w-auto
@@ -48,16 +50,19 @@ export default function WineCard({
               group-hover:scale-105
             "
           />
+
         </div>
 
         {/* Divider */}
-        <div className="my-6 h-px w-full bg-[#C8A15A]/10 transition-colors duration-500 group-hover:bg-[#C8A15A]/30" />
+
+        <div className="my-5 h-px w-full bg-[#C8A15A]/10 transition-colors duration-500 group-hover:bg-[#C8A15A]/30" />
 
         {/* Wine Name */}
+
         <h3
           className="
             text-center
-            text-3xl
+            text-2xl
             font-light
             text-white
             transition-colors
@@ -70,18 +75,25 @@ export default function WineCard({
         </h3>
 
         {/* Subtitle */}
-        <p className="mt-3 text-center uppercase tracking-[0.3em] text-sm text-[#C8A15A]">
+
+        <p className="mt-2 text-center uppercase tracking-[0.3em] text-xs text-[#C8A15A]">
           {subtitle}
         </p>
 
         {/* Decorative Divider */}
-        <div className="my-6 flex items-center justify-center gap-3">
-          <div className="h-px w-10 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-14" />
+
+        <div className="my-5 flex items-center justify-center gap-3">
+
+          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12" />
+
           <span className="text-sm text-[#C8A15A] transition-transform duration-500 group-hover:rotate-180">
             ✦
           </span>
-          <div className="h-px w-10 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-14" />
+
+          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12" />
+
         </div>
+
       </article>
     </Link>
   );
