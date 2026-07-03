@@ -16,6 +16,14 @@ const images = [
   "story7.png",
   "story8.png",
   "story9.png",
+  
+  "okami1.png",
+  "okami2.png",
+  "okami3.png",
+  "okami4.png",
+  "okami5.png",
+  "okami6.png",
+  "okami7.png",
 ];
 
 const IMAGES_PER_PAGE = 3;

@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 
+import Navbar from "@/components/Navbar";
+
 import { wines } from "@/components/data/wines";
 import WineHero from "@/components/WinePage/WineHero";
 
@@ -19,8 +21,12 @@ export default async function WinePage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#050505]">
-      <WineHero wine={wine} />
-    </main>
+    <>
+      <Navbar />
+
+      <main className="min-h-screen bg-[#050505]">
+        <WineHero wine={wine} />
+      </main>
+    </>
   );
 }

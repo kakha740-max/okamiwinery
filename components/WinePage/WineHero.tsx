@@ -41,10 +41,29 @@ type WineHeroProps = {
 
 export default function WineHero({ wine }: WineHeroProps) {
   return (
-    <section className="py-24 overflow-hidden">
-      <div className="mx-auto grid max-w-7xl items-start gap-24 px-8 lg:grid-cols-2">
+    <section className="relative overflow-hidden pt-40 pb-24">
 
-        {/* LEFT SIDE */}
+      {/* Background */}
+
+      <div className="absolute inset-0">
+
+        <Image
+          src="/images/story4.png"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-15"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#050505]/80 to-[#050505]" />
+
+      </div>
+
+      {/* Content */}
+
+      <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-24 px-8 lg:grid-cols-2">
+
+        {/* LEFT */}
 
         <motion.div
           className="flex justify-center"
@@ -54,15 +73,15 @@ export default function WineHero({ wine }: WineHeroProps) {
         >
           <div className="relative">
 
-            {/* Luxury Glow */}
+            {/* Gold Glow */}
 
-            <div className="absolute inset-0 rounded-full bg-[#C8A15A]/10 blur-[140px]" />
+            <div className="absolute inset-0 rounded-full bg-[#C8A15A]/15 blur-[160px]" />
 
             <Image
               src={wine.image}
               alt={wine.name}
-              width={320}
-              height={850}
+              width={340}
+              height={900}
               priority
               className="relative z-10 object-contain transition duration-700 hover:scale-[1.02]"
             />
@@ -70,7 +89,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           </div>
         </motion.div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
 
         <motion.div
           variants={fadeRight}
@@ -83,13 +102,13 @@ export default function WineHero({ wine }: WineHeroProps) {
           </p>
 
           <h1
-            className="mt-4 text-6xl font-light text-white"
+            className="mt-5 text-6xl md:text-7xl font-light text-white"
             style={{ fontFamily: "Georgia, serif" }}
           >
             {wine.name}
           </h1>
 
-          <p className="mt-4 uppercase tracking-[0.35em] text-[#C8A15A]">
+          <p className="mt-5 uppercase tracking-[0.35em] text-[#C8A15A]">
             {wine.subtitle}
           </p>
 
@@ -110,6 +129,7 @@ export default function WineHero({ wine }: WineHeroProps) {
         </motion.div>
 
       </div>
+
     </section>
   );
 }
