@@ -1,4 +1,11 @@
+"use client";
+
+import Link from "next/link";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative h-screen overflow-hidden">
 
@@ -24,40 +31,39 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="mb-4 text-[11px] sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.45em] text-[#C8A15A]">
-            A Legacy of Georgian Winemaking
+            {t.hero.eyebrow}
           </p>
 
           {/* Main Title */}
           <h1
+            lang="en"
             className="leading-none"
-            style={{ fontFamily: "Georgia, serif" }}
           >
             <span className="block text-4xl sm:text-5xl md:text-7xl font-light tracking-[0.08em] md:tracking-[0.12em] text-white">
-              OKAMI
+              ETNO OKAMI
             </span>
-
-            <span className="mt-2 block text-xl sm:text-2xl md:text-3xl font-light tracking-[0.3em] md:tracking-[0.45em] text-white/90">
-              WINERY
-            </span>
+              <span className="mt-2 block text-xl sm:text-2xl md:text-3xl font-light tracking-[0.3em] md:tracking-[0.45em] text-white/90">
+                WINERY
+              </span>
           </h1>
 
           {/* Decorative Line */}
           <div className="mt-6 mb-6 h-px w-20 sm:w-28 md:w-32 bg-[#C8A15A]" />
 
           {/* Description */}
-          <p
-            className="text-base sm:text-lg md:text-2xl leading-7 sm:leading-8 md:leading-9 text-white/85"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            Crafted in the historic Okami Microzone,
-            where tradition, heritage and excellence
-            come together in every bottle.
+          <p className="text-base sm:text-lg md:text-2xl leading-7 sm:leading-8 md:leading-9 text-white/85">
+            {t.hero.description}
           </p>
 
-          {/* Button */}
-          <button className="mt-8 md:mt-10 w-full sm:w-auto border border-[#C8A15A] px-8 py-3 uppercase tracking-[0.25em] md:tracking-[0.3em] text-sm text-white transition-all duration-500 hover:bg-[#C8A15A] hover:text-black">
-            Discover More
-          </button>
+          {/* Buttons */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-10">
+            <Link
+              href="/wines"
+              className="w-full sm:w-auto border border-[#C8A15A] px-8 py-3 text-center text-sm uppercase tracking-[0.25em] text-white transition-all duration-500 hover:bg-[#C8A15A] hover:text-black"
+            >
+              {t.hero.button}
+            </Link>
+          </div>
 
         </div>
       </div>

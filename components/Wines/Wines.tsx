@@ -30,10 +30,7 @@ export default function Wines() {
             Our Collection
           </p>
 
-          <h2
-            className="mt-4 text-5xl md:text-6xl text-white font-light"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
+          <h2 className="mt-4 text-5xl md:text-6xl text-white font-light">
             Wines
           </h2>
 

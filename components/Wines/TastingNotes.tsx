@@ -8,12 +8,7 @@ export default function TastingNotes({
   return (
     <div className="mt-16">
 
-      <h3
-        className="mb-8 text-2xl text-white"
-        style={{ fontFamily: "Georgia, serif" }}
-      >
-        Tasting Notes
-      </h3>
+      <h3 className="mb-8 text-2xl text-white">Tasting Notes</h3>
 
       <div className="flex flex-wrap gap-4">
 

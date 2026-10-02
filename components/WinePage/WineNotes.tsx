@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/providers/LanguageProvider";
+
 type WineNotesProps = {
   notes: string[];
 };
@@ -5,18 +9,18 @@ type WineNotesProps = {
 export default function WineNotes({
   notes,
 }: WineNotesProps) {
+  const { t } = useLanguage();
+  const s = t.winePage;
+
   return (
     <section className="mt-16">
 
-      <h3
-        className="text-3xl font-light text-white"
-        style={{ fontFamily: "Georgia, serif" }}
-      >
-        Tasting Notes
+      <h3 className="text-3xl font-light text-[#1E1610]">
+        {s.notesTitle}
       </h3>
 
-      <p className="mt-3 text-white/60">
-        Discover the unique aromas and flavors of this wine.
+      <p className="mt-3 text-[#5C5245]">
+        {s.notesDescription}
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4">
@@ -28,16 +32,16 @@ export default function WineNotes({
             className="
               rounded-full
               border
-              border-[#C8A15A]/20
-              bg-[#111111]
+              border-[#C8A15A]/30
+              bg-white
               px-5
               py-3
               text-sm
-              text-white/85
+              text-[#1E1610]/85
               transition-all
               duration-300
               hover:border-[#C8A15A]
-              hover:bg-[#161616]
+              hover:bg-[#F7F1E6]
             "
           >
             {note}

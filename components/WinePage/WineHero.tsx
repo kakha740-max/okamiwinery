@@ -7,6 +7,7 @@ import {
   fadeLeft,
   fadeRight,
 } from "@/lib/animations";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import WineSpecs from "./WineSpecs";
 import WineTaste from "./WineTaste";
@@ -40,24 +41,18 @@ type WineHeroProps = {
 };
 
 export default function WineHero({ wine }: WineHeroProps) {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative overflow-hidden pt-40 pb-24">
+    <section className="relative overflow-hidden bg-white pt-40 pb-24">
 
-      {/* Background */}
-
-      <div className="absolute inset-0">
-
-        <Image
-          src="/images/story4.png"
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-15"
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#050505]/80 to-[#050505]" />
-
-      </div>
+      <Image
+        src="/images/front1.png"
+        alt=""
+        fill
+        priority
+        className="pointer-events-none object-cover object-top opacity-[0.06]"
+      />
 
       {/* Content */}
 
@@ -98,12 +93,11 @@ export default function WineHero({ wine }: WineHeroProps) {
         >
 
           <p className="uppercase tracking-[0.45em] text-[#C8A15A] text-sm">
-            OUR COLLECTION
+            {t.featured.eyebrow}
           </p>
 
           <h1
-            className="mt-5 text-6xl md:text-7xl font-light text-white"
-            style={{ fontFamily: "Georgia, serif" }}
+            className="mt-5 text-6xl md:text-7xl font-light text-[#1E1610]"
           >
             {wine.name}
           </h1>
@@ -114,7 +108,7 @@ export default function WineHero({ wine }: WineHeroProps) {
 
           <div className="my-10 h-px w-24 bg-[#C8A15A]" />
 
-          <p className="max-w-xl text-lg leading-9 text-white/70">
+          <p className="max-w-xl text-lg leading-9 text-[#5C5245]">
             {wine.description}
           </p>
 

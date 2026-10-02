@@ -13,12 +13,7 @@ export default function TasteProfile({ taste }: TasteProfileProps) {
   return (
     <div className="mt-16">
 
-      <h3
-        className="mb-8 text-2xl text-white"
-        style={{ fontFamily: "Georgia, serif" }}
-      >
-        Taste Profile
-      </h3>
+      <h3 className="mb-8 text-2xl text-white">Taste Profile</h3>
 
       <Progress label="Sweetness" value={taste.sweetness} />
       <Progress label="Acidity" value={taste.acidity} />

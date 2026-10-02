@@ -1,8 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+/* Self-hosted (not served through the Google Fonts CSS API) so the
+   Georgian "case" OpenType feature survives — Google's API strips it
+   during subsetting, which silently breaks Mtavruli rendering. */
+@font-face {
+  font-family: 'Noto Sans Georgian';
+  src: url('/fonts/noto-sans-georgian-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  size-adjust: 95%;
+  unicode-range: U+10A0-10FF, U+1C90-1CBF, U+2D00-2D2F;
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-latin: 'Playfair Display', Georgia, serif;
+  /* Noto only covers Georgian code points (unicode-range), so Latin text
+     falls through to the same Playfair stack the English page uses. */
+  --font-georgian: 'Noto Sans Georgian', var(--font-latin);
+  --font-body: var(--font-latin);
+}
+
+html:lang(ka) {
+  --font-body: var(--font-georgian);
+}
+
+/* All Georgian letters sit at a uniform height (Mtavruli) site-wide —
+   no ascenders/descenders — rather than only on hand-picked elements. */
+html:lang(ka) body {
+  font-feature-settings: "case" 1;
 }
 
 @theme inline {
@@ -19,8 +47,86 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+/* Navigation links: ensure vertical alignment */
+.nav-link, nav a, .nav a {
+  display: inline-flex;
+  align-items: center;
+}
+
+::selection {
+  background: #c8a15a;
+  color: #050505;
+}
+
+/* Georgian words run longer than their English counterparts, so the wide
+   Latin-style letter-tracking used for uppercase eyebrows/labels site-wide
+   causes lines to overflow and wrap awkwardly (e.g. a lone trailing word).
+   Scale tracking down for Georgian without having to touch every component. */
+/* Text marked lang="en" (e.g. the hero brand name) keeps its English tracking. */
+html:lang(ka) .tracking-\[0\.45em\]:not(:lang(en)),
+html:lang(ka) .sm\:tracking-\[0\.45em\]:not(:lang(en)) { letter-spacing: 0.1em; }
+html:lang(ka) .tracking-\[0\.35em\]:not(:lang(en)) { letter-spacing: 0.08em; }
+html:lang(ka) .tracking-\[0\.3em\]:not(:lang(en)) { letter-spacing: 0.07em; }
+html:lang(ka) .tracking-\[0\.28em\]:not(:lang(en)) { letter-spacing: 0.06em; }
+html:lang(ka) .tracking-\[0\.25em\]:not(:lang(en)) { letter-spacing: 0.05em; }
+html:lang(ka) .tracking-\[0\.22em\]:not(:lang(en)) { letter-spacing: 0.04em; }
+html:lang(ka) .tracking-\[0\.2em\]:not(:lang(en)) { letter-spacing: 0.04em; }
+html:lang(ka) .tracking-\[0\.12em\]:not(:lang(en)) { letter-spacing: 0.03em; }
+html:lang(ka) .tracking-\[0\.08em\]:not(:lang(en)) { letter-spacing: 0.02em; }
+
+/* Wine bottles sway gently from side to side while the card is hovered,
+   pivoting at the base like a bottle rocking on a table. */
+@keyframes bottle-sway {
+  0%, 100% { transform: scale(1.05) rotate(0deg); }
+  25%      { transform: scale(1.05) rotate(-3deg); }
+  75%      { transform: scale(1.05) rotate(3deg); }
+}
+
+.bottle-sway {
+  transform-origin: 50% 100%;
+  transition: transform 0.7s ease;
+}
+
+.group:hover .bottle-sway {
+  animation: bottle-sway 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .bottle-sway {
+    animation: none;
+    transform: scale(1.05);
+  }
+}
+
+
+/* Award cards fade up into place (re-run whenever the year filter changes). */
+@keyframes award-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.award-rise {
+  animation: award-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .award-rise { animation: none; }
 }

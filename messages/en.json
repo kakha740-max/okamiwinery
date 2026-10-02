@@ -2,41 +2,243 @@
   "navbar": {
     "home": "Home",
     "story": "Story",
+    "featured": "Featured",
+    "gallery": "Gallery",
     "discover": "Discover",
     "wines": "Wines",
-    "contact": "Contact"
+    "tour": "Tour",
+    "contact": "Contact",
+    "awards": "Awards"
   },
-
   "hero": {
     "eyebrow": "A Legacy of Georgian Winemaking",
-    "title": "OKAMI WINERY",
-    "description": "Crafted in the historic Okami Microzone, where tradition, terroir and excellence meet.",
+    "title": "ETNO OKAMI WINERY",
+    "description": "Crafted in the historic Etno Okami Microzone, where tradition, terroir and excellence meet.",
     "button": "Discover Wines"
   },
-
   "story": {
     "eyebrow": "Our Story",
     "title": "A Heritage Rooted in Georgia",
-    "description1": "Okami Winery stands in one of Georgia's historic winemaking regions, where generations of passionate winemakers have cultivated vineyards with dedication, patience and deep respect for the land.",
-    "description2": "Every vineyard, every harvest and every bottle reflects the identity of the Okami Microzone, preserving the traditions of Georgian winemaking while embracing innovation for future generations."
+    "paragraphs": [
+      "Located in the heart of the historic winemaking region of Shida Kartli, the Etno Okami Microzone is a place where vineyards and wine have been an integral part of Georgian culture and way of life for centuries.",
+      "In the 19th century, Ivane Mukhranbatoni played a significant role in advancing viticulture and winemaking in the region. In 1965, Tengiz Kekelidze founded the Etno Okami Winery, connecting centuries-old traditions with modern wine production.",
+      "Today, Etno Okami Winery brings together heritage, modern technology, and a partnership with the Caucasus International University, fostering excellence in quality, innovation, and wine education.",
+      "Our mission is to preserve Etno Okami's unique legacy and proudly showcase the richness of Georgian wine culture on the world stage."
+    ],
+    "university": {
+      "title": "Partnership with the University",
+      "text": "Etno Okami Winery works closely with the Caucasus International University, which plays an active role in advancing viticulture and winemaking. This partnership brings together academic knowledge and traditional expertise to uphold the highest standards of quality and innovation."
+    },
+    "harvest": {
+      "title": "Students at the Harvest",
+      "text": "Every year, during the harvest season, university students take part directly in the winemaking process. On site, they study every stage of viticulture and winemaking — from grape picking through fermentation to the finished wine — gaining hands-on experience in a real production environment."
+    },
+    "lab": {
+      "title": "Scientific Research & Innovation",
+      "text": "At the university, laboratory research and the development of new grape varieties are ongoing. Academic involvement plays a significant role in raising wine quality and advancing the science of winemaking, giving Etno Okami wines an added measure of trust."
+    }
   },
-
   "discover": {
     "eyebrow": "Explore Our Estate",
-    "title": "Discover Okami",
-    "description": "Discover the beauty of Okami Winery through our vineyards, historic cellars, production spaces and the timeless atmosphere that defines our estate."
+    "title": "Discover Etno Okami",
+    "description": "Discover the beauty of Etno Okami Winery through our vineyards, historic cellars, production spaces and the timeless atmosphere that defines our estate.",
+    "viewPhoto": "View Photo",
+    "viewAll": "View All Photos",
+    "pageTitle": "Gallery"
   },
-
+  "featured": {
+    "eyebrow": "OUR COLLECTION",
+    "title": "Featured Wines",
+    "description": "Discover our selection of exceptional Georgian wines, crafted in the historic Etno Okami Microzone."
+  },
   "wines": {
     "eyebrow": "Crafted with Passion",
     "title": "Signature Wines",
     "description": "Every bottle reflects the unique terroir of Georgia, carefully crafted to express authenticity, elegance and timeless winemaking traditions.",
     "button": "Discover"
   },
-
+  "wineList": {
+    "eyebrow": "Our Collection",
+    "title": "Our Wines",
+    "subtitle": "Discover our exceptional Georgian wines.",
+    "tabAll": "All",
+    "tabRed": "Red",
+    "tabWhite": "White",
+    "tabQvevri": "Qvevri",
+    "filterSort": "Filter & Sort",
+    "sortLabel": "Sort by",
+    "sortName": "Name",
+    "sortYear": "Vintage",
+    "priceOnRequest": "Price on Request",
+    "viewWine": "View Details",
+    "categoryRed": "Red",
+    "categoryWhite": "White",
+    "sweetnessDry": "Dry",
+    "sweetnessSemiSweet": "Semi-Sweet"
+  },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Visit Okami Winery",
-    "description": "We would be delighted to welcome you to our winery and share the spirit of Georgian winemaking."
+    "title": "Visit Etno Okami Winery",
+    "description": "We would be delighted to welcome you to our winery and share the spirit of Georgian winemaking.",
+    "buttonTour": "Book a Tour",
+    "buttonContact": "Contact Us"
+  },
+  "about": {
+    "eyebrow": "About Etno Okami",
+    "title": "A winery shaped by place, patience and excellence.",
+    "description": "Our wines are born in the historic Etno Okami Microzone, where the land, climate and heritage come together in every vintage. We honor Georgian traditions while expressing a contemporary point of view through each bottle.",
+    "feature1Title": "Vineyard heritage",
+    "feature1Description": "Deeply connected to the character of the region, our vineyards are cultivated with attention to detail and respect for the land.",
+    "feature2Title": "Refined tastings",
+    "feature2Description": "We create experiences for guests who want to discover the story behind each wine through thoughtful tasting journeys.",
+    "viewWines": "View Our Wines",
+    "planVisit": "Plan a Visit"
+  },
+  "experience": {
+    "eyebrow": "Factory History",
+    "title": "Producing Wine Rooted in Georgian Tradition Since 1965",
+    "description": "From its founding to this day, our winery has faithfully preserved the centuries-old traditions of Georgian winemaking. Knowledge and experience are passed down from generation to generation, shaping the character and quality of our wine to this day.",
+    "actionVisit": "Visit the Estate",
+    "actionDiscover": "Discover the Wines",
+    "highlight1Title": "Estate-grown character",
+    "highlight1Description": "Every bottle reflects the unique terroir of the Etno Okami Microzone, shaped by heritage and careful craftsmanship.",
+    "highlight2Title": "Timeless winemaking",
+    "highlight2Description": "We combine traditional Georgian methods with a contemporary approach to create wines of precision and depth.",
+    "highlight3Title": "Memorable hospitality",
+    "highlight3Description": "From vineyard visits to curated tastings, we offer a refined experience that brings the estate to life."
+  },
+  "winePage": {
+    "specsTitle": "Wine Details",
+    "variety": "Variety",
+    "vintage": "Vintage",
+    "alcohol": "Alcohol",
+    "volume": "Volume",
+    "region": "Region",
+    "winemaking": "Winemaking",
+    "tasteTitle": "Taste Profile",
+    "sweetness": "Sweetness",
+    "acidity": "Acidity",
+    "body": "Body",
+    "tannins": "Tannins",
+    "notesTitle": "Tasting Notes",
+    "notesDescription": "Discover the unique aromas and flavors of this wine.",
+    "pairingTitle": "Food Pairing",
+    "pairingDescription": "Recommended dishes to enjoy with this wine."
+  },
+  "tour": {
+    "hero": {
+      "eyebrow": "Etno Okami Winery",
+      "description": "Step into a world of history, vineyards and wine — discover ETNO OKAMI's heritage, the winemaking process, and taste our finest varieties in an authentic setting."
+    },
+    "types": {
+      "title": "Choose Your Tour Format",
+      "tours": [
+        {
+          "duration": "30 minutes",
+          "title": "Quick Introduction",
+          "description": "A short tour of the winery and tasting space, with an overview of production.",
+          "features": [
+            "Cellar walkthrough",
+            "1 wine tasting",
+            "Brief introduction to our history"
+          ]
+        },
+        {
+          "duration": "1 hour",
+          "title": "Classic Tour",
+          "description": "A complete experience — history, production and tasting.",
+          "features": [
+            "Full tour of the estate",
+            "3 wine tastings",
+            "Guided throughout"
+          ]
+        },
+        {
+          "duration": "2 hours",
+          "title": "Full Experience",
+          "description": "A deep dive into the world of ETNO OKAMI — vineyards, history and gastronomy.",
+          "features": [
+            "Vineyard visit",
+            "5 wine tastings",
+            "A taste of Georgian cuisine"
+          ]
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Etno Okami Tour",
+      "title": "Territory & Atmosphere",
+      "items": [
+        {
+          "title": "A Taste You'll Never Forget",
+          "text": "Discover the authentic flavors of Georgian cuisine, carefully selected and served alongside our wine."
+        },
+        {
+          "title": "Moments That Linger",
+          "text": "Share the unforgettable taste of wine with friends — an atmosphere where time slows down."
+        },
+        {
+          "title": "Exclusive and Limited",
+          "text": "A jubilee collection created only in small quantities — taste what isn't available to everyone."
+        },
+        {
+          "title": "A Place Where Everything Comes Together",
+          "text": "Discover a place where rest, nature, flavor and wine become one unforgettable experience."
+        }
+      ]
+    },
+    "form": {
+      "title": "Book Your Visit",
+      "namePlaceholder": "Full Name",
+      "emailPlaceholder": "Email",
+      "guestsPlaceholder": "Number of Guests",
+      "messagePlaceholder": "Additional comments (optional)",
+      "submit": "Send Request",
+      "successTitle": "Thank you! Your request is ready to be sent.",
+      "successDescription": "If your email client didn't open automatically, please contact us directly at info@okamiwinery.ge",
+      "emailSubject": "ETNO OKAMI TOUR — Booking Request",
+      "emailBodyName": "Name",
+      "emailBodyDate": "Preferred date",
+      "emailBodyGuests": "Number of guests",
+      "emailBodyMessage": "Message"
+    }
+  },
+  "footer": {
+    "eyebrow": "Etno Okami Winery",
+    "title": "Georgian wines, crafted with heritage and heart.",
+    "description": "Discover the elegance of the Etno Okami Microzone through exceptional wines, estate visits and timeless Georgian hospitality.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "home": "Home",
+    "wines": "Wines",
+    "tour": "Tour",
+    "email": "hello@okamiwine.com",
+    "address": "Etno Okami Microzone, Georgia",
+    "copyright": "© 2026 Etno Okami Winery. All Rights Reserved."
+  },
+  "awards": {
+    "eyebrow": "Awards & Achievements",
+    "title": "Recognition born in the qvevri",
+    "description": "Etno Okami wines have been honoured again and again at international qvevri wine competitions — independent juries confirming the craft and tradition behind every bottle.",
+    "statAwards": "Awards",
+    "statSilver": "Silver medals",
+    "statBronze": "Bronze medals",
+    "statSpecial": "Special award",
+    "filterAll": "All",
+    "medalSilver": "Silver",
+    "medalBronze": "Bronze",
+    "medalRosso": "Rosso",
+    "competitionIqwc": "International Qvevri Wine Competition",
+    "competitionWineHunter": "The Qvevri WineHunter Award",
+    "viewCertificate": "View certificate",
+    "pageTitle": "Awards & Achievements",
+    "pageIntro": "Every medal tells a story — of a vineyard, a vintage and a qvevri. Here are the competitions where Etno Okami wines have been recognised, and the moments behind each award.",
+    "viewAll": "All Awards & Stories",
+    "statGold": "Gold medals",
+    "medalGold": "Gold",
+    "points": "points",
+    "discoverWines": "Discover Our Wines",
+    "organizer": "Organiser",
+    "kartliShort": "Kartli"
   }
 }

@@ -1,55 +1,87 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import GalleryArrow from "./GalleryArrow";
 import LightboxViewer from "./Lightbox";
+import { galleryImages } from "./images";
 
-const images = [
-  "story1.png",
-  "story2.png",
-  "story3.png",
-  "story4.png",
-  "story5.png",
-  "story6.png",
-  "story7.png",
-  "story8.png",
-  "story9.png",
-  
-  "okami1.png",
-  "okami2.png",
-  "okami3.png",
-  "okami4.png",
-  "okami5.png",
-  "okami6.png",
-  "okami7.png",
-];
+const images = galleryImages;
 
-const IMAGES_PER_PAGE = 3;
+const AUTOPLAY_MS = 3500;
+const SLIDE_MS = 900;
+
+// The first few images are repeated at the end of the track so the slide
+// from the last photo back to the first looks continuous; once that slide
+// finishes, the track jumps back to the real first photo without animating.
+const MAX_PER_VIEW = 3;
+const track = [...images, ...images.slice(0, MAX_PER_VIEW)];
 
 export default function Gallery() {
-  const [page, setPage] = useState(0);
+  const { t } = useLanguage();
+  const [index, setIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
+  const [perView, setPerView] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const pendingIndex = useRef<number | null>(null);
 
   const [open, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  const totalPages = Math.ceil(images.length / IMAGES_PER_PAGE);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const update = () => setPerView(query.matches ? 3 : 1);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
-  const next = () => {
-    setPage((prev) => (prev + 1) % totalPages);
-  };
+  const next = useCallback(() => {
+    setIndex((prev) => Math.min(prev + 1, images.length));
+  }, []);
 
   const previous = () => {
-    setPage((prev) => (prev - 1 + totalPages) % totalPages);
+    if (index === 0) {
+      // Jump (unanimated) to the clone of the first photo, then slide back one.
+      pendingIndex.current = images.length - 1;
+      setAnimate(false);
+      setIndex(images.length);
+      return;
+    }
+    setIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  const start = page * IMAGES_PER_PAGE;
+  // Re-enable the transition a couple of frames after an unanimated jump.
+  useEffect(() => {
+    if (animate) return;
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
+        setAnimate(true);
+        if (pendingIndex.current !== null) {
+          setIndex(pendingIndex.current);
+          pendingIndex.current = null;
+        }
+      });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [animate]);
 
-  const visibleImages = images.slice(
-    start,
-    start + IMAGES_PER_PAGE
-  );
+  useEffect(() => {
+    if (paused || open) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = setInterval(next, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, [paused, open, next]);
+
+  const handleTransitionEnd = (event: React.TransitionEvent) => {
+    if (event.target !== event.currentTarget) return;
+    if (index >= images.length) {
+      setAnimate(false);
+      setIndex(index - images.length);
+    }
+  };
 
   return (
     <>
@@ -64,16 +96,34 @@ export default function Gallery() {
 
         {/* Gallery */}
 
-        <div className="flex-1">
+        <div
+          className="flex-1 overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div
+            onTransitionEnd={handleTransitionEnd}
+            className="-mx-3 flex"
+            style={{
+              transform: `translateX(-${(index * 100) / perView}%)`,
+              transition: animate
+                ? `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.2, 1)`
+                : "none",
+            }}
+          >
 
-            {visibleImages.map((image, index) => (
+            {track.map((image, trackIndex) => (
 
               <div
-                key={image}
+                key={`${image}-${trackIndex}`}
+                className="shrink-0 px-3"
+                style={{ width: `${100 / perView}%` }}
+              >
+
+              <div
                 onClick={() => {
-                  setPhotoIndex(start + index);
+                  setPhotoIndex(trackIndex % images.length);
                   setOpen(true);
                 }}
                 className="
@@ -81,12 +131,11 @@ export default function Gallery() {
                   relative
                   cursor-pointer
                   overflow-hidden
-                  rounded-3xl
                   border
-                  border-yellow-500/30
+                  border-[#C8A15A]/30
                   transition-all
                   duration-500
-                  hover:border-yellow-500
+                  hover:border-[#C8A15A]
                   hover:shadow-[0_0_40px_rgba(200,161,90,0.25)]
                 "
               >
@@ -97,7 +146,7 @@ export default function Gallery() {
                   width={700}
                   height={500}
                   className="
-                    h-64
+                    aspect-square
                     w-full
                     object-cover
                     transition-all
@@ -125,12 +174,14 @@ export default function Gallery() {
                         text-yellow-400
                       "
                     >
-                      View Photo
+                      {t.discover.viewPhoto}
                     </div>
 
                   </div>
 
                 </div>
+
+              </div>
 
               </div>
 

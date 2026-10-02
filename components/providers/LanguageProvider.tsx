@@ -31,7 +31,7 @@ export function LanguageProvider({
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
 
-    if (savedLanguage === "ka" || savedLanguage === "en") {
+    if (savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru") {
       setLanguage(savedLanguage);
       return;
     }
@@ -40,6 +40,8 @@ export function LanguageProvider({
 
     if (browserLanguage.startsWith("ka")) {
       setLanguage("ka");
+    } else if (browserLanguage.startsWith("ru")) {
+      setLanguage("ru");
     } else {
       setLanguage("en");
     }
@@ -47,6 +49,7 @@ export function LanguageProvider({
 
   useEffect(() => {
     localStorage.setItem("language", language);
+    document.documentElement.lang = language;
   }, [language]);
 
   const value = useMemo(

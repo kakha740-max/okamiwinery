@@ -24,12 +24,7 @@ export default function WineDetails({ wine }: WineDetailsProps) {
         Our Collection
       </p>
 
-      <h2
-        className="text-5xl md:text-6xl font-light leading-none"
-        style={{ fontFamily: "Georgia, serif" }}
-      >
-        {wine.name}
-      </h2>
+      <h2 className="text-5xl md:text-6xl font-light leading-none">{wine.name}</h2>
 
       <p className="mt-3 text-lg text-white/70 uppercase tracking-[0.25em]">
         {wine.subtitle}

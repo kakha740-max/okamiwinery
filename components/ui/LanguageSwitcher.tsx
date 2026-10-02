@@ -32,6 +32,20 @@ export default function LanguageSwitcher() {
       >
         EN
       </button>
+
+      <span className="text-white/30">|</span>
+
+      <button
+        type="button"
+        onClick={() => setLanguage("ru")}
+        className={`text-sm uppercase transition-colors duration-300 ${
+          language === "ru"
+            ? "text-yellow-400"
+            : "text-white/60 hover:text-yellow-400"
+        }`}
+      >
+        RU
+      </button>
     </div>
   );
 }

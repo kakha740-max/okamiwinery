@@ -10,7 +10,6 @@ export default function FoodPairing({
 
       <h3
         className="mb-8 text-2xl text-white"
-        style={{ fontFamily: "Georgia, serif" }}
       >
         Food Pairing
       </h3>

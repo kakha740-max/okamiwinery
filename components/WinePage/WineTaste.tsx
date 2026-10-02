@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "@/components/providers/LanguageProvider";
+
 type WineTasteProps = {
   taste: {
     sweetness: number;
@@ -25,13 +29,13 @@ function TasteBar({
           {label}
         </span>
 
-        <span className="text-white/70">
+        <span className="text-[#5C5245]">
           {value}/5
         </span>
 
       </div>
 
-      <div className="h-[4px] w-full rounded-full bg-white/10 overflow-hidden">
+      <div className="h-[4px] w-full rounded-full bg-[#C8A15A]/15 overflow-hidden">
 
         <div
           className="h-full rounded-full bg-[#C8A15A]"
@@ -49,37 +53,33 @@ function TasteBar({
 export default function WineTaste({
   taste,
 }: WineTasteProps) {
+  const { t } = useLanguage();
+  const s = t.winePage;
+
   return (
     <section className="mt-16">
 
-      <h3
-        className="text-3xl font-light text-white"
-        style={{
-          fontFamily: "Georgia, serif",
-        }}
-      >
-        Taste Profile
-      </h3>
+      <h3 className="text-3xl font-light text-[#1E1610]">{s.tasteTitle}</h3>
 
       <div className="mt-10">
 
         <TasteBar
-          label="Sweetness"
+          label={s.sweetness}
           value={taste.sweetness}
         />
 
         <TasteBar
-          label="Acidity"
+          label={s.acidity}
           value={taste.acidity}
         />
 
         <TasteBar
-          label="Body"
+          label={s.body}
           value={taste.body}
         />
 
         <TasteBar
-          label="Tannins"
+          label={s.tannins}
           value={taste.tannins}
         />
 

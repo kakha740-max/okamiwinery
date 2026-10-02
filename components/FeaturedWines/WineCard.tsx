@@ -20,6 +20,7 @@ export default function WineCard({
         className="
           group
           cursor-pointer
+          overflow-visible
           rounded-3xl
           border
           border-[#C8A15A]/15
@@ -29,33 +30,35 @@ export default function WineCard({
           duration-500
           hover:-translate-y-2
           hover:border-[#C8A15A]/50
-          hover:shadow-[0_20px_60px_rgba(200,161,90,0.08)]
+          hover:shadow-[0_25px_70px_rgba(200,161,90,0.12)]
         "
       >
         {/* Bottle */}
 
-        <div className="flex h-[260px] items-center justify-center overflow-hidden">
-
-          <Image
-            src={image}
-            alt={name}
-            width={160}
-            height={320}
-            className="
-              h-full
-              w-auto
-              object-contain
-              transition-transform
-              duration-700
-              group-hover:scale-105
-            "
-          />
-
+        <div className="flex h-[260px] items-center justify-center overflow-visible py-4">
+          <div className="flex h-full items-center justify-center rounded-2xl px-2">
+            <Image
+              src={image}
+              alt={name}
+              width={160}
+              height={320}
+              className="
+                h-full
+                w-auto
+                object-contain
+                transition-all
+                duration-700
+                group-hover:scale-110
+                group-hover:rotate-[-1deg]
+                group-hover:drop-shadow-[0_25px_45px_rgba(200,161,90,0.28)]
+              "
+            />
+          </div>
         </div>
 
         {/* Divider */}
 
-        <div className="my-5 h-px w-full bg-[#C8A15A]/10 transition-colors duration-500 group-hover:bg-[#C8A15A]/30" />
+        <div className="my-5 h-px w-full bg-[#C8A15A]/10 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#C8A15A]/35" />
 
         {/* Wine Name */}
 
@@ -65,11 +68,11 @@ export default function WineCard({
             text-2xl
             font-light
             text-white
-            transition-colors
+            transition-all
             duration-500
             group-hover:text-[#F6E7C1]
           "
-          style={{ fontFamily: "Georgia, serif" }}
+            
         >
           {name}
         </h3>
@@ -84,13 +87,13 @@ export default function WineCard({
 
         <div className="my-5 flex items-center justify-center gap-3">
 
-          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12" />
+          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12 group-hover:bg-[#C8A15A]/60" />
 
-          <span className="text-sm text-[#C8A15A] transition-transform duration-500 group-hover:rotate-180">
+          <span className="text-sm text-[#C8A15A] transition-all duration-500 group-hover:rotate-180 group-hover:scale-125">
             ✦
           </span>
 
-          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12" />
+          <div className="h-px w-8 bg-[#C8A15A]/30 transition-all duration-500 group-hover:w-12 group-hover:bg-[#C8A15A]/60" />
 
         </div>
 

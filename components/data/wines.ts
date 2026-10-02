@@ -12,14 +12,14 @@ export const wines = [
     alcohol: "13.5%",
     volume: "750 ml",
 
-    region: "Okami Microzone",
+    region: "Etno Okami Microzone",
     method: "Oak Barrel",
     sweetness: "Dry",
 
     image: "/images/saperavi1.png",
 
     description:
-      "Crafted from carefully selected Saperavi grapes grown in the historic Okami Microzone. Rich structure, elegant tannins and a long refined finish.",
+      "Crafted from carefully selected Saperavi grapes grown in the historic Etno Okami Microzone. Rich structure, elegant tannins and a long refined finish.",
 
     taste: {
       sweetness: 1,
@@ -63,8 +63,8 @@ export const wines = [
     alcohol: "12.5%",
     volume: "750 ml",
 
-    region: "Okami Microzone",
-    method: "Stainless Steel",
+    region: "Etno Okami Microzone",
+    method: "Qvevri",
     sweetness: "Dry",
 
     image: "/images/chinuri1.png",
@@ -113,14 +113,14 @@ export const wines = [
     alcohol: "12.5%",
     volume: "750 ml",
 
-    region: "Okami Microzone",
+    region: "Etno Okami Microzone",
     method: "Stainless Steel",
     sweetness: "Dry",
 
     image: "/images/mtsvane2.png",
 
     description:
-      "Fresh and elegant white wine with vibrant acidity, floral aromas and citrus notes, expressing the character of the Okami Microzone.",
+      "Fresh and elegant white wine with vibrant acidity, floral aromas and citrus notes, expressing the character of the Etno Okami Microzone.",
 
     taste: {
       sweetness: 1,
@@ -163,7 +163,7 @@ export const wines = [
     alcohol: "13%",
     volume: "750 ml",
 
-    region: "Okami Microzone",
+    region: "Etno Okami Microzone",
     method: "Oak Barrel",
     sweetness: "Dry",
 
@@ -198,5 +198,55 @@ export const wines = [
     decanting: "20 Minutes",
 
     agingPotential: "5–7 Years",
+  },
+
+  {
+    id: "akhasheni",
+    slug: "akhasheni",
+    category: "Red",
+
+    name: "Akhasheni",
+    subtitle: "Semi-Sweet Red Wine",
+
+    year: "2023",
+    variety: "100% Saperavi",
+    alcohol: "11%",
+    volume: "750 ml",
+
+    region: "Etno Okami Microzone",
+    method: "Stainless Steel",
+    sweetness: "Semi-Sweet",
+
+    image: "/images/akhasheni1.png",
+
+    description:
+      "A naturally semi-sweet red wine from the Etno Okami Microzone, made from ripe Saperavi grapes. Soft, velvety and rich with a smooth, fruity finish.",
+
+    taste: {
+      sweetness: 4,
+      acidity: 3,
+      body: 4,
+      tannins: 2,
+    },
+
+    notes: [
+      "Cherry",
+      "Blackberry",
+      "Fig",
+      "Rose Petal",
+    ],
+
+    pairing: [
+      "Chocolate Desserts",
+      "Soft Cheese",
+      "Fruit Platters",
+      "Georgian Sweets",
+    ],
+
+    servingTemperature: "14–16°C",
+
+    decanting: "Not Required",
+
+    agingPotential: "3–5 Years",
   },
 ];
