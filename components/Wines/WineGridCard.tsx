@@ -8,7 +8,6 @@ type WineGridCardProps = {
   year: string;
   categoryLabel: string;
   sweetnessLabel: string;
-  priceLabel: string;
 };
 
 export default function WineGridCard({
@@ -18,7 +17,6 @@ export default function WineGridCard({
   year,
   categoryLabel,
   sweetnessLabel,
-  priceLabel,
 }: WineGridCardProps) {
   return (
     <Link
@@ -36,12 +34,7 @@ export default function WineGridCard({
       </div>
 
       <div className="border-t border-[#C8A15A]/25 px-5 py-6">
-        <div className="flex items-baseline justify-between gap-3">
-          <h3 className="text-lg uppercase tracking-[0.06em] text-[#231A12]">{name}</h3>
-          <span className="whitespace-nowrap text-sm text-[#8A6A3A]">
-            {priceLabel}
-          </span>
-        </div>
+        <h3 className="text-lg uppercase tracking-[0.06em] text-[#231A12]">{name}</h3>
 
         <p className="mt-1 text-sm text-[#8A7F6E]">{year}</p>
 

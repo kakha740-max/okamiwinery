@@ -145,7 +145,6 @@ export default function WinesListing() {
             year={wine.year}
             categoryLabel={categoryLabels[wine.category] ?? wine.category}
             sweetnessLabel={sweetnessLabels[wine.sweetness] ?? wine.sweetness}
-            priceLabel={t.wineList.priceOnRequest}
           />
         ))}
       </div>
