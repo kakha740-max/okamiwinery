@@ -67,6 +67,8 @@ export default function WineCard({
             text-center
             text-2xl
             font-light
+            uppercase
+            tracking-[0.06em]
             text-white
             transition-all
             duration-500

@@ -37,7 +37,7 @@ export default function WineGridCard({
 
       <div className="border-t border-[#C8A15A]/25 px-5 py-6">
         <div className="flex items-baseline justify-between gap-3">
-          <h3 className="text-lg text-[#231A12]">{name}</h3>
+          <h3 className="text-lg uppercase tracking-[0.06em] text-[#231A12]">{name}</h3>
           <span className="whitespace-nowrap text-sm text-[#8A6A3A]">
             {priceLabel}
           </span>

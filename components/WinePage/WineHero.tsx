@@ -75,7 +75,7 @@ export default function WineHero({ wine: original }: WineHeroProps) {
           </p>
 
           <h1
-            className="mt-5 text-6xl md:text-7xl font-light text-[#1E1610]"
+            className="mt-5 text-5xl md:text-6xl font-light uppercase tracking-[0.04em] text-[#1E1610]"
           >
             {wine.name}
           </h1>

@@ -137,7 +137,7 @@ export default function AwardsStories() {
                 {competition.awards.map((award) => (
                   <li key={`${award.wine}-${award.vintage}`} className="flex items-center justify-between gap-4 py-4">
                     <div>
-                      <span className="text-lg text-[#1E1610]">{wineNames[award.wine][language]}</span>
+                      <span className="text-lg uppercase tracking-[0.06em] text-[#1E1610]">{wineNames[award.wine][language]}</span>
                       <span className="ml-2 text-[#8A7A66]">{award.vintage}</span>
                     </div>
                     <div className="flex shrink-0 items-center gap-3">
@@ -213,7 +213,7 @@ function StoryMedia({ awards, language, medals, onOpen }: StoryMediaProps) {
                 <span className="mt-1 text-3xl font-light">{award.vintage}</span>
               </div>
             </div>
-            <span className="mt-5 text-base text-[#1E1610]">{wineNames[award.wine][language]}</span>
+            <span className="mt-5 text-base uppercase tracking-[0.06em] text-[#1E1610]">{wineNames[award.wine][language]}</span>
           </div>
         ))}
       </div>

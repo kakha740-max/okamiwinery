@@ -160,7 +160,7 @@ export default function AwardsSection() {
                 <p className="text-[11px] uppercase leading-5 tracking-[0.18em] text-[#C8A15A]/80">
                   {award.competition.title[language]}
                 </p>
-                <h3 className="mt-2 text-lg leading-snug text-white">
+                <h3 className="mt-2 text-lg uppercase leading-snug tracking-[0.06em] text-white">
                   {wineNames[award.wine][language]}
                 </h3>
                 <p className="mt-1 text-sm text-white/45">
