@@ -1,3 +1,5 @@
+import type { Language } from "@/lib/translations";
+
 // Etno Okami wine range. Type, vintage and alcohol come from the bottle
 // labels; "—" marks a value the label doesn't show yet.
 export const wines = [
@@ -39,6 +41,30 @@ export const wines = [
     decanting: "20–30 Minutes",
 
     agingPotential: "5–7 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი წითელი ქვევრის ღვინო",
+        description:
+          "ჩვენი საფირმო წითელი და ადგილწარმოშობის დასახელების მქონე ღვინო, დაყენებული შავკაპიტოსგან — ქართლის ენდემური ჯიშისგან. დუღილი და დავარგება ქვევრში მიმდინარეობს.",
+        variety: "100% შავკაპიტო",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["მწვადი", "ცხვრის ხორცი", "სოკოს კერძები", "მაგარი ყველი"],
+      },
+      ru: {
+        subtitle: "Сухое красное вино в квеври",
+        description:
+          "Наше фирменное красное вино с наименованием места происхождения, созданное из Шавкапито — автохтонного сорта Картли. Брожение и выдержка проходят в квеври.",
+        variety: "100% Шавкапито",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Мцвади", "Баранина", "Блюда из грибов", "Твёрдый сыр"],
+      },
+    },
   },
 
   {
@@ -79,6 +105,30 @@ export const wines = [
     decanting: "Not Required",
 
     agingPotential: "4–6 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი ქარვისფერი ქვევრის ღვინო",
+        description:
+          "ქართლის კლასიკური თეთრი ჯიშების — ჩინურისა და გორული მწვანის — ქარვისფერი ღვინო, ჭაჭაზე დადუღებული ქვევრში, რაც მას სიღრმეს, ტექსტურასა და რბილ სიმკვრივეს ანიჭებს.",
+        variety: "ჩინური, გორული მწვანე",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["შემწვარი თევზი", "ქათმის საცივი", "ფხალი", "სულგუნი"],
+      },
+      ru: {
+        subtitle: "Сухое янтарное вино в квеври",
+        description:
+          "Янтарное вино из классических белых сортов Картли — Чинури и Горули Мцване, сброженное на мезге в квеври, что придаёт ему глубину, текстуру и мягкую структуру.",
+        variety: "Чинури, Горули Мцване",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Рыба на гриле", "Сациви из курицы", "Пхали", "Сулугуни"],
+      },
+    },
   },
 
   {
@@ -119,6 +169,30 @@ export const wines = [
     decanting: "30 Minutes",
 
     agingPotential: "8–10 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი წითელი ქვევრის ღვინო",
+        description:
+          "ხაშმის საფერავი, დაყენებული ქვევრში — მუქი ფერის, შავი ხილის არომატებითა და მტკიცე სტრუქტურით. დაჯილდოებულია საფერავის საერთაშორისო კონკურსზე 2022 და 2024 წლებში.",
+        variety: "100% საფერავი",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["შემწვარი საქონლის ხორცი", "ცხვრის ხორცი", "ხინკალი", "დავარგებული ყველი"],
+      },
+      ru: {
+        subtitle: "Сухое красное вино в квеври",
+        description:
+          "Саперави из Хашми, созданное в квеври, — глубокого цвета, с тёмными ягодами и плотной структурой. Отмечено наградами Международного конкурса Саперави в 2022 и 2024 годах.",
+        variety: "100% Саперави",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Говядина на гриле", "Баранина", "Хинкали", "Выдержанный сыр"],
+      },
+    },
   },
 
   {
@@ -159,6 +233,30 @@ export const wines = [
     decanting: "20 Minutes",
 
     agingPotential: "4–6 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი წითელი ღვინო",
+        description:
+          "ქართლის იშვიათი წითელი ჯიში შავკაპიტო ცოცხალ, საშუალო სხეულის ღვინოს იძლევა წითელი ხილის ნათელი არომატებითა და რბილი სანელებლის ნოტით.",
+        variety: "100% შავკაპიტო",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "—",
+        pairing: ["ქაბაბი", "შინაური ფრინველი", "პასტა", "რბილი ყველი"],
+      },
+      ru: {
+        subtitle: "Сухое красное вино",
+        description:
+          "Редкий красный сорт Картли Шавкапито даёт живое вино средней полноты с яркими красными ягодами и лёгкой пряностью.",
+        variety: "100% Шавкапито",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "—",
+        pairing: ["Кебаб", "Птица", "Паста", "Мягкий сыр"],
+      },
+    },
   },
 
   {
@@ -199,6 +297,30 @@ export const wines = [
     decanting: "Not Required",
 
     agingPotential: "3–5 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი წითელი ქვევრის ღვინო",
+        description:
+          "ქართლური ჯიშის, თავკვერისგან ქვევრში დაყენებული მსუბუქი, არომატული წითელი ღვინო — ახალი წითელი ხილით, რბილი ტანინებითა და ცოცხალი დაბოლოებით.",
+        variety: "100% თავკვერი",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["ცივი ხორცეული", "სოკო", "ქათამი", "ლობიო"],
+      },
+      ru: {
+        subtitle: "Сухое красное вино в квеври",
+        description:
+          "Лёгкое ароматное красное вино из картлийского сорта Тавквери, созданное в квеври, — свежие красные ягоды, мягкие танины и живое послевкусие.",
+        variety: "100% Тавквери",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Мясная нарезка", "Грибы", "Курица", "Лобио"],
+      },
+    },
   },
 
   {
@@ -239,6 +361,30 @@ export const wines = [
     decanting: "Not Required",
 
     agingPotential: "5–7 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი ქარვისფერი ქვევრის ღვინო",
+        description:
+          "საქართველოს ყველაზე ცნობილი თეთრი ჯიში, ჭაჭასთან ერთად დადუღებული ქვევრში — ქარვისფერი ღვინო სტრუქტურით, ჩირის არომატებითა და ხანგრძლივი დაბოლოებით.",
+        variety: "100% რქაწითელი",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["საცივი", "ფხალი", "შემწვარი ღორის ხორცი", "დავარგებული ყველი"],
+      },
+      ru: {
+        subtitle: "Сухое янтарное вино в квеври",
+        description:
+          "Самый известный белый сорт Грузии, сброженный на мезге в квеври, — янтарное вино со структурой, нотами сухофруктов и долгим пикантным послевкусием.",
+        variety: "100% Ркацители",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Сациви", "Пхали", "Жареная свинина", "Выдержанный сыр"],
+      },
+    },
   },
 
   {
@@ -279,5 +425,38 @@ export const wines = [
     decanting: "Not Required",
 
     agingPotential: "3–5 Years",
+
+    // Display text for the Georgian and Russian pages; English is above.
+    translations: {
+      ka: {
+        subtitle: "მშრალი ქვევრის ღვინო",
+        description:
+          "ქართლის ორი ჯიშის — ჩინურისა და გორული მწვანის — ხალასი თეთრი ღვინო, დაყენებული ქვევრში: ახალი ხილის, ციტრუსისა და მინდვრის ბალახების არომატებით.",
+        variety: "ჩინური, გორული მწვანე",
+        volume: "750 მლ",
+        region: "ეთნო ოკამის მიკროზონა",
+        method: "ქვევრი",
+        pairing: ["კალმახი", "ახალი სალათები", "თხის ყველი", "ზღვის პროდუქტები"],
+      },
+      ru: {
+        subtitle: "Сухое вино в квеври",
+        description:
+          "Свежее белое вино из двух сортов Картли — Чинури и Горули Мцване, созданное в квеври: свежие фрукты, цитрусы и луговые травы.",
+        variety: "Чинури, Горули Мцване",
+        volume: "750 мл",
+        region: "Микрозона Этно Оками",
+        method: "Квеври",
+        pairing: ["Форель", "Свежие салаты", "Козий сыр", "Морепродукты"],
+      },
+    },
   },
 ];
+
+export type Wine = (typeof wines)[number];
+
+// Swap in the visitor's language for the text shown on wine pages.
+// Filtering and sorting keep using the English fields on the original object.
+export function localizeWine(wine: Wine, language: Language): Wine {
+  if (language === "en") return wine;
+  return { ...wine, ...wine.translations[language] };
+}

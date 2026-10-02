@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { wines } from "../data/wines";
+import { localizeWine, wines } from "../data/wines";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import WineCard from "./WineCard";
 import Arrow from "./Arrow";
@@ -24,6 +25,7 @@ const variants = {
 };
 
 export default function Carousel() {
+  const { language } = useLanguage();
   const [[startIndex, direction], setState] = useState<[number, number]>([0, 0]);
 
   const next = () => {
@@ -66,7 +68,7 @@ export default function Carousel() {
                 slug={wine.slug}
                 image={wine.image}
                 name={wine.name}
-                subtitle={wine.subtitle}
+                subtitle={localizeWine(wine, language).subtitle}
               />
             ))}
           </motion.div>

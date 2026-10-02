@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { wines } from "../data/wines";
+import { localizeWine, wines } from "../data/wines";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import Arrow from "./Arrow";
 import WineCard from "./WineCard";
@@ -26,6 +27,7 @@ const variants = {
 };
 
 export default function ProductRail() {
+  const { language } = useLanguage();
   const [[page, direction], setState] = useState<[number, number]>([0, 0]);
 
   const totalPages = Math.ceil(wines.length / WINES_PER_PAGE);
@@ -79,7 +81,7 @@ export default function ProductRail() {
                 slug={wine.slug}
                 image={wine.image}
                 name={wine.name}
-                subtitle={wine.subtitle}
+                subtitle={localizeWine(wine, language).subtitle}
               />
             ))}
           </motion.div>

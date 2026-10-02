@@ -8,30 +8,18 @@ import {
   fadeRight,
 } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { localizeWine, type Wine } from "@/components/data/wines";
 
 import WineSpecs from "./WineSpecs";
 import WinePairing from "./WinePairing";
 
 type WineHeroProps = {
-  wine: {
-    image: string;
-    name: string;
-    subtitle: string;
-    description: string;
-
-    variety: string;
-    year: string;
-    alcohol: string;
-    volume: string;
-    region: string;
-    method: string;
-
-    pairing: string[];
-  };
+  wine: Wine;
 };
 
-export default function WineHero({ wine }: WineHeroProps) {
-  const { t } = useLanguage();
+export default function WineHero({ wine: original }: WineHeroProps) {
+  const { t, language } = useLanguage();
+  const wine = localizeWine(original, language);
 
   return (
     <section className="relative overflow-hidden bg-white pt-40 pb-24">
