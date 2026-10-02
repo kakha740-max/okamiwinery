@@ -1,137 +1,331 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-/* Self-hosted (not served through the Google Fonts CSS API) so the
-   Georgian "case" OpenType feature survives — Google's API strips it
-   during subsetting, which silently breaks Mtavruli rendering. */
+/* ---------------------------------------------------------------------------
+   Georgian typefaces
+   Self-hosted (not served through the Google Fonts CSS API) so the Georgian
+   "case" OpenType feature survives — Google's API strips it during
+   subsetting, which silently breaks Mtavruli rendering. Both files are
+   subset to the Georgian blocks only, so Latin and Cyrillic text falls
+   through to Cormorant / Manrope and the files only download when Georgian
+   text is on the page.
+--------------------------------------------------------------------------- */
 @font-face {
-  font-family: 'Noto Sans Georgian';
-  src: url('/fonts/noto-sans-georgian-var.woff2') format('woff2');
+  font-family: "Noto Sans Georgian";
+  src: url("/fonts/noto-sans-georgian-var.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
   size-adjust: 95%;
   unicode-range: U+10A0-10FF, U+1C90-1CBF, U+2D00-2D2F;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-latin: 'Playfair Display', Georgia, serif;
-  /* Noto only covers Georgian code points (unicode-range), so Latin text
-     falls through to the same Playfair stack the English page uses. */
-  --font-georgian: 'Noto Sans Georgian', var(--font-latin);
-  --font-body: var(--font-latin);
+@font-face {
+  font-family: "Noto Serif Georgian";
+  src: url("/fonts/noto-serif-georgian-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  size-adjust: 88%;
+  unicode-range: U+10A0-10FF, U+1C90-1CBF, U+2D00-2D2F;
 }
 
-html:lang(ka) {
-  --font-body: var(--font-georgian);
-}
+/* ---------------------------------------------------------------------------
+   Design tokens
+--------------------------------------------------------------------------- */
+@theme {
+  /* Surfaces */
+  --color-paper: #f6f2ea;
+  --color-bone: #ece5d8;
+  --color-night: #0e0c0a;
+  --color-ink: #17130f;
 
-/* All Georgian letters sit at a uniform height (Mtavruli) site-wide —
-   no ascenders/descenders — rather than only on hand-picked elements. */
-html:lang(ka) body {
-  font-feature-settings: "case" 1;
+  /* Text */
+  --color-umber: #3a3129;
+  --color-stone: #6e6457;
+  --color-mist: #b9b0a3;
+
+  /* Accents — bronze is the AA-safe accent on light surfaces, gold on dark */
+  --color-bronze: #7d5c32;
+  --color-gold: #c9a766;
+  --color-wine: #5b1a23;
+
+  /* Medals */
+  --color-medal-gold: #c9a24f;
+  --color-medal-silver: #b7b7b2;
+  --color-medal-bronze: #a8693a;
+  --color-medal-rosso: #8c1d2f;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Georgian faces come first: their unicode-range limits them to Georgian
+     characters, so every other script falls through to the next family. */
+  --font-display: "Noto Serif Georgian", var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: "Noto Sans Georgian", var(--font-manrope), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* All Georgian letters sit at a uniform height (Mtavruli) site-wide —
+     no ascenders/descenders — rather than only on hand-picked elements. */
+  html:lang(ka) body {
+    font-feature-settings: "case" 1;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: inherit;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-night);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bronze);
+    outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-gold);
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* ---------------------------------------------------------------------------
+   Typography scale
+   Fluid sizes, so the scale needs no breakpoint variants. Georgian (Mtavruli)
+   sets larger and wider than Cormorant's small x-height, so it gets its own
+   sizes and tighter tracking; text marked lang="en" (brand names) keeps the
+   Latin settings.
+--------------------------------------------------------------------------- */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
 
+  .eyebrow:lang(ka) {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  line-height: 1.6;
-}
+  .display-xl,
+  .display-lg,
+  .display-md,
+  .display-sm {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: inherit;
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-}
+  .display-xl {
+    font-size: clamp(3.4rem, 10.5vw, 10rem);
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+  }
 
-/* Navigation links: ensure vertical alignment */
-.nav-link, nav a, .nav a {
-  display: inline-flex;
-  align-items: center;
-}
+  .display-lg {
+    font-size: clamp(2.6rem, 6.4vw, 6rem);
+    line-height: 0.98;
+  }
 
-::selection {
-  background: #c8a15a;
-  color: #050505;
-}
+  .display-md {
+    font-size: clamp(2.1rem, 4.2vw, 3.9rem);
+    line-height: 1.04;
+  }
 
-/* Georgian words run longer than their English counterparts, so the wide
-   Latin-style letter-tracking used for uppercase eyebrows/labels site-wide
-   causes lines to overflow and wrap awkwardly (e.g. a lone trailing word).
-   Scale tracking down for Georgian without having to touch every component. */
-/* Text marked lang="en" (e.g. the hero brand name) keeps its English tracking. */
-html:lang(ka) .tracking-\[0\.45em\]:not(:lang(en)),
-html:lang(ka) .sm\:tracking-\[0\.45em\]:not(:lang(en)) { letter-spacing: 0.1em; }
-html:lang(ka) .tracking-\[0\.35em\]:not(:lang(en)) { letter-spacing: 0.08em; }
-html:lang(ka) .tracking-\[0\.3em\]:not(:lang(en)) { letter-spacing: 0.07em; }
-html:lang(ka) .tracking-\[0\.28em\]:not(:lang(en)) { letter-spacing: 0.06em; }
-html:lang(ka) .tracking-\[0\.25em\]:not(:lang(en)) { letter-spacing: 0.05em; }
-html:lang(ka) .tracking-\[0\.22em\]:not(:lang(en)) { letter-spacing: 0.04em; }
-html:lang(ka) .tracking-\[0\.2em\]:not(:lang(en)) { letter-spacing: 0.04em; }
-html:lang(ka) .tracking-\[0\.12em\]:not(:lang(en)) { letter-spacing: 0.03em; }
-html:lang(ka) .tracking-\[0\.08em\]:not(:lang(en)) { letter-spacing: 0.02em; }
+  .display-sm {
+    font-size: clamp(1.55rem, 2.3vw, 2.15rem);
+    line-height: 1.15;
+  }
 
-/* Wine bottles sway gently from side to side while the card is hovered,
-   pivoting at the base like a bottle rocking on a table. */
-@keyframes bottle-sway {
-  0%, 100% { transform: scale(1.05) rotate(0deg); }
-  25%      { transform: scale(1.05) rotate(-3deg); }
-  75%      { transform: scale(1.05) rotate(3deg); }
-}
+  .display-xl:lang(ka) {
+    font-size: clamp(2.6rem, 7.5vw, 7rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
 
-.bottle-sway {
-  transform-origin: 50% 100%;
-  transition: transform 0.7s ease;
-}
+  .display-lg:lang(ka) {
+    font-size: clamp(2rem, 4.6vw, 4.2rem);
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
 
-.group:hover .bottle-sway {
-  animation: bottle-sway 2.2s ease-in-out infinite;
-}
+  .display-md:lang(ka) {
+    font-size: clamp(1.65rem, 3vw, 2.75rem);
+    line-height: 1.22;
+    letter-spacing: 0;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .group:hover .bottle-sway {
-    animation: none;
-    transform: scale(1.05);
+  .display-sm:lang(ka) {
+    font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  .lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 1.9vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .lead:lang(ka) {
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.75;
+  }
+
+  .body-copy {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .body-copy:lang(ka) {
+    font-size: 0.9375rem;
+    line-height: 1.95;
+  }
+
+  /* Wine names and similar labels: uppercase display caps. */
+  .caps {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .caps:lang(ka) {
+    letter-spacing: 0.01em;
+  }
+
+  /* Small uppercase label used for buttons and navigation. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .label:lang(ka) {
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hairline-underlined text link. */
+  .link-line {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    padding-bottom: 0.2em;
+    transition: background-size 0.6s var(--ease-luxe);
+  }
+
+  .link-line:hover {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Motion
+--------------------------------------------------------------------------- */
 
-/* Award cards fade up into place (re-run whenever the year filter changes). */
-@keyframes award-rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Each route fades in (app/template.tsx re-mounts on navigation). */
+@keyframes page-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.award-rise {
-  animation: award-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+.page-enter {
+  animation: page-enter 0.7s var(--ease-luxe) both;
+}
+
+/* Hero scroll cue: a hairline that draws downwards. */
+@keyframes scroll-cue {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  45%  { transform: scaleY(1); transform-origin: top; }
+  55%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.scroll-cue {
+  animation: scroll-cue 2.6s var(--ease-luxe) infinite;
+}
+
+/* Slow drift on hero imagery. */
+@keyframes slow-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+.slow-zoom {
+  animation: slow-zoom 2.8s var(--ease-luxe) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .award-rise { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* 18+ age gate: hidden once the visitor has confirmed (see AgeGate.tsx);
-   until then the page underneath can't be scrolled. */
+/* ---------------------------------------------------------------------------
+   Lightbox (yet-another-react-lightbox) — match the site palette.
+--------------------------------------------------------------------------- */
+.yarl__root {
+  --yarl__color_backdrop: rgba(14, 12, 10, 0.97);
+  --yarl__color_button: rgba(246, 242, 234, 0.75);
+  --yarl__color_button_active: #f6f2ea;
+}
+
+/* ---------------------------------------------------------------------------
+   18+ age gate: hidden once the visitor has confirmed (see AgeGate.tsx);
+   until then the page underneath can't be scrolled.
+--------------------------------------------------------------------------- */
 html[data-age-ok] .age-gate { display: none; }
 html:not([data-age-ok]) body { overflow: hidden; }

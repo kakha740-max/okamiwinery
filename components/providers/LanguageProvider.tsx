@@ -9,6 +9,8 @@ import {
   useState,
 } from "react";
 
+import { MotionConfig } from "framer-motion";
+
 import { Language, getTranslations } from "@/lib/translations";
 
 type LanguageContextType = {
@@ -28,23 +30,23 @@ export function LanguageProvider({
 }) {
   const [language, setLanguage] = useState<Language>("en");
 
+  // The saved / browser language is only readable on the client, so it is
+  // applied right after hydration (the server always renders English).
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
-
-    if (savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru") {
-      setLanguage(savedLanguage);
-      return;
-    }
-
     const browserLanguage = navigator.language.toLowerCase();
 
-    if (browserLanguage.startsWith("ka")) {
-      setLanguage("ka");
-    } else if (browserLanguage.startsWith("ru")) {
-      setLanguage("ru");
-    } else {
-      setLanguage("en");
-    }
+    const initial: Language =
+      savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru"
+        ? savedLanguage
+        : browserLanguage.startsWith("ka")
+          ? "ka"
+          : browserLanguage.startsWith("ru")
+            ? "ru"
+            : "en";
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from browser-only storage
+    setLanguage(initial);
   }, []);
 
   useEffect(() => {
@@ -63,7 +65,8 @@ export function LanguageProvider({
 
   return (
     <LanguageContext.Provider value={value}>
-      {children}
+      {/* Framer Motion animations follow the visitor's reduced-motion setting. */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </LanguageContext.Provider>
   );
 }

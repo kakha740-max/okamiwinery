@@ -1,19 +1,24 @@
-import Hero from "@/components/Hero";
-import DiscoverOkami from "@/components/DiscoverOkami";
-import ExperienceSection from "@/components/ExperienceSection";
-import AwardsSection from "@/components/AwardsSection";
-import ContactSection from "@/components/ContactSection";
-import FeaturedWines from "@/components/FeaturedWines/FeaturedWines";
+import HomeHero from "@/components/home/HomeHero";
+import HomeIntro from "@/components/home/HomeIntro";
+import HomeWines from "@/components/home/HomeWines";
+import HomeQvevri from "@/components/home/HomeQvevri";
+import HomeAwards from "@/components/home/HomeAwards";
+import HomeEstate from "@/components/home/HomeEstate";
+import HomeVisit from "@/components/home/HomeVisit";
+import JsonLd from "@/components/seo/JsonLd";
+import { organizationJsonLd } from "@/lib/structured-data";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <ExperienceSection />
-      <ContactSection />
-      <DiscoverOkami />
-      <AwardsSection />
-      <FeaturedWines />
-    </>
+    <main id="main">
+      <JsonLd data={organizationJsonLd()} />
+      <HomeHero />
+      <HomeIntro />
+      <HomeWines />
+      <HomeQvevri />
+      <HomeAwards />
+      <HomeEstate />
+      <HomeVisit />
+    </main>
   );
 }

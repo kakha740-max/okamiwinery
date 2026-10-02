@@ -1,4 +1,26 @@
 {
+  "ui": {
+    "skipToContent": "Skip to content",
+    "menu": "Menu",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "scroll": "Scroll",
+    "language": "Language",
+    "mainNav": "Main navigation",
+    "backToTop": "Back to top",
+    "allWines": "All wines",
+    "viewAll": "View all",
+    "openImage": "Open image",
+    "languageNames": {
+      "ka": "Georgian",
+      "en": "English",
+      "ru": "Russian"
+    },
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The page you are looking for doesn't exist or has moved.",
+    "breadcrumb": "Breadcrumb"
+  },
   "navbar": {
     "home": "Home",
     "story": "Story",
@@ -14,7 +36,10 @@
     "eyebrow": "A Legacy of Georgian Winemaking",
     "title": "ETNO OKAMI WINERY",
     "description": "Crafted in the historic Etno Okami Microzone, where tradition, terroir and excellence meet.",
-    "button": "Discover Wines"
+    "button": "Discover Wines",
+    "secondary": "Our Story",
+    "location": "Shida Kartli · Georgia",
+    "since": "Since 1965"
   },
   "story": {
     "eyebrow": "Our Story",
@@ -94,7 +119,7 @@
     "planVisit": "Plan a Visit"
   },
   "experience": {
-    "eyebrow": "Factory History",
+    "eyebrow": "Our Heritage",
     "title": "Producing Wine Rooted in Georgian Tradition Since 1965",
     "description": "From its founding to this day, our winery has faithfully preserved the centuries-old traditions of Georgian winemaking. Knowledge and experience are passed down from generation to generation, shaping the character and quality of our wine to this day.",
     "actionVisit": "Visit the Estate",
@@ -122,7 +147,16 @@
     "notesTitle": "Tasting Notes",
     "notesDescription": "Discover the unique aromas and flavors of this wine.",
     "pairingTitle": "Food Pairing",
-    "pairingDescription": "Recommended dishes to enjoy with this wine."
+    "pairingDescription": "Recommended dishes to enjoy with this wine.",
+    "type": "Wine type",
+    "style": "Style",
+    "tastingEyebrow": "Tasting",
+    "tastingTitle": "In the glass",
+    "qvevriNote": "Made in qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
+    "technicalTitle": "Technical details",
+    "awardsTitle": "Awards",
+    "enquire": "Enquire about this wine",
+    "moreWines": "More from Etno Okami"
   },
   "tour": {
     "hero": {
@@ -213,7 +247,8 @@
     "tour": "Tour",
     "email": "hello@okamiwine.com",
     "address": "Etno Okami Microzone, Georgia",
-    "copyright": "© 2026 Etno Okami Winery. All Rights Reserved."
+    "copyright": "© 2026 Etno Okami Winery. All Rights Reserved.",
+    "responsible": "Excessive alcohol consumption is harmful to your health."
   },
   "awards": {
     "eyebrow": "Awards & Achievements",
@@ -249,5 +284,26 @@
     "deniedTitle": "Sorry",
     "deniedText": "This site is only available to visitors aged 18 and over.",
     "back": "Back"
+  },
+  "home": {
+    "factFounded": "Founded",
+    "factRegion": "Region",
+    "factRegionValue": "Shida Kartli",
+    "factTradition": "Tradition",
+    "factTraditionValue": "Qvevri",
+    "factAwards": "Awards",
+    "storyLink": "Read our story",
+    "qvevriEyebrow": "Qvevri",
+    "qvevriTitle": "Made in qvevri",
+    "qvevriText": "Most of our wines are made in qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
+    "writeToUs": "Write to us"
+  },
+  "storyPage": {
+    "chapterMicrozone": "The Microzone",
+    "chapterHeritage": "Heritage",
+    "chapterToday": "Today",
+    "chapterMission": "Our Mission",
+    "knowledgeEyebrow": "Knowledge & Craft",
+    "knowledgeTitle": "Where academic research meets traditional expertise"
   }
 }

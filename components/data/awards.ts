@@ -213,3 +213,24 @@ export const competitions: Competition[] = [
 export const allAwards = competitions.flatMap((competition) =>
   competition.awards.map((award) => ({ ...award, competition }))
 );
+
+// The product page each award belongs to. "Okami" certificates don't always
+// say whether it was the red or the amber wine: only Okami 2022 is confirmed
+// ("Etno Okami – Red Dry"), so the other Okami awards stay unlinked.
+const awardWineSlugs: Record<WineKey, string> = {
+  shavkapito: "shavkapito",
+  tavkveri: "tavkveri",
+  khashmiSaperavi: "khashmi-saperavi",
+  chinuriGoruliMtsvane: "chinuri-goruli-mtsvane",
+  rkatsiteli: "rkatsiteli",
+  okami: "okami-red",
+};
+
+export function wineSlugForAward(award: Award): string | null {
+  if (award.wine === "okami" && award.vintage !== 2022) return null;
+  return awardWineSlugs[award.wine];
+}
+
+export function awardsForWine(slug: string) {
+  return allAwards.filter((award) => wineSlugForAward(award) === slug);
+}

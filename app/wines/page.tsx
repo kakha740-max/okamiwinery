@@ -1,18 +1,19 @@
-import WinesHero from "@/components/Wines/WinesHero";
-import WinesListing from "@/components/Wines/WinesListing";
+import WineCatalogue from "@/components/catalogue/WineCatalogue";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Wines",
-};
+  description:
+    "Seven Georgian wines from the Etno Okami Microzone — Shavkapito, Tavkveri, Khashmi Saperavi, Rkatsiteli, Chinuri and Goruli Mtsvane, most of them made in qvevri.",
+  path: "/wines",
+  image: "/images/og/wines.jpg",
+  imageAlt: "Etno Okami wines",
+});
 
 export default function WinesPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <WinesHero />
-
-      <div className="pt-20 pb-24 sm:pt-24">
-        <WinesListing />
-      </div>
+    <main id="main" className="bg-paper">
+      <WineCatalogue />
     </main>
   );
 }
