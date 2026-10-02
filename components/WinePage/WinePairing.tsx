@@ -15,9 +15,9 @@ export default function WinePairing({
   return (
     <section className="mt-16">
 
-      <h3 className="text-3xl font-light text-[#1E1610]">{s.pairingTitle}</h3>
+      <h3 className="text-3xl font-normal text-[#1E1610]">{s.pairingTitle}</h3>
 
-      <p className="mt-3 text-[#5C5245]">
+      <p className="mt-3 text-[#3A3026]">
         {s.pairingDescription}
       </p>
 
@@ -30,12 +30,13 @@ export default function WinePairing({
             className="
               rounded-full
               border
-              border-[#C8A15A]/30
+              border-[#C8A15A]/50
               bg-white
               px-5
               py-3
               text-sm
-              text-[#1E1610]/85
+              font-medium
+              text-[#1E1610]
               transition-all
               duration-300
               hover:border-[#C8A15A]

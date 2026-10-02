@@ -41,7 +41,7 @@ export default function WineHero({ wine }: WineHeroProps) {
         alt=""
         fill
         priority
-        className="pointer-events-none object-cover object-top opacity-[0.06]"
+        className="pointer-events-none object-cover object-top opacity-[0.035]"
       />
 
       {/* Content */}
@@ -82,7 +82,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           animate="visible"
         >
 
-          <p className="uppercase tracking-[0.45em] text-[#C8A15A] text-sm">
+          <p className="text-sm font-medium uppercase tracking-[0.45em] text-[#8A6A3A]">
             {t.featured.eyebrow}
           </p>
 
@@ -92,13 +92,13 @@ export default function WineHero({ wine }: WineHeroProps) {
             {wine.name}
           </h1>
 
-          <p className="mt-5 uppercase tracking-[0.35em] text-[#C8A15A]">
+          <p className="mt-5 font-medium uppercase tracking-[0.35em] text-[#8A6A3A]">
             {wine.subtitle}
           </p>
 
           <div className="my-10 h-px w-24 bg-[#C8A15A]" />
 
-          <p className="max-w-xl text-lg leading-9 text-[#5C5245]">
+          <p className="max-w-xl text-lg leading-9 text-[#2E261E]">
             {wine.description}
           </p>
 
