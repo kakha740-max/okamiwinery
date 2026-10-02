@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -16,6 +16,9 @@ const awards = allAwards.filter((award) => award.certificate);
 
 const years = [...new Set(awards.map((award) => award.competition.year))];
 
+const AUTOPLAY_MS = 3500;
+const SLIDE_MS = 900;
+
 export default function AwardsSection() {
   const { t, language } = useLanguage();
   const [year, setYear] = useState<number | null>(null);
@@ -23,6 +26,84 @@ export default function AwardsSection() {
   const [photoIndex, setPhotoIndex] = useState(0);
 
   const visible = year === null ? awards : awards.filter((award) => award.competition.year === year);
+
+  // Slider: cards move right-to-left one at a time. The first few cards are
+  // repeated at the end of the track so the wrap-around looks continuous;
+  // after that slide finishes the track jumps back without animating.
+  const [index, setIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
+  const [perView, setPerView] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const pendingIndex = useRef<number | null>(null);
+
+  const count = visible.length;
+  const loops = count > perView;
+  const track = loops ? [...visible, ...visible.slice(0, perView)] : visible;
+
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const medium = window.matchMedia("(min-width: 640px)");
+    const update = () => setPerView(wide.matches ? 4 : medium.matches ? 2 : 1);
+    update();
+    wide.addEventListener("change", update);
+    medium.addEventListener("change", update);
+    return () => {
+      wide.removeEventListener("change", update);
+      medium.removeEventListener("change", update);
+    };
+  }, []);
+
+  const next = useCallback(() => {
+    if (!loops) return;
+    setIndex((prev) => Math.min(prev + 1, count));
+  }, [loops, count]);
+
+  const previous = () => {
+    if (!loops) return;
+    if (index === 0) {
+      pendingIndex.current = visible.length - 1;
+      setAnimate(false);
+      setIndex(visible.length);
+      return;
+    }
+    setIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const chooseYear = (value: number | null) => {
+    setYear(value);
+    setAnimate(false);
+    setIndex(0);
+  };
+
+  // Re-enable the transition a couple of frames after an unanimated jump.
+  useEffect(() => {
+    if (animate) return;
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
+        setAnimate(true);
+        if (pendingIndex.current !== null) {
+          setIndex(pendingIndex.current);
+          pendingIndex.current = null;
+        }
+      });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [animate]);
+
+  useEffect(() => {
+    if (paused || open || !loops) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = setInterval(next, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, [paused, open, loops, next]);
+
+  const handleTransitionEnd = (event: React.TransitionEvent) => {
+    if (event.target !== event.currentTarget) return;
+    if (index >= visible.length) {
+      setAnimate(false);
+      setIndex(index - visible.length);
+    }
+  };
 
   const medalLabel = medalLabels(t);
 
@@ -88,14 +169,15 @@ export default function AwardsSection() {
 
         {/* Year filter */}
 
-        <div className="mt-16 flex flex-wrap gap-2 md:mt-20">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 md:mt-20">
+        <div className="flex flex-wrap gap-2">
           {filters.map((filter) => {
             const active = filter.value === year;
             return (
               <button
                 key={filter.label}
                 type="button"
-                onClick={() => setYear(filter.value)}
+                onClick={() => chooseYear(filter.value)}
                 aria-pressed={active}
                 className={`flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm transition-all duration-300 ${
                   active
@@ -112,21 +194,63 @@ export default function AwardsSection() {
           })}
         </div>
 
+        {loops && (
+          <div className="flex gap-3">
+            {(["left", "right"] as const).map((direction) => (
+              <button
+                key={direction}
+                type="button"
+                onClick={direction === "left" ? previous : next}
+                aria-label={direction === "left" ? "Previous" : "Next"}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors duration-300 hover:border-[#C8A15A] hover:text-[#C8A15A]"
+              >
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                  <path
+                    d={direction === "left" ? "M15 5L8 12L15 19" : "M9 5L16 12L9 19"}
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            ))}
+          </div>
+        )}
+        </div>
+
         {/* Certificates */}
 
-        <div key={year ?? "all"} className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          className="-mx-3 mt-7 overflow-hidden py-3"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+        <div
+          key={year ?? "all"}
+          onTransitionEnd={handleTransitionEnd}
+          className="flex"
+          style={{
+            transform: `translateX(-${(index * 100) / perView}%)`,
+            transition: animate ? `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.2, 1)` : "none",
+          }}
+        >
 
-          {visible.map((award, index) => (
+          {track.map((award, trackIndex) => (
 
+            <div
+              key={`${award.certificate}-${trackIndex}`}
+              className="shrink-0 px-3"
+              style={{ width: `${100 / perView}%` }}
+            >
             <button
-              key={award.certificate}
               type="button"
               onClick={() => {
-                setPhotoIndex(index);
+                setPhotoIndex(trackIndex % visible.length);
                 setOpen(true);
               }}
-              style={{ animationDelay: `${index * 70}ms` }}
-              className="award-rise group rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-3 text-left backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-[#C8A15A]/50 hover:shadow-[0_24px_60px_-20px_rgba(200,161,90,0.35)]"
+              style={{ animationDelay: `${Math.min(trackIndex, perView) * 70}ms` }}
+              className="award-rise group w-full rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-3 text-left backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-[#C8A15A]/50 hover:shadow-[0_24px_60px_-20px_rgba(200,161,90,0.35)]"
             >
 
               <div className="relative aspect-[3/4] overflow-hidden rounded-[1.25rem] bg-gradient-to-br from-white/[0.09] to-white/[0.02]">
@@ -169,9 +293,11 @@ export default function AwardsSection() {
               </div>
 
             </button>
+            </div>
 
           ))}
 
+        </div>
         </div>
 
         <div className="mt-14 text-center">
