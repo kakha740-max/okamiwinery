@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AgeGate, { ageGateScript } from "@/components/AgeGate";
 
 export const metadata: Metadata = {
   title: {
@@ -20,9 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: ageGateScript }} />
         <LanguageProvider>
+          <AgeGate />
           <Navbar />
           {children}
           <Footer />

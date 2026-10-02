@@ -240,5 +240,15 @@
     "discoverWines": "Discover Our Wines",
     "organizer": "Organiser",
     "kartliShort": "Kartli"
+  },
+  "ageGate": {
+    "eyebrow": "Etno Okami Winery",
+    "title": "Are you 18 or older?",
+    "text": "You must be at least 18 years old to enter this site. Excessive alcohol consumption is harmful to your health.",
+    "yes": "Yes, I am 18+",
+    "no": "No",
+    "deniedTitle": "Sorry",
+    "deniedText": "This site is only available to visitors aged 18 and over.",
+    "back": "Back"
   }
 }

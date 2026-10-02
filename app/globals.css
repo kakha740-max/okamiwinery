@@ -130,3 +130,8 @@ html:lang(ka) .tracking-\[0\.08em\]:not(:lang(en)) { letter-spacing: 0.02em; }
 @media (prefers-reduced-motion: reduce) {
   .award-rise { animation: none; }
 }
+
+/* 18+ age gate: hidden once the visitor has confirmed (see AgeGate.tsx);
+   until then the page underneath can't be scrolled. */
+html[data-age-ok] .age-gate { display: none; }
+html:not([data-age-ok]) body { overflow: hidden; }
