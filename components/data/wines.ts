@@ -141,7 +141,7 @@ export const wines = [
 
     year: "2020",
     variety: "100% Saperavi",
-    alcohol: "11.5%",
+    alcohol: "13.5%",
     volume: "750 ml",
 
     region: "Etno Okami Microzone",
