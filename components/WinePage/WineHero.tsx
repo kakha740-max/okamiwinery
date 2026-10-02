@@ -10,8 +10,6 @@ import {
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import WineSpecs from "./WineSpecs";
-import WineTaste from "./WineTaste";
-import WineNotes from "./WineNotes";
 import WinePairing from "./WinePairing";
 
 type WineHeroProps = {
@@ -28,14 +26,6 @@ type WineHeroProps = {
     region: string;
     method: string;
 
-    taste: {
-      sweetness: number;
-      acidity: number;
-      body: number;
-      tannins: number;
-    };
-
-    notes: string[];
     pairing: string[];
   };
 };
@@ -113,10 +103,6 @@ export default function WineHero({ wine }: WineHeroProps) {
           </p>
 
           <WineSpecs wine={wine} />
-
-          <WineTaste taste={wine.taste} />
-
-          <WineNotes notes={wine.notes} />
 
           <WinePairing pairing={wine.pairing} />
 
