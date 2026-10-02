@@ -7,17 +7,9 @@ import Container from "@/components/ui/Container";
 import ImageReveal from "@/components/ui/ImageReveal";
 import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { allAwards } from "@/components/data/awards";
 
 export default function HomeIntro() {
   const { t } = useLanguage();
-
-  const facts = [
-    { label: t.home.factFounded, value: "1965" },
-    { label: t.home.factRegion, value: t.home.factRegionValue },
-    { label: t.home.factTradition, value: t.home.factTraditionValue },
-    { label: t.home.factAwards, value: String(allAwards.length) },
-  ];
 
   return (
     <section className="bg-paper py-24 md:py-36">
@@ -61,22 +53,6 @@ export default function HomeIntro() {
             </div>
           </div>
         </div>
-
-        {/* Facts */}
-        <dl className="mt-36 grid grid-cols-2 border-t border-ink/15 md:mt-48 md:grid-cols-4">
-          {facts.map((fact, index) => (
-            <Reveal
-              key={fact.label}
-              delay={index * 0.08}
-              className={`py-8 pr-4 md:py-10 ${index % 2 === 1 ? "pl-6 md:pl-8" : ""} ${
-                index > 0 ? "md:border-l md:border-ink/15 md:pl-8" : ""
-              } ${index % 2 === 1 ? "border-l border-ink/15" : ""} ${index > 1 ? "border-t border-ink/15 md:border-t-0" : ""}`}
-            >
-              <dt className="eyebrow text-stone">{fact.label}</dt>
-              <dd className="display-sm mt-3 text-ink lining-nums">{fact.value}</dd>
-            </Reveal>
-          ))}
-        </dl>
       </Container>
     </section>
   );
