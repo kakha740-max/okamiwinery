@@ -35,7 +35,7 @@
   "hero": {
     "eyebrow": "A Legacy of Georgian Winemaking",
     "title": "ETNO OKAMI WINERY",
-    "description": "Crafted in the historic Etno Okami Microzone, where tradition, terroir and excellence meet.",
+    "description": "A unique microzone and natural conditions.",
     "button": "Discover Wines",
     "secondary": "Our Story",
     "location": "Shida Kartli · Georgia",
@@ -48,7 +48,7 @@
       "Located in the heart of the historic winemaking region of Shida Kartli, the Etno Okami Microzone is a place where vineyards and wine have been an integral part of Georgian culture and way of life for centuries.",
       "In the 19th century, Ivane Mukhranbatoni played a significant role in advancing viticulture and winemaking in the region. In 1965, Tengiz Kekelidze founded the Etno Okami Winery, connecting centuries-old traditions with modern wine production.",
       "Today, Etno Okami Winery brings together heritage, modern technology, and a partnership with the Caucasus International University, fostering excellence in quality, innovation, and wine education.",
-      "Our mission is to preserve Etno Okami's unique legacy and proudly showcase the richness of Georgian wine culture on the world stage."
+      "Our mission is to preserve Etno Okami's unique heritage — part of Georgian wine's 8,000-year history — and to proudly share with the world the richness of Georgian wine culture and its unique tradition."
     ],
     "university": {
       "title": "Partnership with the University",
@@ -67,13 +67,14 @@
     "eyebrow": "Explore Our Estate",
     "title": "Discover Etno Okami",
     "description": "Discover the beauty of Etno Okami Winery through our vineyards, historic cellars, production spaces and the timeless atmosphere that defines our estate.",
+    "estateText": "A winery where the tradition of Georgian wine comes alive in the vineyards, historic cellars and Qvevri. Discover how our wine is made and the setting that gives each wine its own character.",
     "viewPhoto": "View Photo",
     "viewAll": "View All Photos",
     "pageTitle": "Gallery"
   },
   "featured": {
-    "eyebrow": "OUR COLLECTION",
-    "title": "Featured Wines",
+    "eyebrow": "COLLECTION",
+    "title": "Wines",
     "description": "Discover our selection of exceptional Georgian wines, crafted in the historic Etno Okami Microzone."
   },
   "wines": {
@@ -83,13 +84,15 @@
     "button": "Discover"
   },
   "wineList": {
-    "eyebrow": "Our Collection",
-    "title": "Our Wines",
+    "eyebrow": "Collection",
+    "title": "Wines",
     "subtitle": "Discover our exceptional Georgian wines.",
     "tabAll": "All",
     "tabRed": "Red",
     "tabWhite": "White",
     "tabQvevri": "Qvevri",
+    "tabBrand": "Georgian Wine Brand",
+    "comingSoon": "Coming soon.",
     "filterSort": "Filter & Sort",
     "sortLabel": "Sort by",
     "sortName": "Name",
@@ -152,7 +155,7 @@
     "style": "Style",
     "tastingEyebrow": "Tasting",
     "tastingTitle": "In the glass",
-    "qvevriNote": "Made in qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
+    "qvevriNote": "Made in Qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
     "technicalTitle": "Technical details",
     "awardsTitle": "Awards",
     "enquire": "Enquire about this wine",
@@ -238,22 +241,26 @@
   },
   "footer": {
     "eyebrow": "Etno Okami Winery",
-    "title": "Georgian wines, crafted with heritage and heart.",
-    "description": "Discover the elegance of the Etno Okami Microzone through exceptional wines, estate visits and timeless Georgian hospitality.",
+    "title": "Wine that carries the story of Georgian winemaking forward.",
+    "description": "Etno Okami brings together the ancient Qvevri tradition, a unique microzone and a modern vision of winemaking — to create wine that never loses sight of where it comes from.",
     "explore": "Explore",
     "contact": "Contact",
     "home": "Home",
     "wines": "Wines",
     "tour": "Tour",
-    "email": "hello@okamiwine.com",
-    "address": "Etno Okami Microzone, Georgia",
+    "email": "Etno.okami@ciu.edu.ge",
+    "address": "2 Ureki Street, Tbilisi, Georgia",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address",
+    "follow": "Follow us",
     "copyright": "© 2026 Etno Okami Winery. All Rights Reserved.",
     "responsible": "Excessive alcohol consumption is harmful to your health."
   },
   "awards": {
     "eyebrow": "Awards & Achievements",
-    "title": "Recognition born in the qvevri",
-    "description": "Etno Okami wines have been honoured again and again at international qvevri wine competitions — independent juries confirming the craft and tradition behind every bottle.",
+    "title": "Recognition born in the Qvevri",
+    "description": "Etno Okami wines have been honoured again and again at international Qvevri wine competitions — independent juries confirming the craft and tradition behind every bottle.",
     "statAwards": "Awards",
     "statSilver": "Silver medals",
     "statBronze": "Bronze medals",
@@ -266,21 +273,23 @@
     "competitionWineHunter": "The Qvevri WineHunter Award",
     "viewCertificate": "View certificate",
     "pageTitle": "Awards & Achievements",
-    "pageIntro": "Every medal tells a story — of a vineyard, a vintage and a qvevri. Here are the competitions where Etno Okami wines have been recognised, and the moments behind each award.",
+    "pageIntro": "Every medal tells a story — of a vineyard, a vintage and a Qvevri. Here are the competitions where Etno Okami wines have been recognised, and the moments behind each award.",
     "viewAll": "All Awards & Stories",
     "statGold": "Gold medals",
     "medalGold": "Gold",
     "points": "points",
     "discoverWines": "Discover Our Wines",
     "organizer": "Organiser",
-    "kartliShort": "Kartli"
+    "kartliShort": "Kartli",
+    "featured": "Featured award",
+    "competitionsTitle": "The competitions"
   },
   "ageGate": {
     "eyebrow": "Etno Okami Winery",
-    "title": "Are you 18 or older?",
-    "text": "You must be at least 18 years old to enter this site. Excessive alcohol consumption is harmful to your health.",
+    "title": "Age Verification",
+    "text": "Please confirm that you are 18 years of age or older to enter.",
     "yes": "Yes, I am 18+",
-    "no": "No",
+    "no": "Leave",
     "deniedTitle": "Sorry",
     "deniedText": "This site is only available to visitors aged 18 and over.",
     "back": "Back"
@@ -294,9 +303,12 @@
     "factAwards": "Awards",
     "storyLink": "Read our story",
     "qvevriEyebrow": "Qvevri",
-    "qvevriTitle": "Made in qvevri",
-    "qvevriText": "Most of our wines are made in qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
-    "writeToUs": "Write to us"
+    "qvevriTitle": "Qvevri",
+    "qvevriText": "The oldest tradition of Georgian winemaking, which develops the wine's character over time.",
+    "writeToUs": "Write to us",
+    "awardsTitle": "Awards & Recognition",
+    "awardsLink": "View all awards",
+    "awardsIntro": "Discover our achievements and awards."
   },
   "storyPage": {
     "chapterMicrozone": "The Microzone",

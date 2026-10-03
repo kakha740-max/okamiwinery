@@ -71,7 +71,7 @@ export const competitions: Competition[] = [
     date: { en: "27–28 November 2024 · Tbilisi", ka: "27–28 ნოემბერი, 2024 · თბილისი", ru: "27–28 ноября 2024 · Тбилиси" },
     story: [
       {
-        en: "Organised by the Georgian Wine Association with the support of the National Wine Agency, the International Qvevri Wine Competition is devoted exclusively to wines made in qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
+        en: "Organised by the Georgian Wine Association with the support of the National Wine Agency, the International Qvevri Wine Competition is devoted exclusively to wines made in Qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
         ka: "ქვევრის ღვინის საერთაშორისო კონკურსს ასოციაცია „ქართული ღვინო“ ღვინის ეროვნული სააგენტოს მხარდაჭერით მართავს. კონკურსი მხოლოდ ქვევრში დაყენებულ ღვინოებს ეძღვნება — თიხის ჭურჭელს, რომელიც ქართული მეღვინეობის უძველესი ტრადიციის გულია.",
         ru: "Международный конкурс квеври-вин проводит Ассоциация «Грузинское вино» при поддержке Национального агентства вина. Конкурс посвящён исключительно винам, созданным в квеври — глиняном сосуде, лежащем в основе древней грузинской традиции виноделия.",
       },
@@ -118,7 +118,7 @@ export const competitions: Competition[] = [
     date: { en: "December 2023 · Tbilisi", ka: "დეკემბერი, 2023 · თბილისი", ru: "Декабрь 2023 · Тбилиси" },
     story: [
       {
-        en: "In December 2023 the International Qvevri Wine Competition once again brought together qvevri winemakers from Georgia and beyond, organised by the Georgian Wine Association with the National Wine Agency.",
+        en: "In December 2023 the International Qvevri Wine Competition once again brought together Qvevri winemakers from Georgia and beyond, organised by the Georgian Wine Association with the National Wine Agency.",
         ka: "2023 წლის დეკემბერში ქვევრის ღვინის საერთაშორისო კონკურსმა კვლავ შეკრიბა ქვევრის მეღვინეები საქართველოდან და მის ფარგლებს გარეთ. კონკურსი ასოციაცია „ქართულმა ღვინომ“ ღვინის ეროვნულ სააგენტოსთან ერთად მოაწყო.",
         ru: "В декабре 2023 года Международный конкурс квеври-вин вновь собрал виноделов из Грузии и других стран. Организатором выступила Ассоциация «Грузинское вино» совместно с Национальным агентством вина.",
       },

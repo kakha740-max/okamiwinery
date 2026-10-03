@@ -23,7 +23,7 @@ const shade = Buffer.from(
 const pages = {
   "etno-okami": "public/images/film/hero-poster.jpg",
   wines: "public/images/22.jpg",
-  story: "public/images/story9.png",
+  story: "public/images/story8.png",
   gallery: "public/images/story2.png",
   awards: "public/images/19.jpg",
 };

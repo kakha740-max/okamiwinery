@@ -1,7 +1,7 @@
 import en from "@/messages/en.json";
 import type { Wine } from "@/components/data/wines";
 import { awardsForWine, wineNames } from "@/components/data/awards";
-import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "./site";
+import { DEFAULT_DESCRIPTION, FACEBOOK_URL, PHONE, SITE_NAME, SITE_URL } from "./site";
 
 const absolute = (path: string) => `${SITE_URL}${path}`;
 
@@ -17,15 +17,17 @@ export function organizationJsonLd() {
     alternateName: ["Etno Okami", "ეთნო ოკამის მეღვინეობა", "Винодельня Этно Оками"],
     url: SITE_URL,
     logo: absolute("/images/brand/etno-okami-logo.png"),
-    image: absolute("/images/story9.png"),
+    image: absolute("/images/story8.png"),
     description: DEFAULT_DESCRIPTION,
     foundingDate: "1965",
     founder: { "@type": "Person", name: "Tengiz Kekelidze" },
     email: en.footer.email,
+    telephone: PHONE,
+    sameAs: [FACEBOOK_URL],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Etno Okami Microzone",
-      addressRegion: "Shida Kartli",
+      streetAddress: "2 Ureki Street",
+      addressLocality: "Tbilisi",
       addressCountry: "GE",
     },
   };

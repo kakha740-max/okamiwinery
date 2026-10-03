@@ -23,7 +23,7 @@ export const wines = [
     image: "/images/wines/okami-red.png",
 
     description:
-      "Our signature red and registered appellation wine, made from Shavkapito — an indigenous grape of Kartli — fermented and matured in qvevri.",
+      "Our signature red and registered appellation wine, made from Shavkapito — an indigenous grape of Kartli — fermented and matured in Qvevri.",
 
     taste: {
       sweetness: 1,
@@ -89,7 +89,7 @@ export const wines = [
     image: "/images/wines/okami-white.png",
 
     description:
-      "An amber wine of Kartli's classic white grapes, Chinuri and Goruli Mtsvane, fermented on the skins in qvevri for depth, texture and a gentle grip.",
+      "An amber wine of Kartli's classic white grapes, Chinuri and Goruli Mtsvane, fermented on the skins in Qvevri for depth, texture and a gentle grip.",
 
     taste: {
       sweetness: 1,
@@ -155,7 +155,7 @@ export const wines = [
     image: "/images/wines/khashmi-saperavi.png",
 
     description:
-      "Saperavi from Khashmi, made in qvevri — deep in colour, with dark fruit and firm structure. Awarded at the Saperavi International Competition in 2022 and 2024.",
+      "Saperavi from Khashmi, made in Qvevri — deep in colour, with dark fruit and firm structure. Awarded at the Saperavi International Competition in 2022 and 2024.",
 
     taste: {
       sweetness: 1,
@@ -287,7 +287,7 @@ export const wines = [
     image: "/images/wines/tavkveri.png",
 
     description:
-      "A light, fragrant red from the Kartli grape Tavkveri, made in qvevri — fresh red fruit, soft tannins and an easy, lively finish.",
+      "A light, fragrant red from the Kartli grape Tavkveri, made in Qvevri — fresh red fruit, soft tannins and an easy, lively finish.",
 
     taste: {
       sweetness: 1,
@@ -353,7 +353,7 @@ export const wines = [
     image: "/images/wines/rkatsiteli.png",
 
     description:
-      "Georgia's best-known white grape, fermented with its skins in qvevri — an amber wine with structure, dried-fruit depth and a long, savoury finish.",
+      "Georgia's best-known white grape, fermented with its skins in Qvevri — an amber wine with structure, dried-fruit depth and a long, savoury finish.",
 
     taste: {
       sweetness: 1,
@@ -419,7 +419,7 @@ export const wines = [
     image: "/images/wines/chinuri-goruli-mtsvane.png",
 
     description:
-      "A crisp white from two Kartli grapes, Chinuri and Goruli Mtsvane, made in qvevri — fresh orchard fruit, citrus and meadow herbs.",
+      "A crisp white from two Kartli grapes, Chinuri and Goruli Mtsvane, made in Qvevri — fresh orchard fruit, citrus and meadow herbs.",
 
     taste: {
       sweetness: 1,

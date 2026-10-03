@@ -5,6 +5,7 @@ import HomeQvevri from "@/components/home/HomeQvevri";
 import HomeAwards from "@/components/home/HomeAwards";
 import HomeEstate from "@/components/home/HomeEstate";
 import HomeVisit from "@/components/home/HomeVisit";
+import ScrollFold from "@/components/home/ScrollFold";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationJsonLd } from "@/lib/structured-data";
 
@@ -14,10 +15,12 @@ export default function Home() {
       <JsonLd data={organizationJsonLd()} />
       <HomeHero />
       <HomeIntro />
-      <HomeWines />
-      <HomeQvevri />
+      <ScrollFold>
+        <HomeQvevri />
+      </ScrollFold>
       <HomeAwards />
       <HomeEstate />
+      <HomeWines />
       <HomeVisit />
     </main>
   );

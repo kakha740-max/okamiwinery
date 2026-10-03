@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Arrow from "@/components/ui/Arrow";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { localizeWine, type Wine } from "@/components/data/wines";
 
@@ -17,7 +16,7 @@ type WineCardProps = {
 // Editorial bottle card: the bottle stands in a quiet panel, the name set
 // below it like a catalogue entry. Used by the catalogue and every rail.
 export default function WineCard({ wine: original, tone = "bone", headingLevel = "h3" }: WineCardProps) {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const wine = localizeWine(original, language);
   const Heading = headingLevel;
 
@@ -43,15 +42,11 @@ export default function WineCard({ wine: original, tone = "bone", headingLevel =
           sizes="(min-width: 1280px) 120px, (min-width: 768px) 14vw, 30vw"
           className="relative mb-[8%] h-[80%] w-auto object-contain transition-transform duration-1000 ease-[var(--ease-luxe)] group-hover:-translate-y-2.5"
         />
-        <span className="label absolute right-4 bottom-4 flex items-center gap-3 text-ink opacity-0 transition-all duration-700 ease-[var(--ease-luxe)] group-hover:opacity-100 max-md:hidden">
-          {t.wineList.viewWine}
-          <Arrow />
-        </span>
       </div>
 
       <div className="mt-5 pr-2">
         <p className="eyebrow text-bronze">{wine.subtitle}</p>
-        <Heading className="display-sm caps mt-2 text-ink">{wine.name}</Heading>
+        <Heading className="display-sm caps mt-2 font-medium text-ink [&:lang(ka)]:font-normal">{wine.name}</Heading>
         {details.length > 0 && <p className="mt-1.5 text-sm text-stone">{details.join(" · ")}</p>}
       </div>
     </Link>

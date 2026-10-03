@@ -5,14 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import ButtonLink from "@/components/ui/ButtonLink";
-import { MedalBadge, medalLabels } from "@/components/awards/medals";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { Wine } from "@/components/data/wines";
-import type { allAwards } from "@/components/data/awards";
 
 type WineHeroProps = {
   wine: Wine;
-  awards: typeof allAwards;
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -21,10 +18,9 @@ const present = (value: string) => value && value !== "—";
 
 // First screen of a product page: the bottle dominates the left half, the
 // name, vintage and three key facts sit quietly on the right.
-export default function WineHero({ wine, awards }: WineHeroProps) {
+export default function WineHero({ wine }: WineHeroProps) {
   const { t } = useLanguage();
   const s = t.winePage;
-  const medals = medalLabels(t);
 
   const facts = [
     { label: s.variety, value: wine.variety },
@@ -94,7 +90,7 @@ export default function WineHero({ wine, awards }: WineHeroProps) {
             {wine.subtitle}
           </motion.p>
 
-          <motion.h1 {...rise(0.4)} className="display-lg caps mt-5 text-ink">
+          <motion.h1 {...rise(0.4)} className="display-lg caps mt-5 font-medium text-ink [&:lang(ka)]:font-normal">
             {wine.name}
           </motion.h1>
 
@@ -116,33 +112,10 @@ export default function WineHero({ wine, awards }: WineHeroProps) {
             ))}
           </motion.dl>
 
-          {awards.length > 0 && (
-            <motion.a
-              {...rise(0.7)}
-              href="#awards"
-              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/15 pt-6 text-ink transition-colors hover:text-bronze"
-            >
-              {awards.map((award) => (
-                <MedalBadge
-                  key={`${award.competition.id}-${award.vintage}`}
-                  medal={award.medal}
-                  label={`${medals[award.medal]} ${award.competition.year ?? ""}`.trim()}
-                />
-              ))}
-              <span className="sr-only">{s.awardsTitle}</span>
-            </motion.a>
-          )}
-
-          <motion.div {...rise(0.8)} className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5">
-            <ButtonLink
-              href={`mailto:${t.footer.email}?subject=${encodeURIComponent(
-                [wine.name, present(wine.year) ? wine.year : ""].join(" ").trim()
-              )}`}
-              external
-              variant="solid"
-              arrow
-            >
-              {s.enquire}
+          <motion.div {...rise(0.7)} className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5">
+            {/* Scrolls to the contact details in the footer */}
+            <ButtonLink href="#footer" variant="solid" arrow>
+              {t.contact.buttonContact}
             </ButtonLink>
             <ButtonLink href="/wines" variant="text" className="link-line">
               {t.ui.allWines}

@@ -324,8 +324,156 @@
 }
 
 /* ---------------------------------------------------------------------------
-   18+ age gate: hidden once the visitor has confirmed (see AgeGate.tsx);
-   until then the page underneath can't be scrolled.
+   Entry experience (components/entry): the 18+ gate, then the qvevri
+   preloader. Driven by attributes on <html> set before the first paint —
+   see entry.ts. The page can't be scrolled until the preloader starts to
+   fade out.
 --------------------------------------------------------------------------- */
 html[data-age-ok] .age-gate { display: none; }
-html:not([data-age-ok]) body { overflow: hidden; }
+html:not([data-age-ok]) body,
+html[data-intro-play]:not([data-intro-reveal]) body { overflow: hidden; }
+
+/* The gate's copy, in the visitor's language from the first paint. */
+.entry-copy { display: none; }
+html:not([data-entry-lang]) .entry-copy[lang="en"],
+html[data-entry-lang="en"] .entry-copy[lang="en"],
+html[data-entry-lang="ka"] .entry-copy[lang="ka"],
+html[data-entry-lang="ru"] .entry-copy[lang="ru"] { display: inline; }
+.entry-copy[lang="ka"] { font-feature-settings: "case" 1; }
+
+/* `backwards`, not `both`: once it has played, the leaving fade below must apply. */
+.age-gate__content {
+  animation-name: entry-gate-in;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: backwards;
+}
+
+/* On confirm the gate's contents fade; its ground matches the preloader's, so
+   it is then removed without any visible change. */
+.age-gate > * { transition: opacity 0.5s var(--ease-luxe); }
+.age-gate[data-leaving] > * { opacity: 0; }
+
+@keyframes entry-gate-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Preloader. Sized to the whole window (not the scrollbar-less viewport) so
+   nothing shifts when the page's scrollbar returns. */
+.entry-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  background: #15110f;
+}
+html[data-intro-done] .entry-intro { display: none; }
+
+.entry-intro__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-intro__vessel {
+  position: relative;
+  display: block;
+  height: min(44vh, 22rem);
+  width: auto;
+  aspect-ratio: 240 / 300;
+  overflow: visible;
+}
+
+.entry-intro__glow {
+  position: absolute;
+  inset: -30% -45%;
+  background: radial-gradient(ellipse 50% 50% at 50% 52%, rgb(184 115 51 / 0.26), rgb(122 69 40 / 0.1) 45%, transparent 72%);
+  opacity: 0;
+}
+
+.entry-intro__logo {
+  margin-top: 2.5rem;
+  height: 3rem;
+  width: auto;
+  opacity: 0;
+  transform: translateY(8px);
+}
+@media (min-width: 640px) {
+  .entry-intro__logo { height: 3.5rem; }
+}
+
+/* First frame: an empty, unlit vessel. */
+.qv-vessel { opacity: 0; transform: translateY(10px); }
+.qv-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.qv-wine { transform: translateY(240px); }
+.qv-warm { opacity: 0; }
+
+/* The sequence (≈3.5s): appear → fill → warm light + logo → reveal the page. */
+html[data-intro-play] .qv-vessel { animation: entry-appear 0.7s var(--ease-luxe) both; }
+html[data-intro-play] .qv-line { animation: entry-draw 1.2s cubic-bezier(0.45, 0, 0.25, 1) both; }
+html[data-intro-play] .qv-wine { animation: entry-fill 2s cubic-bezier(0.45, 0, 0.3, 1) 0.5s both; }
+html[data-intro-play] .qv-wave { animation: entry-wave 2.8s linear infinite; }
+html[data-intro-play] .qv-warm { animation: entry-warm 0.8s ease-out 2.45s both; }
+html[data-intro-play] .entry-intro__glow { animation: entry-glow 0.9s ease-out 2.4s both; }
+html[data-intro-play] .entry-intro__logo { animation: entry-logo 0.75s var(--ease-luxe) 2.55s both; }
+/* The qvevri and logo leave first, then the dark ground lifts off the page. */
+html[data-intro-play] .entry-intro__stage { animation: entry-stage-out 0.4s ease-in 3s both; }
+html[data-intro-play] .entry-intro { animation: entry-out 0.4s ease-in-out 3.15s forwards; }
+
+@keyframes entry-appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes entry-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes entry-fill {
+  from { transform: translateY(240px); }
+  to   { transform: none; }
+}
+@keyframes entry-wave {
+  from { transform: none; }
+  to   { transform: translateX(-120px); }
+}
+@keyframes entry-warm {
+  from { opacity: 0; }
+  to   { opacity: 0.6; }
+}
+@keyframes entry-glow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes entry-logo {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes entry-stage-out {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: scale(1.03); }
+}
+@keyframes entry-out {
+  from { opacity: 1; visibility: visible; }
+  to   { opacity: 0; visibility: hidden; }
+}
+
+/* Reduced motion: the filled qvevri and logo, shown still, then a short fade. */
+@media (prefers-reduced-motion: reduce) {
+  .age-gate__content,
+  html[data-intro-play] .entry-intro * { animation: none !important; }
+  html[data-intro-play] .qv-vessel,
+  html[data-intro-play] .entry-intro__logo { opacity: 1; transform: none; }
+  html[data-intro-play] .qv-line { stroke-dashoffset: 0; }
+  html[data-intro-play] .qv-wine { transform: none; }
+  html[data-intro-play] .qv-warm { opacity: 0.6; }
+  html[data-intro-play] .entry-intro__glow { opacity: 1; }
+  html[data-intro-play] .entry-intro { animation: entry-out 0.4s ease 0.7s forwards !important; }
+}

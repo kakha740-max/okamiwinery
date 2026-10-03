@@ -69,10 +69,6 @@ export default function GalleryEditorial() {
                     />
                   </button>
                 </ImageReveal>
-                <p className="mt-3 text-xs tracking-[0.04em] text-stone">
-                  <span className="mr-3 text-bronze">{String(index + 1).padStart(2, "0")}</span>
-                  {image.alt[language]}
-                </p>
               </li>
             );
           })}

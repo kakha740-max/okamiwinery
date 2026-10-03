@@ -3,9 +3,10 @@
 import ButtonLink from "@/components/ui/ButtonLink";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import WineRail from "@/components/catalogue/WineRail";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { wines } from "@/components/data/wines";
+
+import WineCarousel from "./WineCarousel";
 
 export default function HomeWines() {
   const { t } = useLanguage();
@@ -27,7 +28,7 @@ export default function HomeWines() {
         </div>
 
         <Reveal delay={0.1}>
-          <WineRail wines={wines} tone="paper" />
+          <WineCarousel wines={wines} />
         </Reveal>
       </Container>
     </section>

@@ -24,8 +24,7 @@ export default function HomeQvevri() {
 
       <Container size="wide" className="relative">
         <Reveal className="max-w-xl">
-          <p className="eyebrow text-gold">{t.home.qvevriEyebrow}</p>
-          <h2 className="display-lg mt-6">{t.home.qvevriTitle}</h2>
+          <h2 className="display-lg">{t.home.qvevriTitle}</h2>
           <p className="lead mt-8 text-paper/80">{t.home.qvevriText}</p>
           <ButtonLink href="/wines" variant="outline-light" arrow className="mt-12">
             {t.hero.button}

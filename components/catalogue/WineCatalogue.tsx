@@ -10,13 +10,15 @@ import { wines } from "@/components/data/wines";
 
 import WineCard from "./WineCard";
 
-type CategoryFilter = "all" | "Red" | "White" | "Qvevri";
+// "Brand" is the Georgian Wine Brand range (spirits, not wine); it has no products yet.
+type CategoryFilter = "all" | "Red" | "White" | "Qvevri" | "Brand";
 type SortOption = "name" | "year";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const matches = (category: CategoryFilter) => (wine: (typeof wines)[number]) => {
   if (category === "all") return true;
+  if (category === "Brand") return false;
   if (category === "Qvevri") return wine.method === "Qvevri";
   return wine.category === category;
 };
@@ -40,6 +42,7 @@ export default function WineCatalogue() {
     { value: "Red", label: t.wineList.tabRed },
     { value: "White", label: t.wineList.tabWhite },
     { value: "Qvevri", label: t.wineList.tabQvevri },
+    { value: "Brand", label: t.wineList.tabBrand },
   ];
 
   const sorts: { value: SortOption; label: string }[] = [
@@ -74,7 +77,9 @@ export default function WineCatalogue() {
                   }`}
                 >
                   {tab.label}
-                  <sup className="text-[0.625rem] tracking-normal opacity-60">{wines.filter(matches(tab.value)).length}</sup>
+                  {tab.value !== "Brand" && (
+                    <sup className="text-[0.625rem] tracking-normal opacity-60">{wines.filter(matches(tab.value)).length}</sup>
+                  )}
                   <span
                     aria-hidden="true"
                     className={`absolute inset-x-0 -bottom-[1.3rem] h-px bg-ink transition-transform duration-500 ease-[var(--ease-luxe)] ${
@@ -121,6 +126,7 @@ export default function WineCatalogue() {
             ))}
           </AnimatePresence>
         </motion.ul>
+        {visibleWines.length === 0 && <p className="mt-14 text-sm text-stone md:mt-16">{t.wineList.comingSoon}</p>}
       </Container>
     </>
   );

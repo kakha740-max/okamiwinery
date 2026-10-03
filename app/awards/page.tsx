@@ -1,4 +1,4 @@
-import AwardsChapters from "@/components/awards/AwardsChapters";
+import AwardsEditorial from "@/components/awards/AwardsEditorial";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 export default function AwardsPage() {
   return (
     <main id="main" className="bg-paper">
-      <AwardsChapters />
+      <AwardsEditorial />
     </main>
   );
 }

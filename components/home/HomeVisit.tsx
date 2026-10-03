@@ -14,13 +14,18 @@ export default function HomeVisit() {
   return (
     <section id="contact" className="on-dark relative overflow-hidden bg-night text-paper">
       <Image
-        src="/images/story1.png"
+        src="/images/39.png"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover"
+        // Softly blurred (scaled a touch so the blur doesn't fade the edges)
+        className="scale-105 object-cover blur-[3px]"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-night/70" />
+      {/* Darkened overall, with a deeper shade behind the copy so it stays legible on the mosaic */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-night/50 bg-[radial-gradient(ellipse_60%_55%_at_50%_50%,rgb(14_12_10/0.45),transparent_75%)]"
+      />
 
       <Container className="relative py-32 text-center md:py-44">
         <Reveal>
@@ -30,7 +35,8 @@ export default function HomeVisit() {
         </Reveal>
 
         <Reveal delay={0.15} className="mt-12 flex flex-col items-center gap-8">
-          <ButtonLink href={`mailto:${t.footer.email}`} external variant="light" arrow>
+          {/* Scrolls to the contact details in the footer */}
+          <ButtonLink href="#footer" variant="light" arrow>
             {t.contact.buttonContact}
           </ButtonLink>
           <p className="text-sm text-paper/60">

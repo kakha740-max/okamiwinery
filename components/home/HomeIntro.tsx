@@ -29,28 +29,19 @@ export default function HomeIntro() {
             </Reveal>
           </div>
 
-          {/* Image pair */}
-          <div className="relative lg:col-span-6 lg:col-start-7">
-            <ImageReveal className="aspect-[4/5] w-[82%] sm:aspect-[5/6]">
+          {/* The small barrels in black and white (scripts/generate-heritage-bw.mjs) */}
+          <div className="relative lg:col-span-7 lg:col-start-6">
+            <ImageReveal className="ml-auto aspect-square w-full lg:w-[82%]">
               <Image
-                src="/images/2.png"
+                src="/images/heritage/barrels-bw.jpg"
                 alt={t.experience.title}
                 fill
-                sizes="(min-width: 1024px) 40vw, 82vw"
+                quality={90}
+                // A 2:1 photo in a square frame renders ~2× the frame's width.
+                sizes="(min-width: 1024px) 88vw, 200vw"
                 className="object-cover"
               />
             </ImageReveal>
-            <div className="absolute right-0 bottom-[-12%] w-[44%] border-[6px] border-paper sm:border-[10px]">
-              <ImageReveal delay={0.25} className="aspect-[4/5]">
-                <Image
-                  src="/images/film/qvevri-cellar.jpg"
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 22vw, 44vw"
-                  className="object-cover"
-                />
-              </ImageReveal>
-            </div>
           </div>
         </div>
       </Container>

@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { darkHeroRoutes, navItems } from "@/lib/site";
 
@@ -61,8 +60,8 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : href.startsWith("/") && pathname.startsWith(href);
 
   const linkClass = (href: string) =>
-    `label relative py-2 transition-opacity duration-300 hover:opacity-100 ${
-      isActive(href) ? "opacity-100" : "opacity-75"
+    `label relative py-2 text-[0.84375rem] transition-opacity duration-300 hover:opacity-100 [&:lang(ka)]:text-[0.9375rem] ${
+      isActive(href) ? "opacity-100" : "opacity-90"
     }`;
 
   const left = navItems.slice(0, 3);
@@ -109,7 +108,7 @@ export default function Navbar() {
         >
           {/* Left: desktop links / mobile menu button */}
           <div className="flex items-center">
-            <nav aria-label={t.ui.mainNav} className="hidden items-center gap-9 xl:flex">
+            <nav aria-label={t.ui.mainNav} className="hidden items-center gap-10 xl:flex">
               {left.map(renderLink)}
             </nav>
 
@@ -153,12 +152,11 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Right: desktop links + language */}
+          {/* Right: desktop links (the language switcher lives in the footer) */}
           <div className="flex items-center justify-end gap-9">
-            <nav aria-label={t.ui.mainNav} className="hidden items-center gap-9 xl:flex">
+            <nav aria-label={t.ui.mainNav} className="hidden items-center gap-10 xl:flex">
               {right.map(renderLink)}
             </nav>
-            <LanguageSwitcher className="-mr-1.5 xl:border-l xl:border-current/20 xl:pl-6" />
           </div>
         </div>
       </header>

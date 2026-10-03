@@ -6,7 +6,9 @@ import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/layout/SkipLink";
-import AgeGate, { ageGateScript } from "@/components/AgeGate";
+import AgeGate from "@/components/entry/AgeGate";
+import QvevriPreloader from "@/components/entry/QvevriPreloader";
+import { entryScript } from "@/components/entry/entry";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const display = Cormorant_Garamond({
@@ -66,9 +68,10 @@ export default function RootLayout({
       className={`${display.variable} ${sans.variable}`}
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: ageGateScript }} />
+        <script dangerouslySetInnerHTML={{ __html: entryScript }} />
         <LanguageProvider>
           <SkipLink />
+          <QvevriPreloader />
           <AgeGate />
           <Navbar />
           {children}
