@@ -17,6 +17,8 @@ type HomeWineCardProps = {
 export default function HomeWineCard({ wine: original, hidden = false }: HomeWineCardProps) {
   const { language } = useLanguage();
   const wine = localizeWine(original, language);
+  // Never break a word: the title is capped so its longest word fits the card.
+  const longestWord = Math.max(...wine.name.split(/[s-]+/).map((word) => word.length));
 
   const details = [wine.year, wine.variety].filter((value) => value && value !== "—");
 
@@ -44,10 +46,12 @@ export default function HomeWineCard({ wine: original, hidden = false }: HomeWin
         />
       </div>
 
-      <div className="mt-7 pr-3">
+      <div className="@container mt-7 pr-3">
         {/* Height matched across the row by WineCarousel, so every name lines up. */}
         <p data-wine-category className="eyebrow text-bronze">{wine.subtitle}</p>
-        <h3 className="display-sm caps mt-3 font-medium text-ink [&:lang(ka)]:font-normal">{wine.name}</h3>
+        <h3 style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-3 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] [&:lang(ka)]:font-normal">
+          {wine.name}
+        </h3>
         {details.length > 0 && (
           <p className="mt-2.5 text-[0.8125rem] leading-relaxed tracking-[0.02em] text-umber tabular-nums">
             {details.join(" · ")}

@@ -64,6 +64,8 @@ export default function AwardsEditorial() {
   const award = certificates[index];
   const slug = wineSlugForAward(award);
   const name = wineNames[award.wine][language];
+  // Hyphens are natural break points, so only the pieces between them count.
+  const longestWord = Math.max(...name.split(/[s-]+/).map((word) => word.length));
 
   const go = (step: number) => {
     setPosition(([current]) => [(current + step + count) % count, step]);
@@ -156,7 +158,7 @@ export default function AwardsEditorial() {
               </p>
 
               {/* Details change with a soft fade as the certificate glides in */}
-              <div aria-live="polite" className="lg:min-h-[34rem]">
+              <div aria-live="polite" className="@container lg:min-h-[34rem]">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={award.certificate}
@@ -165,7 +167,13 @@ export default function AwardsEditorial() {
                     exit={{ opacity: 0, y: -8, transition: { duration: 0.35 } }}
                   >
                     <MedalBadge medal={award.medal} label={medals[award.medal]} className="mt-10 text-ink" />
-                    <h2 className="display-lg caps mt-5 text-ink">{name}</h2>
+                    {/* Never break a word: capped so the longest word fits the column (see WineHero). */}
+                    <h2
+                      style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties}
+                      className="display-lg caps mt-5 text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
+                    >
+                      {name}
+                    </h2>
                     <p className="font-display mt-3 text-3xl font-light text-stone lining-nums">{award.vintage}</p>
 
                     <div className="mt-10 border-t border-ink/15 pt-8">

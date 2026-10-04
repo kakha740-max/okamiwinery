@@ -22,6 +22,9 @@ export default function WineHero({ wine }: WineHeroProps) {
   const { t } = useLanguage();
   const s = t.winePage;
 
+  // Hyphens are natural break points, so only the pieces between them count.
+  const longestWord = Math.max(...wine.name.split(/[\s-]+/).map((word) => word.length));
+
   const facts = [
     { label: s.variety, value: wine.variety },
     { label: s.region, value: wine.region },
@@ -71,7 +74,7 @@ export default function WineHero({ wine }: WineHeroProps) {
 
       {/* Text */}
       <div className="flex items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-32 xl:px-24">
-        <div className="w-full max-w-xl">
+        <div className="@container w-full max-w-xl">
           <motion.nav {...rise(0.2)} aria-label={t.ui.breadcrumb}>
             <ol className="flex items-center gap-3 text-sm text-stone">
               <li>
@@ -90,7 +93,14 @@ export default function WineHero({ wine }: WineHeroProps) {
             {wine.subtitle}
           </motion.p>
 
-          <motion.h1 {...rise(0.4)} className="display-lg caps mt-5 font-medium text-ink [&:lang(ka)]:font-normal">
+          {/* Never break a word: the size is capped so the longest word (by
+              letters, ~0.82em each in capitals) fits the column; short names
+              keep the full display size. */}
+          <motion.h1
+            {...rise(0.4)}
+            style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties}
+            className="display-lg caps mt-5 font-medium text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:font-normal [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
+          >
             {wine.name}
           </motion.h1>
 

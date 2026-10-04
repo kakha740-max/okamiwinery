@@ -209,7 +209,7 @@ export const wines = [
     name: "Shavkapito",
     subtitle: "Dry Red Wine",
 
-    year: "—",
+    year: "2021",
     variety: "100% Shavkapito",
     alcohol: "12%",
     volume: "750 ml",
