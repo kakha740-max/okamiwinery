@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
+import LanguageMenu from "@/components/ui/LanguageMenu";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { darkHeroRoutes, navItems } from "@/lib/site";
 
@@ -152,11 +153,12 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Right: desktop links (the language switcher lives in the footer) */}
+          {/* Right: desktop links + language */}
           <div className="flex items-center justify-end gap-9">
             <nav aria-label={t.ui.mainNav} className="hidden items-center gap-10 xl:flex">
               {right.map(renderLink)}
             </nav>
+            <LanguageMenu className="-mr-1 xl:border-l xl:border-current/20 xl:pl-7" />
           </div>
         </div>
       </header>

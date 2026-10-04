@@ -134,12 +134,9 @@ export default function AgeGate() {
           </>
         ) : (
           <>
-            <h2 id="age-gate-title" className="display-md caps mt-10 text-paper">
+            <h2 id="age-gate-title" className="display-md mt-10 text-paper">
               <Copy pick={(c) => c.ageGate.title} />
             </h2>
-            <p className="body-copy mx-auto mt-6 max-w-md text-paper/65">
-              <Copy pick={(c) => c.ageGate.text} />
-            </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
                 ref={confirmButton}

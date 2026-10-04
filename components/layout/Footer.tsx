@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import Container from "@/components/ui/Container";
 import Arrow from "@/components/ui/Arrow";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { FACEBOOK_URL, PHONE, PHONE_HREF, navItems } from "@/lib/site";
 
@@ -95,7 +94,6 @@ export default function Footer() {
           <p>{t.footer.copyright}</p>
           <p>18+ · {t.footer.responsible}</p>
           <div className="flex items-center gap-6 text-paper/70">
-            <LanguageSwitcher />
             <a href="#main" className="label flex items-center gap-3 transition-colors hover:text-gold">
               {t.ui.backToTop}
               <Arrow direction="up" className="w-3" />

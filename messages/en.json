@@ -252,7 +252,7 @@
     "address": "2 Ureki Street, Tbilisi, Georgia",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
-    "addressLabel": "Address",
+    "addressLabel": "Office Address",
     "follow": "Follow us",
     "copyright": "© 2026 Etno Okami Winery. All Rights Reserved.",
     "responsible": "Excessive alcohol consumption is harmful to your health."
@@ -285,11 +285,9 @@
     "competitionsTitle": "The competitions"
   },
   "ageGate": {
-    "eyebrow": "Etno Okami Winery",
-    "title": "Age Verification",
-    "text": "Please confirm that you are 18 years of age or older to enter.",
+    "title": "Are you 18 or older?",
     "yes": "Yes, I am 18+",
-    "no": "Leave",
+    "no": "No, I am under 18",
     "deniedTitle": "Sorry",
     "deniedText": "This site is only available to visitors aged 18 and over.",
     "back": "Back"

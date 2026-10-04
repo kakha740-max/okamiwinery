@@ -416,17 +416,17 @@ html[data-intro-done] .entry-intro { display: none; }
 .qv-wine { transform: translateY(240px); }
 .qv-warm { opacity: 0; }
 
-/* The sequence (≈3.5s): appear → fill → warm light + logo → reveal the page. */
-html[data-intro-play] .qv-vessel { animation: entry-appear 0.7s var(--ease-luxe) both; }
-html[data-intro-play] .qv-line { animation: entry-draw 1.2s cubic-bezier(0.45, 0, 0.25, 1) both; }
-html[data-intro-play] .qv-wine { animation: entry-fill 2s cubic-bezier(0.45, 0, 0.3, 1) 0.5s both; }
+/* The sequence (≈4s): appear → fill → warm light + logo → reveal the page. */
+html[data-intro-play] .qv-vessel { animation: entry-appear 0.8s var(--ease-luxe) both; }
+html[data-intro-play] .qv-line { animation: entry-draw 1.4s cubic-bezier(0.45, 0, 0.25, 1) both; }
+html[data-intro-play] .qv-wine { animation: entry-fill 2.3s cubic-bezier(0.45, 0, 0.3, 1) 0.55s both; }
 html[data-intro-play] .qv-wave { animation: entry-wave 2.8s linear infinite; }
-html[data-intro-play] .qv-warm { animation: entry-warm 0.8s ease-out 2.45s both; }
-html[data-intro-play] .entry-intro__glow { animation: entry-glow 0.9s ease-out 2.4s both; }
-html[data-intro-play] .entry-intro__logo { animation: entry-logo 0.75s var(--ease-luxe) 2.55s both; }
+html[data-intro-play] .qv-warm { animation: entry-warm 0.9s ease-out 2.8s both; }
+html[data-intro-play] .entry-intro__glow { animation: entry-glow 1s ease-out 2.75s both; }
+html[data-intro-play] .entry-intro__logo { animation: entry-logo 0.85s var(--ease-luxe) 2.9s both; }
 /* The qvevri and logo leave first, then the dark ground lifts off the page. */
-html[data-intro-play] .entry-intro__stage { animation: entry-stage-out 0.4s ease-in 3s both; }
-html[data-intro-play] .entry-intro { animation: entry-out 0.4s ease-in-out 3.15s forwards; }
+html[data-intro-play] .entry-intro__stage { animation: entry-stage-out 0.45s ease-in 3.4s both; }
+html[data-intro-play] .entry-intro { animation: entry-out 0.45s ease-in-out 3.55s forwards; }
 
 @keyframes entry-appear {
   from { opacity: 0; transform: translateY(10px); }

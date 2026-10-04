@@ -30,20 +30,13 @@ export function LanguageProvider({
 }) {
   const [language, setLanguage] = useState<Language>("en");
 
-  // The saved / browser language is only readable on the client, so it is
-  // applied right after hydration (the server always renders English).
+  // A language the visitor chose is only readable on the client, so it is
+  // applied right after hydration. Otherwise the site stays in English.
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
-    const browserLanguage = navigator.language.toLowerCase();
 
     const initial: Language =
-      savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru"
-        ? savedLanguage
-        : browserLanguage.startsWith("ka")
-          ? "ka"
-          : browserLanguage.startsWith("ru")
-            ? "ru"
-            : "en";
+      savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru" ? savedLanguage : "en";
 
     // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from browser-only storage
     setLanguage(initial);
