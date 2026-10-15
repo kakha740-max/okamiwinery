@@ -12,8 +12,25 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer id="footer" className="on-dark border-t border-paper/10 bg-night text-paper">
-      <Container size="wide" className="pt-20 pb-10 md:pt-28">
+    <>
+      {/* A quiet pause before the footer: a band of the page's ground with a
+          gold hairline, so the footer never runs straight into the image above */}
+      <div aria-hidden="true" className="flex h-16 items-center justify-center bg-paper md:h-24">
+        <span className="h-px w-16 bg-gold/80 md:w-24" />
+      </div>
+    <footer id="footer" className="on-dark relative overflow-hidden bg-night text-paper">
+      {/* The enoteka's racks of aged bottles, kept very dark behind the details */}
+      <Image
+        src="/images/enoteka.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="scale-105 object-cover blur-[2px]"
+        style={{ objectPosition: "55% 50%" }}
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-night/97" />
+
+      <Container size="wide" className="relative pt-20 pb-10 md:pt-28">
         {/* Statement + contact */}
         <div className="grid gap-14 border-b border-paper/10 pb-16 lg:grid-cols-12 lg:gap-10 md:pb-20">
           <div className="lg:col-span-6">
@@ -102,5 +119,6 @@ export default function Footer() {
         </div>
       </Container>
     </footer>
+    </>
   );
 }

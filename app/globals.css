@@ -373,90 +373,196 @@ html[data-entry-lang="ru"] .entry-copy[lang="ru"] { display: inline; }
   height: 100dvh;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   background: #15110f;
 }
 html[data-intro-done] .entry-intro { display: none; }
 
 .entry-intro__stage {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.entry-intro__vessel {
+.entry-qvevri {
+  position: relative;
+  height: min(54vh, 27rem, 80vw); /* narrow screens: room for the percentage */
+  aspect-ratio: 300 / 400;
+}
+.entry-qvevri__vessel {
   position: relative;
   display: block;
-  height: min(44vh, 22rem);
-  width: auto;
-  aspect-ratio: 240 / 300;
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
-
-.entry-intro__glow {
+.entry-qvevri__glow {
   position: absolute;
-  inset: -30% -45%;
-  background: radial-gradient(ellipse 50% 50% at 50% 52%, rgb(184 115 51 / 0.26), rgb(122 69 40 / 0.1) 45%, transparent 72%);
+  inset: -25% -60%;
+  background: radial-gradient(ellipse 45% 45% at 50% 50%, rgb(184 115 51 / 0.2), rgb(122 69 40 / 0.07) 45%, transparent 72%);
   opacity: 0;
+}
+
+/* The level marker travels with the wine's surface: from the base (93.25% of
+   the vessel's height) to just under the neck (14.5%). */
+.entry-qvevri__gauge {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.entry-qvevri__level {
+  position: absolute;
+  top: 93.25%;
+  left: 92%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateY(-50%);
+}
+.entry-qvevri__tick {
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a766);
+}
+@property --qv-pct {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+.entry-qvevri__count {
+  min-width: 3ch;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.06em;
+  color: rgb(230 201 143 / 0.85);
+  counter-reset: qv-pct var(--qv-pct);
+}
+.entry-qvevri__count::after { content: counter(qv-pct) "%"; }
+@media (max-width: 639px) {
+  .entry-qvevri__level { gap: 0.45rem; }
+  .entry-qvevri__tick { width: 1rem; }
+  .entry-qvevri__count { font-size: 0.85rem; }
 }
 
 .entry-intro__logo {
   margin-top: 2.5rem;
-  height: 3rem;
+  height: 3.25rem;
   width: auto;
   opacity: 0;
+  filter: blur(10px);
   transform: translateY(8px);
 }
 @media (min-width: 640px) {
-  .entry-intro__logo { height: 3.5rem; }
+  .entry-intro__logo { height: 3.75rem; }
+}
+
+.entry-intro__motes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.entry-intro__motes span {
+  position: absolute;
+  border-radius: 50%;
+  background: #f0d29a;
+  box-shadow: 0 0 6px rgb(240 210 154 / 0.45);
+  opacity: 0;
 }
 
 /* First frame: an empty, unlit vessel. */
-.qv-vessel { opacity: 0; transform: translateY(10px); }
+.qv-body { opacity: 0; }
 .qv-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.qv-wine { transform: translateY(240px); }
+.qv-wine { transform: translateY(320px); }
 .qv-warm { opacity: 0; }
+.qv-bubble { fill: #f3c3cb; opacity: 0; }
+.qv-glint { transform: translateX(0); }
 
-/* The sequence (≈4s): appear → fill → warm light + logo → reveal the page. */
-html[data-intro-play] .qv-vessel { animation: entry-appear 0.8s var(--ease-luxe) both; }
-html[data-intro-play] .qv-line { animation: entry-draw 1.4s cubic-bezier(0.45, 0, 0.25, 1) both; }
-html[data-intro-play] .qv-wine { animation: entry-fill 2.3s cubic-bezier(0.45, 0, 0.3, 1) 0.55s both; }
-html[data-intro-play] .qv-wave { animation: entry-wave 2.8s linear infinite; }
-html[data-intro-play] .qv-warm { animation: entry-warm 0.9s ease-out 2.8s both; }
-html[data-intro-play] .entry-intro__glow { animation: entry-glow 1s ease-out 2.75s both; }
-html[data-intro-play] .entry-intro__logo { animation: entry-logo 0.85s var(--ease-luxe) 2.9s both; }
-/* The qvevri and logo leave first, then the dark ground lifts off the page. */
-html[data-intro-play] .entry-intro__stage { animation: entry-stage-out 0.45s ease-in 3.4s both; }
-html[data-intro-play] .entry-intro { animation: entry-out 0.45s ease-in-out 3.55s forwards; }
+/* The sequence (≈4.8s): the outline draws (0.1s) → the wine rises with its
+   percentage, the loading indicator (0.55–2.85s) → a glint crosses the full
+   vessel and the outline warms (2.9s) → the logo comes into focus (3.1s) →
+   hold → the page. */
+html[data-intro-play] .qv-body { animation: qv-fade-in 0.8s ease-out 0.15s both; }
+html[data-intro-play] .qv-line { animation: qv-draw 1.3s cubic-bezier(0.45, 0, 0.25, 1) 0.1s both; }
+html[data-intro-play] .entry-qvevri__glow { animation: qv-fade-in 1.2s ease-out 0.3s both, qv-glow-full 0.9s ease-out 2.85s forwards; }
+html[data-intro-play] .qv-wine { animation: qv-fill 2.3s cubic-bezier(0.45, 0.05, 0.3, 1) 0.55s both; }
+html[data-intro-play] .entry-qvevri__gauge { animation: qv-gauge 2.3s cubic-bezier(0.45, 0.05, 0.3, 1) 0.55s both, qv-gauge-out 0.45s ease-in 2.95s forwards; }
+html[data-intro-play] .entry-qvevri__count { animation: qv-count 2.3s cubic-bezier(0.45, 0.05, 0.3, 1) 0.55s both; }
+html[data-intro-play] .qv-wave--front { animation: qv-wave-front 2.4s linear infinite; }
+html[data-intro-play] .qv-wave--back { animation: qv-wave-back 3.6s linear infinite; }
+html[data-intro-play] .qv-bubble { animation-name: qv-bubble; animation-timing-function: ease-in; animation-iteration-count: infinite; animation-fill-mode: both; }
+html[data-intro-play] .qv-warm { animation: qv-warm 0.8s ease-out 2.9s both; }
+html[data-intro-play] .qv-glint { animation: qv-glint 1.1s cubic-bezier(0.45, 0, 0.3, 1) 2.9s both; }
+html[data-intro-play] .entry-intro__motes span { animation-name: qv-mote; animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-fill-mode: both; }
+/* The vessel and logo leave first, then the dark ground lifts off the page. */
+html[data-intro-play] .entry-intro__logo { animation: qv-logo 0.85s cubic-bezier(0.22, 1, 0.36, 1) 3.1s both; }
+html[data-intro-play] .entry-intro__stage { animation: qv-stage-out 0.45s ease-in 4.3s both; }
+html[data-intro-play] .entry-intro { animation: entry-out 0.45s ease-in-out 4.45s forwards; }
 
-@keyframes entry-appear {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes entry-draw {
-  from { stroke-dashoffset: 1; }
-  to   { stroke-dashoffset: 0; }
-}
-@keyframes entry-fill {
-  from { transform: translateY(240px); }
-  to   { transform: none; }
-}
-@keyframes entry-wave {
-  from { transform: none; }
-  to   { transform: translateX(-120px); }
-}
-@keyframes entry-warm {
-  from { opacity: 0; }
-  to   { opacity: 0.6; }
-}
-@keyframes entry-glow {
+@keyframes qv-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes entry-logo {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: none; }
+@keyframes qv-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
 }
-@keyframes entry-stage-out {
+@keyframes qv-fill {
+  from { transform: translateY(320px); }
+  to   { transform: none; }
+}
+@keyframes qv-gauge {
+  from { opacity: 0; transform: none; }
+  12%  { opacity: 1; }
+  to   { opacity: 1; transform: translateY(-78.75%); }
+}
+@keyframes qv-gauge-out {
+  from { opacity: 1; transform: translateY(-78.75%); }
+  to   { opacity: 0; transform: translateY(-78.75%); }
+}
+@keyframes qv-count {
+  from { --qv-pct: 0; }
+  to   { --qv-pct: 100; }
+}
+@keyframes qv-wave-front {
+  from { transform: none; }
+  to   { transform: translateX(-60px); }
+}
+@keyframes qv-wave-back {
+  from { transform: translateX(-60px); }
+  to   { transform: none; }
+}
+@keyframes qv-bubble {
+  0%   { opacity: 0; transform: none; }
+  25%  { opacity: 0.55; }
+  100% { opacity: 0; transform: translateY(-90px); }
+}
+@keyframes qv-warm {
+  from { opacity: 0; }
+  to   { opacity: 0.55; }
+}
+@keyframes qv-glow-full {
+  from { opacity: 1; filter: brightness(1); }
+  to   { opacity: 1; filter: brightness(1.6); }
+}
+@keyframes qv-glint {
+  from { transform: translateX(0); }
+  to   { transform: translateX(380px); }
+}
+@keyframes qv-mote {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  40%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(6px, -34px); }
+}
+@keyframes qv-logo {
+  from { opacity: 0; filter: blur(10px); transform: translateY(8px); }
+  to   { opacity: 1; filter: blur(0); transform: none; }
+}
+@keyframes qv-stage-out {
   from { opacity: 1; transform: none; }
   to   { opacity: 0; transform: scale(1.03); }
 }
@@ -465,15 +571,34 @@ html[data-intro-play] .entry-intro { animation: entry-out 0.45s ease-in-out 3.55
   to   { opacity: 0; visibility: hidden; }
 }
 
-/* Reduced motion: the filled qvevri and logo, shown still, then a short fade. */
+/* Reduced motion: the full qvevri and logo, shown still, then a short fade. */
 @media (prefers-reduced-motion: reduce) {
   .age-gate__content,
   html[data-intro-play] .entry-intro * { animation: none !important; }
-  html[data-intro-play] .qv-vessel,
-  html[data-intro-play] .entry-intro__logo { opacity: 1; transform: none; }
+  html[data-intro-play] .qv-body,
+  html[data-intro-play] .entry-qvevri__glow { opacity: 1; }
   html[data-intro-play] .qv-line { stroke-dashoffset: 0; }
   html[data-intro-play] .qv-wine { transform: none; }
-  html[data-intro-play] .qv-warm { opacity: 0.6; }
-  html[data-intro-play] .entry-intro__glow { opacity: 1; }
-  html[data-intro-play] .entry-intro { animation: entry-out 0.4s ease 0.7s forwards !important; }
+  html[data-intro-play] .qv-warm { opacity: 0.55; }
+  html[data-intro-play] .entry-intro__logo { opacity: 1; filter: none; transform: none; }
+  html[data-intro-play] .entry-intro { animation: entry-out 0.4s ease 0.9s forwards !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Print: only the page's own content (no header, footer, preloader or age
+   gate). The wine technical sheet prints as one borderless A4 page.
+--------------------------------------------------------------------------- */
+@page wine-sheet {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body > :not(main):not(:has(main)) { display: none !important; }
+  html body { overflow: visible !important; }
+  .wine-sheet {
+    page: wine-sheet;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }

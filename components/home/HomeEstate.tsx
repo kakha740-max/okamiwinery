@@ -12,39 +12,32 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { Localized } from "@/components/data/awards";
 import { galleryImage } from "@/components/data/gallery";
 
-// Four photographs in an asymmetric mosaic — a doorway to the full gallery.
-// Three in black and white (scripts/generate-heritage-bw.mjs), one in colour.
-// Landscape photos fill portrait tiles, so `sizes` covers the width they
-// are drawn at.
-const mosaic: { src: string; alt: Localized; position: string; layout: string; sizes: string }[] = [
+// "The path of our wine", as the section's text tells it: vineyard → cellar
+// → qvevri → wine. Four tall panels side by side in one muted warmth
+// (scripts/generate-natural-edits.mjs); the one under the pointer or focus
+// widens while the others give way. Names come from messages/*.json
+// ("discover.path"), in the same order.
+const path: { src: string; alt: Localized; position: string }[] = [
   {
-    src: "heritage/estate-qvevri-bw.jpg",
-    alt: galleryImage("33.png").alt,
-    position: "60% 50%",
-    layout: "col-span-2 aspect-[4/5] md:col-span-6 md:row-span-2 md:aspect-auto",
-    sizes: "(min-width: 768px) 92vw, 200vw",
+    src: "path/path-vineyard.jpg",
+    alt: {
+      en: "Students harvesting grapes in the vineyard",
+      ka: "სტუდენტები ვენახში რთველზე",
+      ru: "Студенты на сборе винограда в винограднике",
+    },
+    position: "64% 50%",
   },
+  { src: "path/path-cellar.jpg", alt: galleryImage("2.png").alt, position: "62% 50%" },
   {
-    src: "heritage/estate-building-bw.jpg",
-    alt: galleryImage("29.webp").alt,
-    position: "50% 50%",
-    layout: "aspect-square md:col-span-3 md:aspect-auto",
-    sizes: "(min-width: 768px) 38vw, 75vw",
+    src: "path/path-qvevri.jpg",
+    alt: {
+      en: "A chapi drawing wine from a qvevri",
+      ka: "ჩაფით ქვევრიდან ღვინის ამოღება",
+      ru: "Чапи для забора вина из квеври",
+    },
+    position: "48% 50%",
   },
-  {
-    src: "heritage/estate-bottles-bw.jpg",
-    alt: galleryImage("4.png").alt,
-    position: "30% 50%",
-    layout: "aspect-square md:col-span-3 md:aspect-auto",
-    sizes: "(min-width: 768px) 38vw, 75vw",
-  },
-  {
-    src: "21.jpg",
-    alt: galleryImage("21.jpg").alt,
-    position: "50% 60%",
-    layout: "col-span-2 aspect-[16/10] md:col-span-6 md:aspect-auto",
-    sizes: "(min-width: 768px) 48vw, 100vw",
-  },
+  { src: "path/path-wine.jpg", alt: galleryImage("20.jpg").alt, position: "38% 50%" },
 ];
 
 export default function HomeEstate() {
@@ -65,28 +58,42 @@ export default function HomeEstate() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:h-[min(82vh,52rem)] md:grid-cols-12 md:grid-rows-2 md:gap-4">
-          {mosaic.map(({ src, alt, position, layout, sizes }, index) => (
-            <ImageReveal key={src} delay={index * 0.12} className={layout}>
-              <button
-                type="button"
-                onClick={() => {
-                  setPhotoIndex(index);
-                  setOpen(true);
-                }}
-                aria-label={`${t.ui.openImage}: ${alt[language]}`}
-                className="group absolute inset-0 block h-full w-full"
-              >
-                <Image
-                  src={`/images/${src}`}
-                  alt={alt[language]}
-                  fill
-                  quality={90}
-                  sizes={sizes}
-                  className="object-cover transition-transform duration-[1600ms] ease-[var(--ease-luxe)] group-hover:scale-[1.04]"
-                  style={{ objectPosition: position }}
-                />
-              </button>
+        <div className="grid grid-cols-2 gap-3 md:flex md:h-[min(78vh,46rem)] md:gap-4">
+          {path.map(({ src, alt, position }, index) => (
+            <ImageReveal
+              key={src}
+              delay={index * 0.12}
+              className="group aspect-[3/4] md:aspect-auto md:flex-1 md:transition-[flex-grow] md:duration-[900ms] md:ease-[var(--ease-luxe)] md:hover:flex-[2.3] md:has-[:focus-visible]:flex-[2.3] motion-reduce:transition-none"
+            >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPhotoIndex(index);
+                    setOpen(true);
+                  }}
+                  aria-label={`${t.ui.openImage}: ${alt[language]}`}
+                  className="absolute inset-0 block h-full w-full text-left"
+                >
+                  <Image
+                    src={`/images/${src}`}
+                    alt={alt[language]}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 768px) 45vw, 50vw"
+                    className="object-cover brightness-[0.92] transition-[transform,filter] duration-[1600ms] ease-[var(--ease-luxe)] group-hover:scale-[1.03] group-hover:brightness-100"
+                    style={{ objectPosition: position }}
+                  />
+                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-night/75 via-night/25 to-transparent" />
+                  <span className="absolute inset-x-0 bottom-0 p-4 text-paper md:p-7">
+                    <span className="flex items-center gap-3 text-[0.6875rem] tracking-[0.18em] text-gold tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
+                      <span aria-hidden="true" className="h-px w-6 bg-gold/70 transition-[width] duration-700 ease-[var(--ease-luxe)] md:group-hover:w-12" />
+                    </span>
+                    <span className="mt-2 block font-display text-2xl leading-tight font-light md:mt-3 md:text-[clamp(1.6rem,2.2vw,2.3rem)] [&:lang(ka)]:text-xl md:[&:lang(ka)]:text-[clamp(1.25rem,1.6vw,1.75rem)]">
+                      {t.discover.path[index]}
+                    </span>
+                  </span>
+                </button>
             </ImageReveal>
           ))}
         </div>
@@ -101,7 +108,7 @@ export default function HomeEstate() {
       <Lightbox
         open={open}
         index={photoIndex}
-        slides={mosaic.map(({ src, alt }) => ({ src: `/images/${src}`, alt: alt[language] }))}
+        slides={path.map(({ src, alt }) => ({ src: `/images/${src}`, alt: alt[language] }))}
         onClose={() => setOpen(false)}
       />
     </section>

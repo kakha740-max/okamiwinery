@@ -24,7 +24,7 @@ export const galleryImages: GalleryImage[] = [
   { src: "22.jpg", alt: { en: "Etno Okami bottles resting in a rack", ka: "ეთნო ოკამის ბოთლები თაროზე", ru: "Бутылки Этно Оками на стеллаже" } },
   { src: "4.png", alt: { en: "Bottles of red wine on the production line", ka: "წითელი ღვინის ბოთლები საწარმოო ხაზზე", ru: "Бутылки красного вина на производственной линии" } },
   { src: "5.png", alt: { en: "Bottling equipment", ka: "ჩამოსხმის დანადგარი", ru: "Оборудование для розлива" } },
-  { src: "6.png", alt: { en: "Laboratory", ka: "ლაბორატორია", ru: "Лаборатория" } },
+  { src: "41.png", alt: { en: "Tasting wine drawn from a steel tank", ka: "ფოლადის ავზიდან ჩამოსხმული ღვინის დეგუსტაცია", ru: "Дегустация вина из стального резервуара" } },
   { src: "24.png", alt: { en: "Students at the grape harvest", ka: "სტუდენტები რთველზე", ru: "Студенты на сборе винограда" } },
   { src: "7.png", alt: { en: "Tasting table with Etno Okami wines", ka: "სადეგუსტაციო მაგიდა ეთნო ოკამის ღვინოებით", ru: "Дегустационный стол с винами Этно Оками" } },
   { src: "8.png", alt: { en: "Etno Okami bottles and brochure", ka: "ეთნო ოკამის ბოთლები და ბროშურა", ru: "Бутылки и буклет Этно Оками" } },

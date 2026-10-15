@@ -39,7 +39,8 @@
     "button": "Discover Wines",
     "secondary": "Our Story",
     "location": "Shida Kartli · Georgia",
-    "since": "Since 1965"
+    "since": "Since 1965",
+    "kind": "Winery"
   },
   "story": {
     "eyebrow": "Our Story",
@@ -70,7 +71,13 @@
     "estateText": "A winery where the tradition of Georgian wine comes alive in the vineyards, historic cellars and Qvevri. Discover how our wine is made and the setting that gives each wine its own character.",
     "viewPhoto": "View Photo",
     "viewAll": "View All Photos",
-    "pageTitle": "Gallery"
+    "pageTitle": "Gallery",
+    "path": [
+      "Vineyard",
+      "Cellar",
+      "Qvevri",
+      "Wine"
+    ]
   },
   "featured": {
     "eyebrow": "COLLECTION",
@@ -159,7 +166,10 @@
     "technicalTitle": "Technical details",
     "awardsTitle": "Awards",
     "enquire": "Enquire about this wine",
-    "moreWines": "More from Etno Okami"
+    "moreWines": "More from Etno Okami",
+    "sheetTitle": "Technical sheet",
+    "sheetDownload": "Download technical sheet (PDF)",
+    "sheetWeb": "Web"
   },
   "tour": {
     "hero": {
@@ -302,7 +312,7 @@
     "storyLink": "Read our story",
     "qvevriEyebrow": "Qvevri",
     "qvevriTitle": "Qvevri",
-    "qvevriText": "The oldest tradition of Georgian winemaking, which develops the wine's character over time.",
+    "qvevriText": "An 8,000-year tradition of Georgian winemaking — time that shapes the character of the wine.",
     "writeToUs": "Write to us",
     "awardsTitle": "Awards & Recognition",
     "awardsLink": "View all awards",
@@ -315,5 +325,79 @@
     "chapterMission": "Our Mission",
     "knowledgeEyebrow": "Knowledge & Craft",
     "knowledgeTitle": "Where academic research meets traditional expertise"
+  },
+  "history": {
+    "hero": {
+      "title": "Etno Okami",
+      "subtitle": "A Story Continued Through Knowledge"
+    },
+    "intro": [
+      "Etno Okami is a space where Georgia’s centuries-old winemaking tradition meets modern knowledge, scientific research, and the professional experience of a new generation of winemakers.",
+      "The foundation of the company’s concept and development is the academic and practical experience accumulated at the Faculty of Viticulture and Winemaking of Caucasus International University. Close cooperation with the University creates a professional environment where traditional winemaking knowledge comes together with modern technologies, research, and education.",
+      "The Etno Okami team brings together students and graduates of the Faculty of Viticulture and Winemaking of Caucasus International University — young professionals who transform academic knowledge directly into practical winemaking.",
+      "For Etno Okami, this connection is more than an academic direction. It represents an important foundation for quality, professional responsibility, and a scientific approach to winemaking."
+    ],
+    "okami": {
+      "title": "Okami — Where History Continues",
+      "paragraphs": [
+        "The history of Etno Okami is inseparable from the centuries-old winemaking tradition of Okami itself.",
+        "For centuries, the Okami microzone has been distinguished by its culture of viticulture and winemaking. An important stage in the region’s modern winemaking history began in 1965, when Tengiz Kekelidze established the Okami Winery.",
+        "The historic winery played an important role in the development of winemaking in the region. Today, this heritage is entering a new stage — bringing together experience, knowledge, historical identity, and the possibilities of modern winemaking."
+      ],
+      "highlight": [
+        "in 1965",
+        "Tengiz Kekelidze"
+      ],
+      "year": "1965",
+      "founder": "Tengiz Kekelidze",
+      "timeline": [
+        "Okami Winery",
+        "Heritage",
+        "Etno Okami"
+      ]
+    },
+    "academic": {
+      "title": "Academic Knowledge — Put into Practice",
+      "paragraphs": [
+        "One of the defining characteristics of Etno Okami is the integration of academic knowledge with real-world winemaking practice.",
+        "The experience of the Faculty of Viticulture and Winemaking of Caucasus International University enables us to approach the creation of wine not only through traditional experience, but also through modern scientific methods and research-based knowledge.",
+        "From grape variety selection and vineyard management to fermentation, maturation, and the creation of the final product, every stage is guided by the principles of quality, precision, and preservation of the identity of place.",
+        "For us, science does not replace tradition — it helps us continue that tradition with greater precision and quality."
+      ],
+      "chain": [
+        "Caucasus International University",
+        "Faculty of Viticulture and Winemaking",
+        "Scientific Research",
+        "Practical Winemaking"
+      ]
+    },
+    "pdo": {
+      "title": "“Okami” — Protected Designation of Origin",
+      "year": "2022",
+      "paragraphs": [
+        "In 2022, with the support of Caucasus International University, the “Okami” Protected Designation of Origin (PDO) was registered.",
+        "Etno Okami is the author of the product specification for “Okami” PDO wine and currently produces both white and red wines under this designation.",
+        "For us, a protected designation of origin is more than a status. It is a responsibility — to represent with precision and authenticity the place whose name the wine carries.",
+        "The natural conditions, terroir, and Georgian grape varieties of the Okami microzone form the foundation upon which the distinctive character of “Okami” wine is shaped."
+      ],
+      "highlight": [
+        "“Okami” Protected Designation of Origin (PDO)"
+      ]
+    },
+    "wines": {
+      "title": "Our Wines",
+      "intro": "The Etno Okami wine portfolio brings together wines produced under the “Okami” Protected Designation of Origin, as well as wines made from distinctive grape varieties and originating from other notable microzones of Georgia.",
+      "list": "Okami • Tavkveri • Shavkapito • Rkatsiteli • Khashmi Saperavi • Chinuri–Goruli Mtsvane",
+      "more": "and other wines.",
+      "closing": "For us, each wine is an opportunity to express the unique relationship between grape variety, place, and the winemaker’s vision."
+    },
+    "philosophy": {
+      "title": "The Philosophy of Wine",
+      "paragraphs": [
+        "We believe that the future of Georgian wine lies in the unity of tradition and knowledge.",
+        "For Etno Okami, this means not only producing high-quality wine, but also contributing to the development of Georgian winemaking — supporting young professionals, advancing research and innovation, revealing the potential of Georgian grape varieties, and introducing the terroir of Okami to the international stage."
+      ]
+    },
+    "final": "Our goal is to preserve history, develop knowledge, and shape the future of Georgian wine."
   }
 }

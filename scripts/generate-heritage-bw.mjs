@@ -2,7 +2,8 @@
 // section and the "Discover Etno Okami" mosaic) and the story page. All are
 // kept at their native resolution — no artificial upscaling. The colour
 // originals are left untouched; this writes new files to public/images/heritage.
-//   node scripts/generate-heritage-bw.mjs
+//   node scripts/generate-heritage-bw.mjs            (all)
+//   node scripts/generate-heritage-bw.mjs university  (only outputs whose name matches)
 // Uses sharp, which ships with Next.js.
 import { mkdirSync } from "node:fs";
 import sharp from "sharp";
@@ -45,6 +46,26 @@ const jobs = [
     contrast: 0.24,
     sharpen: { sigma: 0.7, m1: 0.4, m2: 1 },
   },
+  // Story page, introduction: the university and its students at the harvest.
+  {
+    source: "public/images/university.png",
+    output: `${out}/university-bw.jpg`,
+    contrast: 0.22,
+    sharpen: { sigma: 0.7, m1: 0.4, m2: 1 },
+  },
+  {
+    source: "public/images/24.png",
+    output: `${out}/harvest-bw.jpg`,
+    contrast: 0.22,
+    sharpen: { sigma: 0.7, m1: 0.4, m2: 1 },
+  },
+  // Story page, academic chapter: a chapi drawing wine from a qvevri.
+  {
+    source: "public/images/45.png",
+    output: `${out}/chapi-bw.jpg`,
+    contrast: 0.22,
+    sharpen: { sigma: 0.7, m1: 0.4, m2: 1 },
+  },
   // Home page story section.
   {
     source: "public/images/32.png",
@@ -59,7 +80,8 @@ const jobs = [
 // instead of turning muddy, as they do with a plain desaturation.
 const MIX = [0.4, 0.45, 0.15];
 
-for (const job of jobs) {
+const only = process.argv.slice(2);
+for (const job of jobs.filter((j) => !only.length || only.some((name) => j.output.includes(name)))) {
   const { data, info } = await sharp(job.source).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const pixels = info.width * info.height;
 

@@ -19,7 +19,31 @@ const jobs = [
     // A little warmth, so the cool blue grapes sit naturally with the page.
     tint: [1.03, 1.0, 0.95],
   },
+  // Home page qvevri interlude: almost black and white, with a trace of the
+  // clay's warmth left in, and softer contrast.
+  {
+    source: "public/images/33.png",
+    output: `${out}/qvevri-muted.jpg`,
+    saturation: 0.22,
+    linear: { a: 0.88, b: 8 },
+    tint: [1.02, 1.0, 0.96],
+  },
+  // Home page "The path of our wine": vineyard → cellar → qvevri → wine, all
+  // in the same muted warmth so the four panels read as one sequence.
+  ...[
+    ["44.png", "path-vineyard"],
+    ["2.png", "path-cellar"],
+    ["45.png", "path-qvevri"],
+    ["20.jpg", "path-wine"],
+  ].map(([source, name]) => ({
+    source: `public/images/${source}`,
+    output: `public/images/path/${name}.jpg`,
+    saturation: 0.32,
+    linear: { a: 0.9, b: 6 },
+    tint: [1.03, 1.0, 0.94],
+  })),
 ];
+mkdirSync("public/images/path", { recursive: true });
 
 for (const job of jobs) {
   const [r, g, b] = job.tint;

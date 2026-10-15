@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import ButtonLink from "@/components/ui/ButtonLink";
-import Container from "@/components/ui/Container";
 import ImageReveal from "@/components/ui/ImageReveal";
 import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -13,38 +12,36 @@ export default function HomeIntro() {
 
   return (
     <section className="bg-paper py-24 md:py-36">
-      <Container size="wide">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
-          {/* Text */}
-          <div className="lg:col-span-5 lg:pt-10">
-            <Reveal>
-              <p className="eyebrow text-bronze">{t.experience.eyebrow}</p>
-              <h2 className="display-md mt-6 text-ink">{t.experience.title}</h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="body-copy mt-8 max-w-md text-umber">{t.experience.description}</p>
-              <ButtonLink href="/story" variant="text" arrow className="mt-10">
-                {t.home.storyLink}
-              </ButtonLink>
-            </Reveal>
-          </div>
-
-          {/* The small barrels in black and white (scripts/generate-heritage-bw.mjs) */}
-          <div className="relative lg:col-span-7 lg:col-start-6">
-            <ImageReveal className="ml-auto aspect-square w-full lg:w-[82%]">
-              <Image
-                src="/images/heritage/barrels-bw.jpg"
-                alt={t.experience.title}
-                fill
-                quality={90}
-                // A 2:1 photo in a square frame renders ~2× the frame's width.
-                sizes="(min-width: 1024px) 88vw, 200vw"
-                className="object-cover"
-              />
-            </ImageReveal>
-          </div>
+      {/* As on the story page: the photograph whole and running to the
+          screen's edge, the words beside it, aligned with the page's grid */}
+      <div className="grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-0">
+        {/* Text */}
+        <div className="px-5 sm:px-8 lg:col-span-5 lg:pr-16 lg:pl-[max(3rem,calc((100vw-96rem)/2+3rem))]">
+          <Reveal>
+            <p className="eyebrow text-bronze">{t.experience.eyebrow}</p>
+            <h2 className="display-md mt-6 text-ink lining-nums">{t.experience.title}</h2>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="body-copy mt-8 max-w-md text-umber">{t.experience.description}</p>
+            <ButtonLink href="/story" variant="text" arrow className="mt-10">
+              {t.home.storyLink}
+            </ButtonLink>
+          </Reveal>
         </div>
-      </Container>
+
+        {/* The small barrels in black and white (scripts/generate-heritage-bw.mjs),
+            at the photograph's own proportions */}
+        <ImageReveal className="aspect-[1764/891] w-full lg:col-span-7">
+          <Image
+            src="/images/heritage/barrels-bw.jpg"
+            alt={t.experience.title}
+            fill
+            quality={90}
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="object-cover"
+          />
+        </ImageReveal>
+      </div>
     </section>
   );
 }

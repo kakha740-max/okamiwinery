@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import Arrow from "@/components/ui/Arrow";
 import ButtonLink from "@/components/ui/ButtonLink";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { Wine } from "@/components/data/wines";
@@ -16,19 +17,54 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const present = (value: string) => value && value !== "—";
 
-// First screen of a product page: the bottle dominates the left half, the
-// name, vintage and three key facts sit quietly on the right.
+// The glow behind the bottle takes the wine's colour: garnet for the reds,
+// a warm gold for the whites.
+const glow = {
+  Red: "bg-[radial-gradient(closest-side,rgb(91_26_35/0.3),rgb(91_26_35/0.09)_55%,transparent)]",
+  White: "bg-[radial-gradient(closest-side,rgb(201_167_102/0.36),rgb(201_167_102/0.1)_55%,transparent)]",
+} as const;
+
+// Width of one capital letter of the display face, in em — Georgian Mtavruli
+// sets wider than Cormorant's capitals.
+const letterWidth = { en: 0.76, ru: 0.86, ka: 1 } as const;
+
+// A name of more than one word is set on two lines, split where the two come
+// out most even, so it can be set larger. The first line keeps its space or
+// hyphen, so the name still reads whole.
+function nameLines(name: string): string[] {
+  let best = [name];
+  let longest = name.length;
+  for (const match of name.matchAll(/[\s-]/g)) {
+    const first = name.slice(0, match.index + 1);
+    const second = name.slice(match.index + 1);
+    const length = Math.max(first.trim().length, second.length);
+    if (length < longest) {
+      best = [first, second];
+      longest = length;
+    }
+  }
+  return best;
+}
+
+// First screen of a product page. The words on the left, aligned with the
+// page's grid: the type, the name set large, the vintage, the key facts and
+// the next steps. The bottle on the right, on its own panel running to the
+// screen's edge — a thin gold ring behind it, a glow of the wine's colour and
+// the vintage set vertically along the edge. On a phone: name, bottle, facts.
 export default function WineHero({ wine }: WineHeroProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const s = t.winePage;
 
-  // Hyphens are natural break points, so only the pieces between them count.
-  const longestWord = Math.max(...wine.name.split(/[\s-]+/).map((word) => word.length));
+  // The name fits its column: its size is capped by its longest line.
+  const lines = nameLines(wine.name);
+  const longestLine = Math.max(...lines.map((line) => line.trim().length));
+  const fit = `calc(100cqi / ${(longestLine * letterWidth[language]).toFixed(2)})`;
 
   const facts = [
-    { label: s.variety, value: wine.variety },
     { label: s.region, value: wine.region },
+    { label: s.variety, value: wine.variety },
     { label: s.alcohol, value: wine.alcohol },
+    { label: s.volume, value: wine.volume },
   ].filter((fact) => present(fact.value));
 
   const rise = (delay: number) => ({
@@ -37,27 +73,78 @@ export default function WineHero({ wine }: WineHeroProps) {
     transition: { duration: 1.1, ease, delay },
   });
 
+  // The left column starts where the page's grid does on wide screens.
+  const gutter = "px-5 sm:px-8 lg:pr-14 lg:pl-[max(3rem,calc((100vw-96rem)/2+3rem))] xl:pr-20";
+
   return (
-    <section className="grid bg-paper lg:min-h-[100svh] lg:grid-cols-2">
-      {/* Bottle */}
-      <div className="relative flex min-h-[80svh] items-end justify-center overflow-hidden bg-bone pt-28 pb-[7svh] lg:min-h-[100svh] lg:pt-32">
+    <section className="grid bg-bone lg:h-svh lg:min-h-[46rem] lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
+      {/* Type, name and vintage */}
+      <div className={`@container pt-28 lg:col-span-7 lg:self-end lg:pt-32 ${gutter}`}>
+        <motion.nav {...rise(0.2)} aria-label={t.ui.breadcrumb}>
+          <ol className="flex items-center gap-3 text-sm text-stone">
+            <li>
+              <Link href="/wines" className="transition-colors hover:text-ink">
+                {t.navbar.wines}
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" className="caps text-ink">
+              {wine.name}
+            </li>
+          </ol>
+        </motion.nav>
+
+        <motion.p {...rise(0.3)} className="eyebrow mt-12 flex items-center gap-4 text-bronze lg:mt-[min(9svh,5.5rem)]">
+          <span aria-hidden="true" className="h-px w-10 bg-gold" />
+          {wine.subtitle}
+        </motion.p>
+
+        <motion.h1
+          {...rise(0.4)}
+          style={{ "--name-fit": fit } as React.CSSProperties}
+          className="caps mt-6 font-display text-[length:min(8.5rem,17svh,var(--name-fit))] leading-[0.95] font-light whitespace-nowrap text-ink [&:lang(ka)]:tracking-[0.01em]"
+        >
+          {lines.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </motion.h1>
+
+        {present(wine.year) && (
+          <motion.p
+            {...rise(0.5)}
+            className="mt-5 font-display text-[clamp(2.4rem,4vw,3.8rem)] leading-none font-light text-bronze italic lining-nums"
+          >
+            {wine.year}
+          </motion.p>
+        )}
+      </div>
+
+      {/* The bottle, on its own panel to the screen's edge */}
+      <div className="relative mt-12 flex h-[34rem] items-center justify-center overflow-hidden bg-[#e3d9c8] lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:h-auto">
+        <span aria-hidden="true" className={`absolute top-1/2 left-1/2 aspect-square w-[150%] -translate-x-1/2 -translate-y-1/2 ${glow[wine.category as keyof typeof glow] ?? glow.White}`} />
+        <motion.span
+          aria-hidden="true"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8, ease, delay: 0.2 }}
+          className="absolute top-1/2 left-1/2 aspect-square w-[min(78%,30rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/45"
+        />
         {present(wine.year) && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[44vw] leading-none font-light text-ink/[0.045] select-none lg:text-[22vw]"
+            className="eyebrow absolute top-1/2 right-5 -translate-y-1/2 rotate-180 text-bronze/80 [writing-mode:vertical-rl] lg:right-8"
           >
-            {wine.year}
+            {s.vintage} · <span className="lining-nums">{wine.year}</span>
           </span>
         )}
-        <span
-          aria-hidden="true"
-          className="absolute bottom-[5.5svh] left-1/2 h-6 w-48 -translate-x-1/2 rounded-[50%] bg-ink/25 blur-xl"
-        />
+        <span aria-hidden="true" className="absolute bottom-[calc(50%-min(36svh,22rem)-0.5rem)] left-1/2 h-5 w-36 -translate-x-1/2 rounded-[50%] bg-ink/30 blur-xl max-lg:bottom-[3rem]" />
         <motion.div
           initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.6, ease, delay: 0.1 }}
-          className="relative"
+          className="group relative h-[29rem] lg:mt-16 lg:h-[min(72svh,44rem)]"
         >
           <Image
             src={wine.image}
@@ -66,72 +153,37 @@ export default function WineHero({ wine }: WineHeroProps) {
             height={1140}
             quality={90}
             preload
-            sizes="(min-width: 1024px) 220px, 170px"
-            className="h-[min(64svh,36rem)] w-auto object-contain lg:h-[min(76svh,50rem)]"
+            sizes="(min-width: 1024px) 240px, 160px"
+            className="h-full w-auto origin-bottom object-contain drop-shadow-[0_30px_40px_rgb(23_19_15/0.2)] transition-transform duration-700 ease-[var(--ease-luxe)] group-hover:scale-[1.06] motion-reduce:transition-none"
           />
         </motion.div>
       </div>
 
-      {/* Text */}
-      <div className="flex items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-32 xl:px-24">
-        <div className="@container w-full max-w-xl">
-          <motion.nav {...rise(0.2)} aria-label={t.ui.breadcrumb}>
-            <ol className="flex items-center gap-3 text-sm text-stone">
-              <li>
-                <Link href="/wines" className="transition-colors hover:text-ink">
-                  {t.navbar.wines}
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page" className="caps text-ink">
-                {wine.name}
-              </li>
-            </ol>
-          </motion.nav>
+      {/* Key facts and the next steps */}
+      <div className={`pt-10 pb-14 lg:col-span-7 lg:row-start-2 lg:pt-12 lg:pb-[min(7svh,4rem)] ${gutter}`}>
+        <motion.dl {...rise(0.6)} className="grid grid-cols-2 gap-x-8 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+          {facts.map((fact) => (
+            <div key={fact.label} className="border-t border-ink/15 py-4">
+              <dt className="eyebrow text-stone">{fact.label}</dt>
+              <dd className="mt-2 font-display text-lg leading-snug text-ink lining-nums [&:lang(ka)]:text-base">{fact.value}</dd>
+            </div>
+          ))}
+        </motion.dl>
 
-          <motion.p {...rise(0.3)} className="eyebrow mt-14 text-bronze">
-            {wine.subtitle}
-          </motion.p>
-
-          {/* Never break a word: the size is capped so the longest word (by
-              letters, ~0.82em each in capitals) fits the column; short names
-              keep the full display size. */}
-          <motion.h1
-            {...rise(0.4)}
-            style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties}
-            className="display-lg caps mt-5 font-medium text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:font-normal [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
+        <motion.div {...rise(0.7)} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          {/* Scrolls to the contact details in the footer */}
+          <ButtonLink href="#footer" variant="solid" arrow>
+            {t.contact.buttonContact}
+          </ButtonLink>
+          <a
+            href={`/sheets/${wine.slug}-${language}.pdf`}
+            download
+            className="label link-line inline-flex items-center gap-3 text-ink hover:text-bronze"
           >
-            {wine.name}
-          </motion.h1>
-
-          {present(wine.year) && (
-            <motion.p {...rise(0.5)} className="mt-4 font-display text-4xl font-light text-bronze italic">
-              {wine.year}
-            </motion.p>
-          )}
-
-          <motion.dl {...rise(0.6)} className="mt-12 grid grid-cols-1 border-t border-ink/15 sm:grid-cols-3">
-            {facts.map((fact, index) => (
-              <div
-                key={fact.label}
-                className={`border-b border-ink/15 py-5 sm:border-b-0 ${index > 0 ? "sm:border-l sm:pl-5" : ""} sm:pr-4`}
-              >
-                <dt className="eyebrow text-stone">{fact.label}</dt>
-                <dd className="mt-2 text-ink">{fact.value}</dd>
-              </div>
-            ))}
-          </motion.dl>
-
-          <motion.div {...rise(0.7)} className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5">
-            {/* Scrolls to the contact details in the footer */}
-            <ButtonLink href="#footer" variant="solid" arrow>
-              {t.contact.buttonContact}
-            </ButtonLink>
-            <ButtonLink href="/wines" variant="text" className="link-line">
-              {t.ui.allWines}
-            </ButtonLink>
-          </motion.div>
-        </div>
+            <Arrow direction="down" className="w-4" />
+            {s.sheetDownload}
+          </a>
+        </motion.div>
       </div>
     </section>
   );

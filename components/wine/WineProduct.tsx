@@ -8,8 +8,9 @@ import { localizeWine, wines, type Wine } from "@/components/data/wines";
 
 import WineHero from "./WineHero";
 import WineDetails from "./WineDetails";
+import WineTasting from "./WineTasting";
 
-// A deliberately simple product page: bottle and name, the technical sheet
+// A deliberately simple product page: bottle and name, the tasting note, the technical sheet
 // with food pairing, then the rest of the range in the home page carousel.
 export default function WineProduct({ wine: original }: { wine: Wine }) {
   const { t, language } = useLanguage();
@@ -22,6 +23,7 @@ export default function WineProduct({ wine: original }: { wine: Wine }) {
   return (
     <>
       <WineHero wine={wine} />
+      <WineTasting wine={wine} />
       <WineDetails wine={wine} />
 
       <section className="bg-bone py-24 md:py-32">

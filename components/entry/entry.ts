@@ -34,5 +34,5 @@ export function startIntro() {
   // The animationend events normally finish it; this only covers a hidden tab
   // or a browser that skipped them.
   clearTimeout(fallback);
-  fallback = setTimeout(finishIntro, 5500);
+  fallback = setTimeout(finishIntro, 6500);
 }
