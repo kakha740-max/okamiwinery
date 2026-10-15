@@ -13,6 +13,7 @@ import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { galleryImage } from "@/components/data/gallery";
 import { localizeWine, wines } from "@/components/data/wines";
+import KeepWords from "@/components/ui/KeepWords";
 
 // Shared editorial type. Georgian sets larger and wider than Cormorant, so
 // the serif sizes step down for it (as the global display scale does).
@@ -397,7 +398,7 @@ export default function StoryChapters() {
                       />
                     </div>
                     <p className="mt-5 font-display text-lg leading-snug text-ink transition-colors duration-500 group-hover:text-bronze [&:lang(ka)]:text-base">
-                      {wine.name}
+                      <KeepWords text={wine.name} />
                     </p>
                     <p className="mt-1.5 text-xs leading-relaxed tracking-[0.04em] text-stone">{wine.subtitle}</p>
                   </Link>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { localizeWine, wines } from "@/components/data/wines";
+import KeepWords from "@/components/ui/KeepWords";
 import { allAwards, wineSlugForAward } from "@/components/data/awards";
 import { getTranslations, type Language } from "@/lib/translations";
 import { PHONE, SITE_URL } from "@/lib/site";
@@ -109,7 +110,7 @@ export default async function WineSheetPage({ params }: Props) {
           <div className="flex flex-col pt-[2mm]">
             <p className="eyebrow text-bronze">{wine.subtitle}</p>
             <h1 className="display-md caps mt-[4mm] font-normal text-[30pt] leading-[1.02] [&:lang(ka)]:text-[22pt] [&:lang(ka)]:leading-[1.2]">
-              {wine.name}
+              <KeepWords text={wine.name} />
             </h1>
             <p className="mt-[2mm] font-display text-[22pt] font-light text-bronze italic lining-nums">{wine.year}</p>
             <span aria-hidden="true" className="mt-[6mm] block h-px w-[14mm] bg-gold" />

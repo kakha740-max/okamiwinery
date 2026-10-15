@@ -134,7 +134,7 @@ export default function AgeGate() {
           </>
         ) : (
           <>
-            <h2 id="age-gate-title" className="display-md mt-10 text-paper">
+            <h2 id="age-gate-title" className="display-md mt-10 text-paper lining-nums">
               <Copy pick={(c) => c.ageGate.title} />
             </h2>
             <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">

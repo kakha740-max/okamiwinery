@@ -28,13 +28,14 @@ const glow = {
 // sets wider than Cormorant's capitals.
 const letterWidth = { en: 0.76, ru: 0.86, ka: 1 } as const;
 
-// A name of more than one word is set on two lines, split where the two come
-// out most even, so it can be set larger. The first line keeps its space or
-// hyphen, so the name still reads whole.
+// A name of more than one word is set on two lines, split at the space where
+// the two come out most even, so it can be set larger. Hyphenated pairs such
+// as "Chinuri-Goruli" stay together. The first line keeps its space, so the
+// name still reads whole.
 function nameLines(name: string): string[] {
   let best = [name];
   let longest = name.length;
-  for (const match of name.matchAll(/[\s-]/g)) {
+  for (const match of name.matchAll(/\s/g)) {
     const first = name.slice(0, match.index + 1);
     const second = name.slice(match.index + 1);
     const length = Math.max(first.trim().length, second.length);

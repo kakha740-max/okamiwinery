@@ -116,12 +116,18 @@ export default function HomeHero() {
                 {t.hero.eyebrow}
               </motion.p>
 
-              {/* The wordmark in the visitor's language, as on the story page */}
+              {/* The wordmark in the visitor's language. Russian reads
+                  "Винодельня «Этно Оками»", so the kind comes first there. */}
               <motion.h1 {...rise(0.45)} className="mt-4">
-                <span className="display-lg block">{t.history.hero.title}</span>
-                <span className="label mt-1 block tracking-[0.5em] text-paper/80 [&:lang(ka)]:mt-3 [&:lang(ka)]:tracking-[0.3em]">
-                  {t.hero.kind}
-                </span>
+                {t.hero.kindFirst && (
+                  <span className="label mb-3 block tracking-[0.5em] text-paper/80">{t.hero.kind} </span>
+                )}
+                <span className="display-lg block">{t.hero.wordmark}</span>
+                {!t.hero.kindFirst && (
+                  <span className="label mt-1 block tracking-[0.5em] text-paper/80 [&:lang(ka)]:mt-3 [&:lang(ka)]:tracking-[0.3em]">
+                    {t.hero.kind}
+                  </span>
+                )}
               </motion.h1>
 
               <motion.p {...rise(0.65)} className="body-copy mt-3 max-w-lg text-paper/80 md:text-lg [&:lang(ka)]:tracking-[-0.01em]">

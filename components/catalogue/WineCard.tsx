@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { localizeWine, type Wine } from "@/components/data/wines";
+import KeepWords, { longestWordLength } from "@/components/ui/KeepWords";
 
 type WineCardProps = {
   wine: Wine;
@@ -19,7 +20,7 @@ export default function WineCard({ wine: original, tone = "bone", headingLevel =
   const { language } = useLanguage();
   const wine = localizeWine(original, language);
   // Never break a word: the title is capped so its longest word fits the card.
-  const longestWord = Math.max(...wine.name.split(/[s-]+/).map((word) => word.length));
+  const longestWord = longestWordLength(wine.name);
   const Heading = headingLevel;
 
   const details = [wine.year, wine.variety].filter((value) => value && value !== "—");
@@ -49,7 +50,7 @@ export default function WineCard({ wine: original, tone = "bone", headingLevel =
       <div className="@container mt-5 pr-2">
         <p className="eyebrow text-bronze">{wine.subtitle}</p>
         <Heading style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-2 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] [&:lang(ka)]:font-normal">
-          {wine.name}
+          <KeepWords text={wine.name} />
         </Heading>
         {details.length > 0 && <p className="mt-1.5 text-sm text-stone">{details.join(" · ")}</p>}
       </div>

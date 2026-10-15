@@ -13,6 +13,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { allAwards, competitions, wineNames, wineSlugForAward, type Medal } from "@/components/data/awards";
 
 import { MedalBadge, medalLabels } from "./medals";
+import KeepWords, { longestWordLength } from "@/components/ui/KeepWords";
 
 type AwardEntry = (typeof allAwards)[number];
 
@@ -65,7 +66,7 @@ export default function AwardsEditorial() {
   const slug = wineSlugForAward(award);
   const name = wineNames[award.wine][language];
   // Hyphens are natural break points, so only the pieces between them count.
-  const longestWord = Math.max(...name.split(/[s-]+/).map((word) => word.length));
+  const longestWord = longestWordLength(name);
 
   const go = (step: number) => {
     setPosition(([current]) => [(current + step + count) % count, step]);
@@ -172,7 +173,7 @@ export default function AwardsEditorial() {
                       style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties}
                       className="display-lg caps mt-5 text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
                     >
-                      {name}
+                      <KeepWords text={name} />
                     </h2>
                     <p className="font-display mt-3 text-3xl font-light text-stone lining-nums">{award.vintage}</p>
 

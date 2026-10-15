@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/layout/SkipLink";
+import DocumentTitle from "@/components/layout/DocumentTitle";
 import AgeGate from "@/components/entry/AgeGate";
 import QvevriPreloader from "@/components/entry/QvevriPreloader";
 import { entryScript } from "@/components/entry/entry";
@@ -71,6 +72,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: entryScript }} />
         <LanguageProvider>
           <SkipLink />
+          <DocumentTitle />
           <QvevriPreloader />
           <AgeGate />
           <Navbar />

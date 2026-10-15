@@ -53,7 +53,7 @@ const GWA: Localized = {
 const IQWC: Localized = {
   en: "International Qvevri Wine Competition",
   ka: "ქვევრის ღვინის საერთაშორისო კონკურსი",
-  ru: "Международный конкурс квеври-вин",
+  ru: "Международный конкурс вин в квеври",
 };
 
 const SAPERAVI: Localized = {
@@ -73,7 +73,7 @@ export const competitions: Competition[] = [
       {
         en: "Organised by the Georgian Wine Association with the support of the National Wine Agency, the International Qvevri Wine Competition is devoted exclusively to wines made in Qvevri — the clay vessel at the heart of Georgia's ancient winemaking tradition.",
         ka: "ქვევრის ღვინის საერთაშორისო კონკურსს ასოციაცია „ქართული ღვინო“ ღვინის ეროვნული სააგენტოს მხარდაჭერით მართავს. კონკურსი მხოლოდ ქვევრში დაყენებულ ღვინოებს ეძღვნება — თიხის ჭურჭელს, რომელიც ქართული მეღვინეობის უძველესი ტრადიციის გულია.",
-        ru: "Международный конкурс квеври-вин проводит Ассоциация «Грузинское вино» при поддержке Национального агентства вина. Конкурс посвящён исключительно винам, созданным в квеври — глиняном сосуде, лежащем в основе древней грузинской традиции виноделия.",
+        ru: "Международный конкурс вин в квеври проводит Ассоциация «Грузинское вино» при поддержке Национального агентства вина. Конкурс посвящён исключительно винам, созданным в квеври — глиняном сосуде, лежащем в основе древней грузинской традиции виноделия.",
       },
       {
         en: "Every sample is tasted blind by an international jury; the 2024 certificates bear the signatures of Andrew Jefford, Julia Harding MW, Robert Joseph and Tina Kezeli. Three Etno Okami wines were awarded, led by a silver medal for Tavkveri 2022.",
@@ -120,7 +120,7 @@ export const competitions: Competition[] = [
       {
         en: "In December 2023 the International Qvevri Wine Competition once again brought together Qvevri winemakers from Georgia and beyond, organised by the Georgian Wine Association with the National Wine Agency.",
         ka: "2023 წლის დეკემბერში ქვევრის ღვინის საერთაშორისო კონკურსმა კვლავ შეკრიბა ქვევრის მეღვინეები საქართველოდან და მის ფარგლებს გარეთ. კონკურსი ასოციაცია „ქართულმა ღვინომ“ ღვინის ეროვნულ სააგენტოსთან ერთად მოაწყო.",
-        ru: "В декабре 2023 года Международный конкурс квеври-вин вновь собрал виноделов из Грузии и других стран. Организатором выступила Ассоциация «Грузинское вино» совместно с Национальным агентством вина.",
+        ru: "В декабре 2023 года Международный конкурс вин в квеври вновь собрал виноделов из Грузии и других стран. Организатором выступила Ассоциация «Грузинское вино» совместно с Национальным агентством вина.",
       },
       {
         en: "The jury, headed by Robert Joseph, awarded silver medals to four Etno Okami wines — our most decorated competition to date: Chinuri-Goruli Mtsvane 2020 and 2022, Rkatsiteli 2021 and Okami 2022.",

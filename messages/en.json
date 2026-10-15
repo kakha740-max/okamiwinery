@@ -40,7 +40,9 @@
     "secondary": "Our Story",
     "location": "Shida Kartli · Georgia",
     "since": "Since 1965",
-    "kind": "Winery"
+    "kind": "Winery",
+    "wordmark": "Etno Okami",
+    "kindFirst": false
   },
   "story": {
     "eyebrow": "Our Story",
