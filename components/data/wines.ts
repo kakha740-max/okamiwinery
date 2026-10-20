@@ -3,6 +3,11 @@ import type { Language } from "@/lib/translations";
 // Etno Okami wine range. Vintage and alcohol as confirmed by the winery
 // (2026-10); type, region and the tasting text from its wine sheet. "—"
 // marks a value not given yet. Descriptions may hold paragraph breaks.
+// Vintages are kept in the data but not shown on the site for now: wine
+// pages, cards, page titles, technical sheets and structured data all follow
+// this switch. (Award vintages are part of each award and stay.)
+export const SHOW_VINTAGE = false;
+
 export const wines = [
   {
     id: "okami-red",

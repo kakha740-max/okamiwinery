@@ -1,5 +1,5 @@
 import en from "@/messages/en.json";
-import type { Wine } from "@/components/data/wines";
+import { SHOW_VINTAGE, type Wine } from "@/components/data/wines";
 import { awardsForWine, wineNames } from "@/components/data/awards";
 import { DEFAULT_DESCRIPTION, FACEBOOK_URL, PHONE, SITE_NAME, SITE_URL } from "./site";
 
@@ -43,7 +43,7 @@ export function wineJsonLd(wine: Wine) {
 
   const properties = [
     { name: "Grape variety", value: wine.variety },
-    { name: "Vintage", value: wine.year },
+    { name: "Vintage", value: SHOW_VINTAGE ? wine.year : "" },
     { name: "Alcohol", value: wine.alcohol },
     { name: "Volume", value: wine.volume },
     { name: "Region", value: wine.region },

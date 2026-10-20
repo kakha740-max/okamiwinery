@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { localizeWine, type Wine } from "@/components/data/wines";
+import { SHOW_VINTAGE, localizeWine, type Wine } from "@/components/data/wines";
 import KeepWords, { longestWordLength } from "@/components/ui/KeepWords";
 
 type WineCardProps = {
@@ -23,7 +23,7 @@ export default function WineCard({ wine: original, tone = "bone", headingLevel =
   const longestWord = longestWordLength(wine.name);
   const Heading = headingLevel;
 
-  const details = [wine.year, wine.variety].filter((value) => value && value !== "—");
+  const details = [SHOW_VINTAGE ? wine.year : "", wine.variety].filter((value) => value && value !== "—");
 
   return (
     <Link href={`/wines/${wine.slug}`} className="group block">

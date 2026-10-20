@@ -162,7 +162,7 @@ export default function QvevriPreloader() {
           alt=""
           width={1000}
           height={528}
-          sizes="200px"
+          sizes="400px"
           preload
           className="entry-intro__logo"
         />

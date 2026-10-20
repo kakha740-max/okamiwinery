@@ -73,13 +73,7 @@
     "estateText": "A winery where the tradition of Georgian wine comes alive in the vineyards, historic cellars and Qvevri. Discover how our wine is made and the setting that gives each wine its own character.",
     "viewPhoto": "View Photo",
     "viewAll": "View All Photos",
-    "pageTitle": "Gallery",
-    "path": [
-      "Vineyard",
-      "Cellar",
-      "Qvevri",
-      "Wine"
-    ]
+    "pageTitle": "Gallery"
   },
   "featured": {
     "eyebrow": "COLLECTION",
@@ -131,8 +125,8 @@
     "planVisit": "Plan a Visit"
   },
   "experience": {
-    "eyebrow": "Our Heritage",
-    "title": "Producing Wine Rooted in Georgian Tradition Since 1965",
+    "eyebrow": "Heritage",
+    "title": "Since 1965, we have brought together the heritage of Georgian winemaking, authentic taste and a modern vision.",
     "description": "From its founding to this day, our winery has faithfully preserved the centuries-old traditions of Georgian winemaking. Knowledge and experience are passed down from generation to generation, shaping the character and quality of our wine to this day.",
     "actionVisit": "Visit the Estate",
     "actionDiscover": "Discover the Wines",

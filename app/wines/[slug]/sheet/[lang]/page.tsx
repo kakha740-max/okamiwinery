@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { localizeWine, wines } from "@/components/data/wines";
+import { SHOW_VINTAGE, localizeWine, wines } from "@/components/data/wines";
 import KeepWords from "@/components/ui/KeepWords";
 import { allAwards, wineSlugForAward } from "@/components/data/awards";
 import { getTranslations, type Language } from "@/lib/translations";
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const wine = wines.find((wine) => wine.slug === slug);
   return {
-    title: wine ? `${wine.name} ${wine.year} — Technical sheet` : "Technical sheet",
+    title: wine ? `${wine.name}${SHOW_VINTAGE ? ` ${wine.year}` : ""} — Technical sheet` : "Technical sheet",
     robots: { index: false, follow: false },
   };
 }
@@ -61,7 +61,7 @@ export default async function WineSheetPage({ params }: Props) {
     { label: s.region, value: wine.region },
     { label: s.type, value: wine.subtitle },
     { label: s.variety, value: wine.variety },
-    { label: s.vintage, value: wine.year },
+    { label: s.vintage, value: SHOW_VINTAGE ? wine.year : "" },
     { label: s.alcohol, value: wine.alcohol },
     { label: s.volume, value: wine.volume },
     { label: s.winemaking, value: wine.method },
@@ -112,7 +112,7 @@ export default async function WineSheetPage({ params }: Props) {
             <h1 className="display-md caps mt-[4mm] font-normal text-[30pt] leading-[1.02] [&:lang(ka)]:text-[22pt] [&:lang(ka)]:leading-[1.2]">
               <KeepWords text={wine.name} />
             </h1>
-            <p className="mt-[2mm] font-display text-[22pt] font-light text-bronze italic lining-nums">{wine.year}</p>
+            {SHOW_VINTAGE && <p className="mt-[2mm] font-display text-[22pt] font-light text-bronze italic lining-nums">{wine.year}</p>}
             <span aria-hidden="true" className="mt-[6mm] block h-px w-[14mm] bg-gold" />
             <div className="mt-[6mm] space-y-[3mm]">
               {wine.description.split("\n\n").map((paragraph) => (

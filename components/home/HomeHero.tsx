@@ -55,7 +55,9 @@ export default function HomeHero() {
       <motion.div
         aria-hidden="true"
         style={{ y: mediaY }}
-        className="absolute inset-0 will-change-transform motion-reduce:transform-none!"
+        // Brighter, crisper and mostly black and white; one filter for the poster
+        // and the film alike, so the swap between them stays invisible.
+        className="absolute inset-0 will-change-transform [filter:grayscale(0.7)_brightness(1.22)_contrast(1.14)] motion-reduce:transform-none!"
       >
         <Image
           src="/images/film/hero-film-start.jpg"
@@ -97,8 +99,8 @@ export default function HomeHero() {
         )}
       </motion.div>
 
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/35 to-night/25" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-night/50 to-transparent" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-night/80 via-night/20 to-night/15" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-night/45 to-transparent" />
       <motion.div
         aria-hidden="true"
         style={{ opacity: shade }}

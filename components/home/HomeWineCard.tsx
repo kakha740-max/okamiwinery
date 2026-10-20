@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { localizeWine, type Wine } from "@/components/data/wines";
+import { SHOW_VINTAGE, localizeWine, type Wine } from "@/components/data/wines";
 import KeepWords, { longestWordLength } from "@/components/ui/KeepWords";
 
 type HomeWineCardProps = {
@@ -14,14 +14,14 @@ type HomeWineCardProps = {
 };
 
 // Homepage catalogue entry: the bottle displayed on a soft-lit plinth rather
-// than in a boxed product tile, with category, name and vintage set below.
+// than in a boxed product tile, with category, name and details set below.
 export default function HomeWineCard({ wine: original, hidden = false }: HomeWineCardProps) {
   const { language } = useLanguage();
   const wine = localizeWine(original, language);
   // Never break a word: the title is capped so its longest word fits the card.
   const longestWord = longestWordLength(wine.name);
 
-  const details = [wine.year, wine.variety].filter((value) => value && value !== "—");
+  const details = [SHOW_VINTAGE ? wine.year : "", wine.variety].filter((value) => value && value !== "—");
 
   return (
     <Link

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { localizeWine, wines } from "@/components/data/wines";
+import { SHOW_VINTAGE, localizeWine, wines } from "@/components/data/wines";
 
 // The site's titles are rendered on the server in English. A visitor who has
 // chosen Russian sees the browser tab's title in Russian too: this replaces it
@@ -26,7 +26,7 @@ function russianTitle(pathname: string, t: ReturnType<typeof useLanguage>["t"]):
   const original = match && wines.find((wine) => wine.slug === match[1]);
   if (!original) return null;
   const wine = localizeWine(original, "ru");
-  const vintage = wine.year !== "—" ? ` ${wine.year}` : "";
+  const vintage = SHOW_VINTAGE && wine.year !== "—" ? ` ${wine.year}` : "";
   if (match[2]) return `${wine.name}${vintage} — ${t.winePage.sheetTitle}`;
   return `${wine.name}${vintage} — ${wine.subtitle} | ${SITE}`;
 }

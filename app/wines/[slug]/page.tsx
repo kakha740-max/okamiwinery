@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import WineProduct from "@/components/wine/WineProduct";
 import JsonLd from "@/components/seo/JsonLd";
-import { wines } from "@/components/data/wines";
+import { SHOW_VINTAGE, wines } from "@/components/data/wines";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbJsonLd, wineJsonLd } from "@/lib/structured-data";
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const wine = wines.find((wine) => wine.slug === slug);
   if (!wine) return {};
 
-  const vintage = wine.year !== "—" ? ` ${wine.year}` : "";
+  const vintage = SHOW_VINTAGE && wine.year !== "—" ? ` ${wine.year}` : "";
 
   return pageMetadata({
     title: `${wine.name}${vintage} — ${wine.subtitle}`,

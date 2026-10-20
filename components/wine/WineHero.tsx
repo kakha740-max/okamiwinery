@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Arrow from "@/components/ui/Arrow";
 import ButtonLink from "@/components/ui/ButtonLink";
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import type { Wine } from "@/components/data/wines";
+import { SHOW_VINTAGE, type Wine } from "@/components/data/wines";
 
 type WineHeroProps = {
   wine: Wine;
@@ -47,9 +47,10 @@ function nameLines(name: string): string[] {
   return best;
 }
 
-// First screen of a product page. The words on the left, aligned with the
-// page's grid: the type, the name set large, the vintage, the key facts and
-// the next steps. The bottle on the right, on its own panel running to the
+// First screen of a product page. The words on the left, from just under the
+// header and aligned with the page's grid: the type, the name set large, the
+// tasting note, the key facts and the next steps — all on one screen. The
+// bottle on the right, on its own panel running to the
 // screen's edge — a thin gold ring behind it, a glow of the wine's colour and
 // the vintage set vertically along the edge. On a phone: name, bottle, facts.
 export default function WineHero({ wine }: WineHeroProps) {
@@ -61,11 +62,21 @@ export default function WineHero({ wine }: WineHeroProps) {
   const longestLine = Math.max(...lines.map((line) => line.trim().length));
   const fit = `calc(100cqi / ${(longestLine * letterWidth[language]).toFixed(2)})`;
 
+  const sweetness: Record<string, string> = {
+    Dry: t.wineList.sweetnessDry,
+    "Semi-Sweet": t.wineList.sweetnessSemiSweet,
+  };
+
+  // The whole technical sheet, two rows of four. (The wine type is set above
+  // the name.)
   const facts = [
     { label: s.region, value: wine.region },
     { label: s.variety, value: wine.variety },
     { label: s.alcohol, value: wine.alcohol },
     { label: s.volume, value: wine.volume },
+    { label: s.winemaking, value: wine.method },
+    { label: s.style, value: sweetness[wine.sweetness] ?? wine.sweetness },
+    { label: s.vintage, value: SHOW_VINTAGE ? wine.year : "" },
   ].filter((fact) => present(fact.value));
 
   const rise = (delay: number) => ({
@@ -78,9 +89,9 @@ export default function WineHero({ wine }: WineHeroProps) {
   const gutter = "px-5 sm:px-8 lg:pr-14 lg:pl-[max(3rem,calc((100vw-96rem)/2+3rem))] xl:pr-20";
 
   return (
-    <section className="grid bg-bone lg:h-svh lg:min-h-[46rem] lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
+    <section className="grid bg-bone lg:min-h-svh lg:grid-cols-12 lg:grid-rows-[auto_1fr]">
       {/* Type, name and vintage */}
-      <div className={`@container pt-28 lg:col-span-7 lg:self-end lg:pt-32 ${gutter}`}>
+      <div className={`@container pt-28 lg:col-span-7 lg:pt-[calc(6rem+min(2svh,1.5rem))] ${gutter}`}>
         <motion.nav {...rise(0.2)} aria-label={t.ui.breadcrumb}>
           <ol className="flex items-center gap-3 text-sm text-stone">
             <li>
@@ -95,7 +106,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           </ol>
         </motion.nav>
 
-        <motion.p {...rise(0.3)} className="eyebrow mt-12 flex items-center gap-4 text-bronze lg:mt-[min(9svh,5.5rem)]">
+        <motion.p {...rise(0.3)} className="eyebrow mt-12 flex items-center gap-4 text-bronze lg:mt-[min(2.5svh,2rem)]">
           <span aria-hidden="true" className="h-px w-10 bg-gold" />
           {wine.subtitle}
         </motion.p>
@@ -103,7 +114,7 @@ export default function WineHero({ wine }: WineHeroProps) {
         <motion.h1
           {...rise(0.4)}
           style={{ "--name-fit": fit } as React.CSSProperties}
-          className="caps mt-6 font-display text-[length:min(8.5rem,17svh,var(--name-fit))] leading-[0.95] font-light whitespace-nowrap text-ink [&:lang(ka)]:tracking-[0.01em]"
+          className="caps mt-4 font-display text-[length:min(6rem,9svh,var(--name-fit))] leading-[0.92] font-light whitespace-nowrap text-ink [&:lang(ka)]:tracking-[0.01em]"
         >
           {lines.map((line) => (
             <span key={line} className="block">
@@ -112,7 +123,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           ))}
         </motion.h1>
 
-        {present(wine.year) && (
+        {SHOW_VINTAGE && present(wine.year) && (
           <motion.p
             {...rise(0.5)}
             className="mt-5 font-display text-[clamp(2.4rem,4vw,3.8rem)] leading-none font-light text-bronze italic lining-nums"
@@ -120,6 +131,18 @@ export default function WineHero({ wine }: WineHeroProps) {
             {wine.year}
           </motion.p>
         )}
+
+        {/* The winery's tasting note, on the first screen with everything else */}
+        <motion.div {...rise(0.55)} className="mt-6 max-w-[46rem] space-y-2 lg:mt-[min(2.5svh,1.75rem)]">
+          {wine.description.split("\n\n").map((paragraph) => (
+            <p
+              key={paragraph}
+              className="font-display text-[clamp(1rem,min(1.15vw,2.2svh),1.15rem)] leading-[1.55] font-light text-umber lining-nums [&:lang(ka)]:text-[clamp(0.85rem,min(0.95vw,1.9svh),0.95rem)] [&:lang(ka)]:leading-[1.75]"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </motion.div>
       </div>
 
       {/* The bottle, on its own panel to the screen's edge */}
@@ -132,7 +155,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           transition={{ duration: 1.8, ease, delay: 0.2 }}
           className="absolute top-1/2 left-1/2 aspect-square w-[min(78%,30rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/45"
         />
-        {present(wine.year) && (
+        {SHOW_VINTAGE && present(wine.year) && (
           <span
             aria-hidden="true"
             className="eyebrow absolute top-1/2 right-5 -translate-y-1/2 rotate-180 text-bronze/80 [writing-mode:vertical-rl] lg:right-8"
@@ -160,18 +183,18 @@ export default function WineHero({ wine }: WineHeroProps) {
         </motion.div>
       </div>
 
-      {/* Key facts and the next steps */}
-      <div className={`pt-10 pb-14 lg:col-span-7 lg:row-start-2 lg:pt-12 lg:pb-[min(7svh,4rem)] ${gutter}`}>
+      {/* The technical sheet, the next steps and the food pairing */}
+      <div className={`pt-10 pb-14 lg:col-span-7 lg:row-start-2 lg:self-start lg:pt-[min(2.5svh,2rem)] lg:pb-[min(4svh,3rem)] ${gutter}`}>
         <motion.dl {...rise(0.6)} className="grid grid-cols-2 gap-x-8 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
           {facts.map((fact) => (
-            <div key={fact.label} className="border-t border-ink/15 py-4">
+            <div key={fact.label} className="border-t border-ink/15 py-2.5">
               <dt className="eyebrow text-stone">{fact.label}</dt>
-              <dd className="mt-2 font-display text-lg leading-snug text-ink lining-nums [&:lang(ka)]:text-base">{fact.value}</dd>
+              <dd className="mt-1 font-display text-base leading-snug xl:text-lg text-ink lining-nums [&:lang(ka)]:text-base">{fact.value}</dd>
             </div>
           ))}
         </motion.dl>
 
-        <motion.div {...rise(0.7)} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <motion.div {...rise(0.7)} className="mt-[min(3.5svh,2rem)] flex flex-wrap items-center gap-x-8 gap-y-4">
           {/* Scrolls to the contact details in the footer */}
           <ButtonLink href="#footer" variant="solid" arrow>
             {t.contact.buttonContact}
@@ -185,6 +208,20 @@ export default function WineHero({ wine }: WineHeroProps) {
             {s.sheetDownload}
           </a>
         </motion.div>
+
+        {wine.pairing.length > 0 && (
+          <motion.div {...rise(0.8)} className="mt-[min(4svh,2.5rem)] border-t border-ink/15 pt-[min(2.5svh,1.25rem)]">
+            <h2 className="eyebrow text-bronze">{s.pairingTitle}</h2>
+            <ol className="mt-3 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+              {wine.pairing.map((dish, index) => (
+                <li key={dish} className="flex items-baseline gap-2.5">
+                  <span className="text-[0.625rem] tracking-[0.2em] text-bronze tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-lg leading-snug text-ink [&:lang(ka)]:text-base">{dish}</span>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
+        )}
       </div>
     </section>
   );

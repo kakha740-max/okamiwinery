@@ -1,33 +1,38 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
 import ButtonLink from "@/components/ui/ButtonLink";
 import Container from "@/components/ui/Container";
 import ImageReveal from "@/components/ui/ImageReveal";
-import Lightbox from "@/components/ui/Lightbox";
 import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { Localized } from "@/components/data/awards";
 import { galleryImage } from "@/components/data/gallery";
 
-// "The path of our wine", as the section's text tells it: vineyard → cellar
-// → qvevri → wine. Four tall panels side by side in one muted warmth
-// (scripts/generate-natural-edits.mjs); the one under the pointer or focus
-// widens while the others give way. Names come from messages/*.json
-// ("discover.path"), in the same order.
+// "The path of our wine", as the section's text tells it: the wooden dome, the harvest
+// → qvevri → wine. Four tall photographs side by side in one muted warmth
+// (scripts/generate-natural-edits.mjs). No captions and nothing to open: the
+// one under the pointer (or finger) widens and comes up a little brighter.
 const path: { src: string; alt: Localized; position: string }[] = [
   {
-    src: "path/path-vineyard.jpg",
+    src: "path/path-ceiling.jpg",
     alt: {
-      en: "Students harvesting grapes in the vineyard",
-      ka: "სტუდენტები ვენახში რთველზე",
-      ru: "Студенты на сборе винограда в винограднике",
+      en: "A wooden dome ceiling spiralling up to a skylight",
+      ka: "ხის გუმბათოვანი ჭერი სინათლის ღიობით",
+      ru: "Деревянный купольный потолок со световым проёмом",
     },
-    position: "64% 50%",
+    position: "56% 45%",
   },
-  { src: "path/path-cellar.jpg", alt: galleryImage("2.png").alt, position: "62% 50%" },
+  {
+    src: "path/path-grapes.jpg",
+    alt: {
+      en: "A basket of freshly picked white grapes",
+      ka: "კალათა ახლად მოკრეფილი თეთრი ყურძნით",
+      ru: "Корзина со свежесобранным белым виноградом",
+    },
+    position: "58% 50%",
+  },
   {
     src: "path/path-qvevri.jpg",
     alt: {
@@ -42,8 +47,6 @@ const path: { src: string; alt: Localized; position: string }[] = [
 
 export default function HomeEstate() {
   const { t, language } = useLanguage();
-  const [open, setOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
 
   return (
     <section id="gallery" className="bg-white py-24 md:py-36">
@@ -60,40 +63,16 @@ export default function HomeEstate() {
 
         <div className="grid grid-cols-2 gap-3 md:flex md:h-[min(78vh,46rem)] md:gap-4">
           {path.map(({ src, alt, position }, index) => (
-            <ImageReveal
-              key={src}
-              delay={index * 0.12}
-              className="group aspect-[3/4] md:aspect-auto md:flex-1 md:transition-[flex-grow] md:duration-[900ms] md:ease-[var(--ease-luxe)] md:hover:flex-[2.3] md:has-[:focus-visible]:flex-[2.3] motion-reduce:transition-none"
-            >
-                <button
-                  type="button"
-                  onClick={() => {
-                    setPhotoIndex(index);
-                    setOpen(true);
-                  }}
-                  aria-label={`${t.ui.openImage}: ${alt[language]}`}
-                  className="absolute inset-0 block h-full w-full text-left"
-                >
-                  <Image
-                    src={`/images/${src}`}
-                    alt={alt[language]}
-                    fill
-                    quality={90}
-                    sizes="(min-width: 768px) 45vw, 50vw"
-                    className="object-cover brightness-[0.92] transition-[transform,filter] duration-[1600ms] ease-[var(--ease-luxe)] group-hover:scale-[1.03] group-hover:brightness-100"
-                    style={{ objectPosition: position }}
-                  />
-                  <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-night/75 via-night/25 to-transparent" />
-                  <span className="absolute inset-x-0 bottom-0 p-4 text-paper md:p-7">
-                    <span className="flex items-center gap-3 text-[0.6875rem] tracking-[0.18em] text-gold tabular-nums">
-                      {String(index + 1).padStart(2, "0")}
-                      <span aria-hidden="true" className="h-px w-6 bg-gold/70 transition-[width] duration-700 ease-[var(--ease-luxe)] md:group-hover:w-12" />
-                    </span>
-                    <span className="mt-2 block font-display text-2xl leading-tight font-light md:mt-3 md:text-[clamp(1.6rem,2.2vw,2.3rem)] [&:lang(ka)]:text-xl md:[&:lang(ka)]:text-[clamp(1.25rem,1.6vw,1.75rem)]">
-                      {t.discover.path[index]}
-                    </span>
-                  </span>
-                </button>
+            <ImageReveal key={src} delay={index * 0.12} className="group aspect-[3/4] md:aspect-auto md:flex-1 md:transition-[flex-grow] md:duration-[900ms] md:ease-[var(--ease-luxe)] md:hover:flex-[2.3] motion-reduce:transition-none">
+              <Image
+                src={`/images/${src}`}
+                alt={alt[language]}
+                fill
+                quality={90}
+                sizes="(min-width: 768px) 45vw, 50vw"
+                className="object-cover brightness-[0.92] transition-[transform,filter] duration-[1600ms] ease-[var(--ease-luxe)] group-hover:scale-[1.04] group-hover:brightness-100 group-active:scale-[1.04] group-active:brightness-100 motion-reduce:transition-none"
+                style={{ objectPosition: position }}
+              />
             </ImageReveal>
           ))}
         </div>
@@ -104,13 +83,6 @@ export default function HomeEstate() {
           </ButtonLink>
         </div>
       </Container>
-
-      <Lightbox
-        open={open}
-        index={photoIndex}
-        slides={path.map(({ src, alt }) => ({ src: `/images/${src}`, alt: alt[language] }))}
-        onClose={() => setOpen(false)}
-      />
     </section>
   );
 }

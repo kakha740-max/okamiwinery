@@ -451,14 +451,14 @@ html[data-intro-done] .entry-intro { display: none; }
 
 .entry-intro__logo {
   margin-top: 2.5rem;
-  height: 3.25rem;
+  height: 5.25rem;
   width: auto;
   opacity: 0;
   filter: blur(10px);
   transform: translateY(8px);
 }
 @media (min-width: 640px) {
-  .entry-intro__logo { height: 3.75rem; }
+  .entry-intro__logo { height: 6.75rem; }
 }
 
 .entry-intro__motes {

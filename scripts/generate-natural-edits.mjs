@@ -28,11 +28,11 @@ const jobs = [
     linear: { a: 0.88, b: 8 },
     tint: [1.02, 1.0, 0.96],
   },
-  // Home page "The path of our wine": vineyard → cellar → qvevri → wine, all
+  // Home page "The path of our wine": the wooden dome, the harvest, qvevri and wine, all
   // in the same muted warmth so the four panels read as one sequence.
   ...[
-    ["44.png", "path-vineyard"],
-    ["2.png", "path-cellar"],
+    ["48.png", "path-ceiling"],
+    ["43.png", "path-grapes"],
     ["45.png", "path-qvevri"],
     ["20.jpg", "path-wine"],
   ].map(([source, name]) => ({
