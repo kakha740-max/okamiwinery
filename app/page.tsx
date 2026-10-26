@@ -4,6 +4,7 @@ import HomeWines from "@/components/home/HomeWines";
 import HomeQvevri from "@/components/home/HomeQvevri";
 import HomeAwards from "@/components/home/HomeAwards";
 import HomeEstate from "@/components/home/HomeEstate";
+import HomeUniversity from "@/components/home/HomeUniversity";
 import HomeVisit from "@/components/home/HomeVisit";
 import ScrollFold from "@/components/home/ScrollFold";
 import JsonLd from "@/components/seo/JsonLd";
@@ -19,6 +20,7 @@ export default function Home() {
         <HomeQvevri />
       </ScrollFold>
       <HomeAwards />
+      <HomeUniversity />
       <HomeEstate />
       <HomeWines />
       <HomeVisit />

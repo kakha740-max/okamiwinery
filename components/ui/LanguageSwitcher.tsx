@@ -1,9 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import type { Language } from "@/lib/translations";
-
-const languages: Language[] = ["ka", "en", "ru"];
+import { languageLabels, languages } from "@/lib/translations";
 
 type LanguageSwitcherProps = {
   className?: string;
@@ -31,7 +29,7 @@ export default function LanguageSwitcher({ className = "", tone = "light" }: Lan
             language === code ? active : idle
           }`}
         >
-          {code}
+          {languageLabels[code]}
           <span
             aria-hidden="true"
             className={`absolute inset-x-1.5 -bottom-0.5 h-px bg-current transition-transform duration-500 ease-[var(--ease-luxe)] ${

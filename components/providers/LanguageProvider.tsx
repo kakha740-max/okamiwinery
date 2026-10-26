@@ -11,7 +11,7 @@ import {
 
 import { MotionConfig } from "framer-motion";
 
-import { Language, getTranslations } from "@/lib/translations";
+import { Language, getTranslations, htmlLang, isLanguage } from "@/lib/translations";
 
 type LanguageContextType = {
   language: Language;
@@ -35,8 +35,7 @@ export function LanguageProvider({
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
 
-    const initial: Language =
-      savedLanguage === "ka" || savedLanguage === "en" || savedLanguage === "ru" ? savedLanguage : "en";
+    const initial: Language = isLanguage(savedLanguage) ? savedLanguage : "en";
 
     // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing from browser-only storage
     setLanguage(initial);
@@ -44,7 +43,7 @@ export function LanguageProvider({
 
   useEffect(() => {
     localStorage.setItem("language", language);
-    document.documentElement.lang = language;
+    document.documentElement.lang = htmlLang[language];
   }, [language]);
 
   const value = useMemo(

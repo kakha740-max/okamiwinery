@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { SHOW_VINTAGE, localizeWine, wines } from "@/components/data/wines";
 import KeepWords from "@/components/ui/KeepWords";
 import { allAwards, wineSlugForAward } from "@/components/data/awards";
-import { getTranslations, type Language } from "@/lib/translations";
+import { getTranslations, languages, type Language } from "@/lib/translations";
 import { PHONE, SITE_URL } from "@/lib/site";
 
 // The printable technical sheet of one wine, in one language: an A4 page in
@@ -16,8 +16,6 @@ import { PHONE, SITE_URL } from "@/lib/site";
 type Props = {
   params: Promise<{ slug: string; lang: string }>;
 };
-
-const languages: Language[] = ["en", "ka", "ru"];
 
 // Every wine in every language. The wine page's own params live in its
 // page file, which doesn't pass them down, so the slug is listed here too.
@@ -109,7 +107,7 @@ export default async function WineSheetPage({ params }: Props) {
 
           <div className="flex flex-col pt-[2mm]">
             <p className="eyebrow text-bronze">{wine.subtitle}</p>
-            <h1 className="display-md caps mt-[4mm] font-normal text-[30pt] leading-[1.02] [&:lang(ka)]:text-[22pt] [&:lang(ka)]:leading-[1.2]">
+            <h1 className="display-md caps mt-[4mm] font-normal text-[30pt] leading-[1.02] uncased:text-[22pt] uncased:leading-[1.2]">
               <KeepWords text={wine.name} />
             </h1>
             {SHOW_VINTAGE && <p className="mt-[2mm] font-display text-[22pt] font-light text-bronze italic lining-nums">{wine.year}</p>}
@@ -118,7 +116,7 @@ export default async function WineSheetPage({ params }: Props) {
               {wine.description.split("\n\n").map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="font-display text-[11.5pt] leading-[1.55] font-light text-ink lining-nums [&:lang(ka)]:text-[9.5pt] [&:lang(ka)]:leading-[1.8]"
+                  className="font-display text-[11.5pt] leading-[1.55] font-light text-ink lining-nums uncased:text-[9.5pt] uncased:leading-[1.8]"
                 >
                   {paragraph}
                 </p>
@@ -146,7 +144,7 @@ export default async function WineSheetPage({ params }: Props) {
               <h2 className="eyebrow text-bronze">{s.pairingTitle}</h2>
               <ol className="mt-[3mm]">
                 {wine.pairing.map((dish, index) => (
-                  <li key={dish} className="flex items-baseline gap-[3mm] border-b border-ink/10 py-[1.6mm] font-display text-[11pt] [&:lang(ka)]:text-[9.5pt]">
+                  <li key={dish} className="flex items-baseline gap-[3mm] border-b border-ink/10 py-[1.6mm] font-display text-[11pt] uncased:text-[9.5pt]">
                     <span className="font-sans text-[6.5pt] tracking-[0.2em] text-bronze">{String(index + 1).padStart(2, "0")}</span>
                     {dish}
                   </li>
@@ -175,19 +173,39 @@ export default async function WineSheetPage({ params }: Props) {
         {/* Contact band */}
         <footer className="mt-auto flex items-end justify-between gap-[8mm] bg-night px-[14mm] py-[7mm] text-paper">
           <div>
-            <p className="font-display text-[12pt] leading-snug text-paper/90 [&:lang(ka)]:text-[10pt]">{t.footer.eyebrow}</p>
+            <p className="font-display text-[12pt] leading-snug text-paper/90 uncased:text-[10pt]">{t.footer.eyebrow}</p>
             <p className="mt-[2mm] max-w-[80mm] text-[7pt] leading-relaxed text-paper/50">{t.footer.responsible}</p>
           </div>
-          <dl className="grid grid-cols-[auto_auto] gap-x-[5mm] gap-y-[1.2mm] text-[7.5pt]">
-            <dt className="text-paper/45">{t.footer.emailLabel}</dt>
-            <dd>{t.footer.email}</dd>
-            <dt className="text-paper/45">{t.footer.phoneLabel}</dt>
-            <dd className="tabular-nums">{PHONE}</dd>
-            <dt className="text-paper/45">{t.footer.addressLabel}</dt>
-            <dd>{t.footer.address}</dd>
-            <dt className="text-paper/45">{s.sheetWeb}</dt>
-            <dd>{site}</dd>
-          </dl>
+          <div className="flex items-end gap-[7mm]">
+            <dl className="grid grid-cols-[auto_auto] gap-x-[5mm] gap-y-[1.2mm] text-[7.5pt]">
+              <dt className="text-paper/45">{t.footer.emailLabel}</dt>
+              <dd>{t.footer.email}</dd>
+              <dt className="text-paper/45">{t.footer.phoneLabel}</dt>
+              <dd className="tabular-nums">{PHONE}</dd>
+              <dt className="text-paper/45">{t.footer.addressLabel}</dt>
+              <dd>{t.footer.address}</dd>
+              <dt className="text-paper/45">{s.sheetWeb}</dt>
+              <dd>{site}</dd>
+            </dl>
+
+            {/* The site's QR code (public/images/brand/site-qr.png, encoding
+                the site's address) on a paper card behind a hairline, its
+                caption beneath; the PNG is used as is so it prints sharp */}
+            <figure className="flex flex-col items-center border-l border-paper/15 pl-[7mm]">
+              <div className="rounded-[1.5mm] bg-paper p-[1.2mm]">
+                <Image
+                  src="/images/brand/site-qr.png"
+                  alt={`QR: ${site}`}
+                  width={1147}
+                  height={1147}
+                  unoptimized
+                  loading="eager"
+                  className="h-[19mm] w-[19mm]"
+                />
+              </div>
+              <figcaption className="mt-[1.6mm] max-w-[24mm] text-center text-[6pt] leading-snug text-paper/60">{s.sheetQr}</figcaption>
+            </figure>
+          </div>
         </footer>
       </article>
     </main>

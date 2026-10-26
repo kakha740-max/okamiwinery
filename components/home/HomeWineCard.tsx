@@ -50,7 +50,7 @@ export default function HomeWineCard({ wine: original, hidden = false }: HomeWin
       <div className="@container mt-7 pr-3">
         {/* Height matched across the row by WineCarousel, so every name lines up. */}
         <p data-wine-category className="eyebrow text-bronze">{wine.subtitle}</p>
-        <h3 style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-3 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] [&:lang(ka)]:font-normal">
+        <h3 style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-3 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] uncased:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] uncased:font-normal">
           <KeepWords text={wine.name} />
         </h3>
         {details.length > 0 && (

@@ -61,7 +61,7 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : href.startsWith("/") && pathname.startsWith(href);
 
   const linkClass = (href: string) =>
-    `label relative py-2 text-[0.84375rem] transition-opacity duration-300 hover:opacity-100 [&:lang(ka)]:text-[0.9375rem] ${
+    `label relative py-2 text-[0.84375rem] transition-opacity duration-300 hover:opacity-100 uncased:text-[0.9375rem] ${
       isActive(href) ? "opacity-100" : "opacity-90"
     }`;
 

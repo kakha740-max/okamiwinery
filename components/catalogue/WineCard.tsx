@@ -49,7 +49,7 @@ export default function WineCard({ wine: original, tone = "bone", headingLevel =
 
       <div className="@container mt-5 pr-2">
         <p className="eyebrow text-bronze">{wine.subtitle}</p>
-        <Heading style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-2 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] [&:lang(ka)]:font-normal">
+        <Heading style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties} className="display-sm caps mt-2 font-medium text-ink text-[length:min(clamp(1.55rem,2.3vw,2.15rem),var(--title-fit))] uncased:text-[length:min(clamp(1.3rem,1.8vw,1.65rem),var(--title-fit))] uncased:font-normal">
           <KeepWords text={wine.name} />
         </Heading>
         {details.length > 0 && <p className="mt-1.5 text-sm text-stone">{details.join(" · ")}</p>}

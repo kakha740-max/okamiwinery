@@ -1,0 +1,419 @@
+{
+  "ui": {
+    "skipToContent": "跳至主要内容",
+    "menu": "菜单",
+    "close": "关闭",
+    "previous": "上一个",
+    "next": "下一个",
+    "scroll": "向下滚动",
+    "language": "语言",
+    "mainNav": "主导航",
+    "backToTop": "返回顶部",
+    "allWines": "全部葡萄酒",
+    "viewAll": "查看全部",
+    "openImage": "查看图片",
+    "languageNames": {
+      "ka": "格鲁吉亚语",
+      "en": "英语",
+      "ru": "俄语",
+      "zh": "中文"
+    },
+    "notFoundTitle": "页面未找到",
+    "notFoundText": "您要查找的页面不存在或已被移动。",
+    "breadcrumb": "面包屑导航"
+  },
+  "navbar": {
+    "home": "首页",
+    "story": "历史",
+    "featured": "精选",
+    "gallery": "图库",
+    "discover": "探索",
+    "wines": "葡萄酒",
+    "tour": "酒庄参观",
+    "contact": "联系我们",
+    "awards": "奖项"
+  },
+  "hero": {
+    "eyebrow": "源远流长的格鲁吉亚酿酒传统",
+    "title": "埃特诺·奥卡米酒庄",
+    "button": "探索葡萄酒",
+    "secondary": "我们的故事",
+    "location": "什达卡特利 · 格鲁吉亚",
+    "since": "始于1965年",
+    "kind": "酒庄",
+    "wordmark": "埃特诺·奥卡米",
+    "kindFirst": false
+  },
+  "story": {
+    "eyebrow": "我们的故事",
+    "title": "源于格鲁吉亚传统的传承",
+    "paragraphs": [
+      "奥卡米微产区位于历史悠久的什达卡特利葡萄酒产区的中心。数百年来，葡萄园与葡萄酒一直是这里格鲁吉亚文化和生活方式中不可分割的一部分。",
+      "19世纪，伊万·穆赫兰巴托尼为该地区葡萄栽培与酿酒业的发展发挥了重要作用。1965年，滕吉兹·克克利泽创立了埃特诺·奥卡米酒庄，将数百年的传统与现代葡萄酒生产联系在一起。",
+      "如今，埃特诺·奥卡米酒庄融合传承、现代技术以及与高加索国际大学的合作，致力于不断提升品质、推动创新和发展葡萄酒教育。",
+      "我们的使命是守护埃特诺·奥卡米独特的传承——格鲁吉亚8000年葡萄酒历史的一部分，并自豪地与世界分享格鲁吉亚葡萄酒文化的丰富内涵及其独特传统。"
+    ],
+    "university": {
+      "title": "与大学的合作",
+      "text": "埃特诺·奥卡米酒庄与高加索国际大学紧密合作，该校积极参与葡萄栽培与酿酒行业的发展。这一合作将学术知识与传统经验相结合，以保持品质与创新的高标准。"
+    },
+    "harvest": {
+      "title": "采收季的学生",
+      "text": "每年采收季，大学的学生都会直接参与葡萄酒的生产过程。他们在现场学习葡萄栽培与酿酒的每一个环节——从采摘葡萄到发酵和酿制葡萄酒——在真实的生产环境中积累实践经验。"
+    },
+    "lab": {
+      "title": "科学研究与创新",
+      "text": "大学开展实验室研究，并致力于培育新的葡萄品种。学术力量的参与在提升葡萄酒品质、推动酿酒业科学发展方面发挥着重要作用，也让埃特诺·奥卡米的葡萄酒格外值得信赖。"
+    }
+  },
+  "discover": {
+    "eyebrow": "探索我们的酒窖",
+    "title": "探索埃特诺·奥卡米",
+    "description": "了解埃特诺·奥卡米酒庄及其葡萄园、历史悠久的酒窖、生产空间和独特的环境。",
+    "estateText": "在这座酒庄里，格鲁吉亚葡萄酒的传统在葡萄园、历史悠久的酒窖和陶罐中焕发生机。探索我们的酿酒之路，以及赋予每一款葡萄酒独特个性的环境。",
+    "viewPhoto": "查看照片",
+    "viewAll": "查看全部照片",
+    "pageTitle": "图库"
+  },
+  "featured": {
+    "eyebrow": "系列",
+    "title": "葡萄酒",
+    "description": "了解我们在历史悠久的奥卡米微产区酿造的格鲁吉亚佳酿。"
+  },
+  "wines": {
+    "eyebrow": "用心酿造",
+    "title": "招牌葡萄酒",
+    "description": "每一瓶酒都展现着格鲁吉亚独特的风土，为传承传统、品质与优雅而酿造。",
+    "button": "了解详情"
+  },
+  "wineList": {
+    "eyebrow": "系列",
+    "title": "葡萄酒",
+    "subtitle": "了解我们的格鲁吉亚佳酿。",
+    "tabAll": "全部",
+    "tabRed": "红葡萄酒",
+    "tabWhite": "白葡萄酒",
+    "tabQvevri": "陶罐",
+    "tabBrand": "格鲁吉亚葡萄酒品牌",
+    "comingSoon": "即将推出。",
+    "filterSort": "筛选与排序",
+    "sortLabel": "排序",
+    "sortName": "按名称",
+    "sortYear": "按年份",
+    "viewWine": "了解详情",
+    "categoryRed": "红葡萄酒",
+    "categoryWhite": "白葡萄酒",
+    "sweetnessDry": "干型",
+    "sweetnessSemiSweet": "半甜型"
+  },
+  "contact": {
+    "eyebrow": "联系我们",
+    "title": "欢迎莅临埃特诺·奥卡米酒庄",
+    "description": "我们很乐意在酒庄接待您，与您分享格鲁吉亚葡萄酒的真正灵魂。",
+    "buttonTour": "预约参观",
+    "buttonContact": "联系我们"
+  },
+  "about": {
+    "eyebrow": "关于我们",
+    "title": "一座由风土、耐心与品质塑造的酒庄。",
+    "description": "我们的葡萄酒诞生于历史悠久的奥卡米微产区，这里的土地、气候与传承交融共生。我们尊重格鲁吉亚传统，同时在每一瓶酒中融入现代视野。",
+    "feature1Title": "葡萄园的传承",
+    "feature1Description": "我们的葡萄园与当地风土紧密相连，以对细节的专注和对土地的敬重精心培育。",
+    "feature2Title": "精致品鉴",
+    "feature2Description": "我们为希望感受每一款葡萄酒背后故事的宾客打造品鉴体验。",
+    "viewWines": "查看葡萄酒",
+    "planVisit": "规划参观"
+  },
+  "experience": {
+    "eyebrow": "传承",
+    "title": "自1965年起，我们将格鲁吉亚酿酒传承、地道风味与现代视野融为一体。",
+    "description": "从创立至今，我们的酒庄始终如一地坚守格鲁吉亚数百年的酿酒传统。知识与经验代代相传，至今仍决定着我们葡萄酒的个性与品质。",
+    "actionVisit": "参观酒庄",
+    "actionDiscover": "探索葡萄酒",
+    "highlight1Title": "葡萄园的个性",
+    "highlight1Description": "每一瓶酒都体现了奥卡米微产区独特的风土，由传承与精湛工艺共同塑造。",
+    "highlight2Title": "永恒的酿酒之道",
+    "highlight2Description": "我们将格鲁吉亚传统酿造方法与现代理念相结合，酿造精准而富有深度的葡萄酒。",
+    "highlight3Title": "难忘的待客之道",
+    "highlight3Description": "从葡萄园参观到精心安排的品鉴，我们为您提供让酒庄焕发生机的精致体验。"
+  },
+  "winePage": {
+    "specsTitle": "葡萄酒详情",
+    "variety": "葡萄品种",
+    "vintage": "年份",
+    "alcohol": "酒精度",
+    "volume": "容量",
+    "region": "产区",
+    "winemaking": "酿造工艺",
+    "tasteTitle": "口感特征",
+    "sweetness": "甜度",
+    "acidity": "酸度",
+    "body": "酒体",
+    "tannins": "单宁",
+    "notesTitle": "品鉴笔记",
+    "notesDescription": "探索这款葡萄酒独特的香气与风味。",
+    "pairingTitle": "餐酒搭配",
+    "pairingDescription": "推荐与这款葡萄酒搭配的菜肴。",
+    "type": "葡萄酒类型",
+    "style": "风格",
+    "tastingEyebrow": "品鉴",
+    "tastingTitle": "杯中风味",
+    "qvevriNote": "在陶罐（Qvevri）中酿造——这种陶制容器是格鲁吉亚最古老酿酒传统的核心。",
+    "technicalTitle": "技术参数",
+    "awardsTitle": "奖项",
+    "enquire": "咨询这款葡萄酒",
+    "moreWines": "埃特诺·奥卡米的其他葡萄酒",
+    "sheetTitle": "技术说明书",
+    "sheetDownload": "下载技术说明书（PDF）",
+    "sheetWeb": "网站",
+    "sheetQr": "扫码访问我们的网站"
+  },
+  "tour": {
+    "hero": {
+      "eyebrow": "埃特诺·奥卡米酒庄",
+      "description": "走进历史、葡萄园与葡萄酒的世界——了解埃特诺·奥卡米的传承与酿酒过程，并在原汁原味的环境中品尝我们最出色的品种。"
+    },
+    "types": {
+      "title": "选择参观形式",
+      "tours": [
+        {
+          "duration": "30分钟",
+          "title": "快速了解",
+          "description": "参观酒窖和品鉴空间的简短行程，并概览生产设施。",
+          "features": [
+            "参观酒窖",
+            "品鉴1款葡萄酒",
+            "简要了解历史"
+          ]
+        },
+        {
+          "duration": "1小时",
+          "title": "经典之旅",
+          "description": "完整体验——历史、生产与品鉴。",
+          "features": [
+            "全面参观酒庄",
+            "品鉴3款葡萄酒",
+            "全程导览"
+          ]
+        },
+        {
+          "duration": "2小时",
+          "title": "深度体验",
+          "description": "深入探索埃特诺·奥卡米的世界——葡萄园、历史与美食。",
+          "features": [
+            "参观葡萄园",
+            "品鉴5款葡萄酒",
+            "品尝格鲁吉亚美食"
+          ]
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "埃特诺·奥卡米之旅",
+      "title": "园区与氛围",
+      "items": [
+        {
+          "title": "难以忘怀的味道",
+          "text": "探索格鲁吉亚美食的地道风味，精心挑选，并搭配我们的葡萄酒呈上。"
+        },
+        {
+          "title": "回味悠长的时光",
+          "text": "与朋友一同分享葡萄酒难忘的滋味——在这里，时间仿佛放慢了脚步。"
+        },
+        {
+          "title": "独特而限量",
+          "text": "仅少量酿制的周年纪念系列——品尝并非人人都能拥有的佳酿。"
+        },
+        {
+          "title": "一切交融之地",
+          "text": "探索一个让休憩、自然、美味与葡萄酒融为一体、成为难忘体验的地方。"
+        }
+      ]
+    },
+    "form": {
+      "title": "预约您的参观",
+      "namePlaceholder": "姓名",
+      "emailPlaceholder": "电子邮箱",
+      "guestsPlaceholder": "人数",
+      "messagePlaceholder": "其他备注（选填）",
+      "submit": "发送请求",
+      "successTitle": "谢谢！您的请求已准备好发送。",
+      "successDescription": "如果您的电子邮件客户端没有自动打开，请直接联系我们：info@okamiwinery.ge",
+      "emailSubject": "ETNO OKAMI TOUR — 预约请求",
+      "emailBodyName": "姓名",
+      "emailBodyDate": "期望日期",
+      "emailBodyGuests": "人数",
+      "emailBodyMessage": "留言"
+    }
+  },
+  "footer": {
+    "eyebrow": "埃特诺·奥卡米酒庄",
+    "title": "让格鲁吉亚酿酒历史得以延续的葡萄酒。",
+    "description": "埃特诺·奥卡米融合古老的陶罐传统、独特的微产区与现代酿酒理念——酿造永不忘本的葡萄酒。",
+    "explore": "探索",
+    "contact": "联系方式",
+    "home": "首页",
+    "wines": "葡萄酒",
+    "tour": "参观",
+    "email": "Etno.okami@ciu.edu.ge",
+    "address": "格鲁吉亚第比利斯乌列基街2号",
+    "emailLabel": "电子邮箱",
+    "phoneLabel": "电话",
+    "addressLabel": "办公地址",
+    "follow": "关注我们",
+    "copyright": "© 2026 埃特诺·奥卡米酒庄。保留所有权利。",
+    "responsible": "过量饮酒有害健康。",
+    "wechatScan": "使用微信扫描二维码，添加我们为联系人。",
+    "wechatOpen": "在微信中打开"
+  },
+  "awards": {
+    "eyebrow": "奖项与成就",
+    "title": "诞生于陶罐的荣誉",
+    "description": "埃特诺·奥卡米的葡萄酒多次在国际陶罐葡萄酒大赛中获奖——独立评审团的认可，印证了每一瓶酒背后的匠心与传统。",
+    "statAwards": "奖项",
+    "statSilver": "银奖",
+    "statBronze": "铜奖",
+    "statSpecial": "特别奖",
+    "filterAll": "全部",
+    "medalSilver": "银奖",
+    "medalBronze": "铜奖",
+    "medalRosso": "Rosso",
+    "competitionIqwc": "国际陶罐葡萄酒大赛",
+    "competitionWineHunter": "The Qvevri WineHunter Award",
+    "viewCertificate": "查看证书",
+    "pageTitle": "奖项与成就",
+    "pageIntro": "每一枚奖牌都有自己的故事——关于葡萄园、收成与陶罐。这里汇集了埃特诺·奥卡米葡萄酒获奖的各项赛事，以及每个奖项背后的故事。",
+    "viewAll": "全部奖项与故事",
+    "statGold": "金奖",
+    "medalGold": "金奖",
+    "points": "分",
+    "discoverWines": "我们的葡萄酒",
+    "organizer": "主办方",
+    "kartliShort": "卡特利",
+    "featured": "精选奖项",
+    "competitionsTitle": "赛事"
+  },
+  "ageGate": {
+    "title": "您是否已年满18岁？",
+    "yes": "是，我已年满18岁",
+    "no": "否，我未满18岁",
+    "deniedTitle": "抱歉",
+    "deniedText": "本网站仅向年满18岁的访客开放。",
+    "back": "返回"
+  },
+  "home": {
+    "factFounded": "创立",
+    "factRegion": "产区",
+    "factRegionValue": "什达卡特利",
+    "factTradition": "传统",
+    "factTraditionValue": "陶罐",
+    "factAwards": "奖项",
+    "storyLink": "阅读我们的故事",
+    "qvevriEyebrow": "陶罐",
+    "qvevriTitle": "陶罐",
+    "qvevriText": "格鲁吉亚8000年的酿酒传统——时间塑造葡萄酒的个性。",
+    "writeToUs": "给我们写信",
+    "awardsTitle": "奖项与荣誉",
+    "awardsLink": "全部奖项",
+    "awardsIntro": "了解我们的成就与奖项。",
+    "universityLink": "进一步了解大学"
+  },
+  "storyPage": {
+    "chapterMicrozone": "微产区",
+    "chapterHeritage": "传承",
+    "chapterToday": "今天",
+    "chapterMission": "我们的使命",
+    "knowledgeEyebrow": "知识与技艺",
+    "knowledgeTitle": "学术研究与传统经验的交汇"
+  },
+  "history": {
+    "hero": {
+      "title": "埃特诺·奥卡米",
+      "subtitle": "以知识延续的历史"
+    },
+    "intro": [
+      "埃特诺·奥卡米是一个让格鲁吉亚数百年酿酒传统与现代知识、科学研究以及新一代酿酒师专业经验交融的空间。",
+      "公司理念与发展的基础，是高加索国际大学葡萄栽培与酿酒学院积累的学术与实践经验。正是与大学的紧密合作，营造出一个专业环境，让传统酿酒知识与现代技术、科研和教育融为一体。",
+      "埃特诺·奥卡米团队汇聚了高加索国际大学葡萄栽培与酿酒学院的学生和毕业生——这些年轻的专业人士在工作中将学术知识直接转化为酿酒实践。",
+      "对埃特诺·奥卡米而言，这种联系不仅仅是一个学术方向，更是品质、职业责任感以及以科学方法酿酒的重要基础。"
+    ],
+    "okami": {
+      "title": "奥卡米——历史延续之地",
+      "paragraphs": [
+        "埃特诺·奥卡米的历史，与奥卡米本身数百年的酿酒传统密不可分。",
+        "数百年来，奥卡米微产区一直以其葡萄栽培与酿酒文化而著称。1965年，滕吉兹·克克利泽创建了奥卡米酒厂，由此开启了该地区现代酿酒史上的重要阶段。",
+        "这座历史悠久的酒厂在该地区酿酒业的发展中发挥了重要作用。如今，这份传承正迈入新的阶段——经验、知识与历史环境，同现代酿酒的种种可能融为一体。"
+      ],
+      "highlight": [
+        "1965年",
+        "滕吉兹·克克利泽"
+      ],
+      "year": "1965",
+      "founder": "滕吉兹·克克利泽",
+      "timeline": [
+        "奥卡米酒厂",
+        "传承",
+        "埃特诺·奥卡米"
+      ]
+    },
+    "academic": {
+      "title": "学术知识——付诸实践",
+      "paragraphs": [
+        "埃特诺·奥卡米的主要特色之一，在于学术知识与真实酿酒实践的统一。",
+        "高加索国际大学葡萄栽培与酿酒学院的经验，使我们不仅能凭借传统经验，还能运用现代科学方法和基于研究的知识来对待葡萄酒的酿造过程。",
+        "从葡萄品种的选择和葡萄园管理，到发酵、陈酿和最终产品的诞生，每一个环节都遵循品质、精准以及保持产地特性的原则。",
+        "对我们而言，科学并不取代传统——它帮助我们更精准、更高品质地延续传统。"
+      ],
+      "chain": [
+        "高加索国际大学",
+        "葡萄栽培与酿酒学院",
+        "科学研究",
+        "酿酒实践"
+      ]
+    },
+    "pdo": {
+      "title": "“奥卡米”——原产地保护名称",
+      "year": "2022",
+      "paragraphs": [
+        "2022年，在高加索国际大学的支持下，“奥卡米”原产地保护名称（PDO）正式注册。",
+        "埃特诺·奥卡米是“奥卡米”PDO葡萄酒产品规范的制定者，如今出产该名称下的白葡萄酒和红葡萄酒。",
+        "对我们而言，原产地名称不仅仅是一种身份。它是一份责任——准确而真实地展现葡萄酒以之为名的那片土地。",
+        "奥卡米微产区的自然条件、风土和格鲁吉亚葡萄品种，构成了塑造“奥卡米”葡萄酒独特个性的基础。"
+      ],
+      "highlight": [
+        "“奥卡米”原产地保护名称（PDO）"
+      ],
+      "map": {
+        "eyebrow": "奥卡米微产区",
+        "title": "卡特利的中心",
+        "text": "奥卡米微产区位于什达卡特利州卡斯皮自治市，环绕奥卡米村——在第比利斯西北约40公里处。",
+        "region": "地区",
+        "regionValue": "什达卡特利",
+        "municipality": "自治市",
+        "municipalityValue": "卡斯皮",
+        "okami": "奥卡米",
+        "tbilisi": "第比利斯",
+        "legendMunicipality": "卡斯皮自治市",
+        "caption": "格鲁吉亚各地区地图：突出显示什达卡特利州和卡斯皮自治市，并标出奥卡米微产区——位于第比利斯西北约40公里处。",
+        "topoCaption": "奥卡米微产区地形图",
+        "topoAlt": "奥卡米微产区地形图：位于卡斯皮周围、姆特克瓦里河两岸，标有边界、村庄和河流",
+        "topoOpen": "查看大图"
+      }
+    },
+    "wines": {
+      "title": "我们的葡萄酒",
+      "intro": "埃特诺·奥卡米的葡萄酒系列既包括“奥卡米”原产地保护名称葡萄酒，也包括来自格鲁吉亚其他优秀微产区、以格鲁吉亚葡萄品种酿造的葡萄酒。",
+      "list": "奥卡米 • 塔夫克维里 • 沙夫卡皮托 • 白羽 • 哈什米·萨别拉维 • 奇努里–戈鲁利·姆茨瓦内",
+      "more": "以及其他葡萄酒。",
+      "closing": "对我们而言，每一款葡萄酒都是一个机会，去表达葡萄品种、产地与酿酒师理念之间独特的联系。"
+    },
+    "philosophy": {
+      "title": "葡萄酒哲学",
+      "paragraphs": [
+        "我们相信，现代格鲁吉亚葡萄酒的未来建立在传统与知识的统一之上。",
+        "因此，对埃特诺·奥卡米而言，重要的不仅是酿造高品质的葡萄酒，更是为格鲁吉亚酿酒业的发展贡献自己的力量——支持年轻的专业人才，推动研究与创新，展现格鲁吉亚葡萄品种的潜力，并将奥卡米的风土推向国际舞台。"
+      ]
+    },
+    "final": "我们的目标是守护历史、发展知识，并共创格鲁吉亚葡萄酒的未来。"
+  }
+}

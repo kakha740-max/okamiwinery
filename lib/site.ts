@@ -7,7 +7,7 @@ export const SITE_URL = (
 export const SITE_NAME = "Etno Okami Winery";
 
 export const DEFAULT_DESCRIPTION =
-  "Etno Okami Winery makes Georgian Qvevri wines in the historic Etno Okami Microzone of Shida Kartli — a winemaking tradition carried since 1965.";
+  "Etno Okami Winery makes Georgian Qvevri wines in the historic Okami microzone of Shida Kartli — a winemaking tradition carried since 1965.";
 
 export const DEFAULT_OG_IMAGE = "/images/og/etno-okami.jpg";
 
@@ -16,6 +16,9 @@ export const DEFAULT_OG_IMAGE = "/images/og/etno-okami.jpg";
 export const PHONE = "+995 591 27 11 88";
 export const PHONE_HREF = "tel:+995591271188";
 export const FACEBOOK_URL = "https://www.facebook.com/Etnookami";
+export const INSTAGRAM_URL = "https://www.instagram.com/etno.okami/";
+// The WeChat "add contact" link, as encoded in the QR code it came with
+export const WECHAT_URL = "https://u.wechat.com/kO545h7VGJrgQ9FyLmLQeRo?s=2";
 
 export type NavKey = "home" | "story" | "wines" | "gallery" | "awards" | "contact";
 

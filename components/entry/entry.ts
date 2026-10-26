@@ -15,7 +15,7 @@ export const AGE_STORAGE_KEY = "age-verified";
 
 // Runs inline at the top of <body>. Mirrors LanguageProvider's language choice:
 // the visitor's saved language, otherwise English.
-export const entryScript = `try{var d=document.documentElement;if(localStorage.getItem("${AGE_STORAGE_KEY}")==="1"){d.setAttribute("data-age-ok","");d.setAttribute("data-intro-play","")}var l=localStorage.getItem("language");d.setAttribute("data-entry-lang",l==="ka"||l==="ru"?l:"en")}catch(e){}`;
+export const entryScript = `try{var d=document.documentElement;if(localStorage.getItem("${AGE_STORAGE_KEY}")==="1"){d.setAttribute("data-age-ok","");d.setAttribute("data-intro-play","")}var l=localStorage.getItem("language");d.setAttribute("data-entry-lang",l==="ka"||l==="ru"||l==="zh"?l:"en")}catch(e){}`;
 
 const root = () => document.documentElement;
 

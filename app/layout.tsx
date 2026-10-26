@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
@@ -26,6 +26,24 @@ const sans = Manrope({
   display: "swap",
 });
 
+// Simplified Chinese, behind the Latin faces in the stacks (globals.css), so
+// only Chinese characters reach them. Google serves these in many small
+// unicode-range slices; nothing is preloaded, and a slice downloads only when
+// a page shows a character from it.
+const serifSc = Noto_Serif_SC({
+  weight: ["300", "400", "500"],
+  variable: "--font-serif-sc",
+  display: "swap",
+  preload: false,
+});
+
+const sansSc = Noto_Sans_SC({
+  weight: ["400", "500", "600"],
+  variable: "--font-sans-sc",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -39,7 +57,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     locale: "en_US",
-    alternateLocale: ["ka_GE", "ru_RU"],
+    alternateLocale: ["ka_GE", "ru_RU", "zh_CN"],
     url: "/",
     title: SITE_NAME,
     description: DEFAULT_DESCRIPTION,
@@ -66,7 +84,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${display.variable} ${sans.variable}`}
+      className={`${display.variable} ${sans.variable} ${serifSc.variable} ${sansSc.variable}`}
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: entryScript }} />

@@ -4,13 +4,14 @@ import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import type { Language } from "@/lib/translations";
+import { languageLabels, type Language } from "@/lib/translations";
 
 // Each language named in itself, as is conventional for language pickers.
 const options: { code: Language; name: string }[] = [
   { code: "en", name: "English" },
   { code: "ka", name: "ქართული" },
   { code: "ru", name: "Русский" },
+  { code: "zh", name: "中文" },
 ];
 
 // Compact header language control: the current code ("EN ▾") opens a small
@@ -76,7 +77,7 @@ export default function LanguageMenu({ className = "" }: { className?: string })
         aria-label={`${t.ui.language}: ${options.find((option) => option.code === language)?.name}`}
         className="flex items-center gap-1.5 py-2 pl-1 text-[0.75rem] font-semibold tracking-[0.18em] uppercase transition-opacity duration-300 hover:opacity-100 [&:not(:hover)]:opacity-90"
       >
-        <span lang={language}>{language}</span>
+        <span lang={language}>{languageLabels[language]}</span>
         <svg
           viewBox="0 0 10 6"
           aria-hidden="true"
@@ -115,7 +116,7 @@ export default function LanguageMenu({ className = "" }: { className?: string })
                       active ? "text-ink" : "text-umber"
                     }`}
                   >
-                    <span className="w-6 text-[0.6875rem] font-semibold tracking-[0.16em] text-bronze uppercase">{option.code}</span>
+                    <span className="w-6 text-[0.6875rem] font-semibold tracking-[0.16em] text-bronze uppercase">{languageLabels[option.code]}</span>
                     <span className="flex-1">{option.name}</span>
                     {active && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-bronze" />}
                   </button>

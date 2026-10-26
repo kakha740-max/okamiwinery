@@ -26,7 +26,7 @@ const glow = {
 
 // Width of one capital letter of the display face, in em — Georgian Mtavruli
 // sets wider than Cormorant's capitals.
-const letterWidth = { en: 0.76, ru: 0.86, ka: 1 } as const;
+const letterWidth = { en: 0.76, ru: 0.86, ka: 1, zh: 1.05 } as const;
 
 // A name of more than one word is set on two lines, split at the space where
 // the two come out most even, so it can be set larger. Hyphenated pairs such
@@ -114,7 +114,7 @@ export default function WineHero({ wine }: WineHeroProps) {
         <motion.h1
           {...rise(0.4)}
           style={{ "--name-fit": fit } as React.CSSProperties}
-          className="caps mt-4 font-display text-[length:min(6rem,9svh,var(--name-fit))] leading-[0.92] font-light whitespace-nowrap text-ink [&:lang(ka)]:tracking-[0.01em]"
+          className="caps mt-4 font-display text-[length:min(6rem,9svh,var(--name-fit))] leading-[0.92] font-light whitespace-nowrap text-ink uncased:tracking-[0.01em]"
         >
           {lines.map((line) => (
             <span key={line} className="block">
@@ -137,7 +137,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           {wine.description.split("\n\n").map((paragraph) => (
             <p
               key={paragraph}
-              className="font-display text-[clamp(1rem,min(1.15vw,2.2svh),1.15rem)] leading-[1.55] font-light text-umber lining-nums [&:lang(ka)]:text-[clamp(0.85rem,min(0.95vw,1.9svh),0.95rem)] [&:lang(ka)]:leading-[1.75]"
+              className="font-display text-[clamp(1rem,min(1.15vw,2.2svh),1.15rem)] leading-[1.55] font-light text-umber lining-nums uncased:text-[clamp(0.85rem,min(0.95vw,1.9svh),0.95rem)] uncased:leading-[1.75]"
             >
               {paragraph}
             </p>
@@ -189,7 +189,7 @@ export default function WineHero({ wine }: WineHeroProps) {
           {facts.map((fact) => (
             <div key={fact.label} className="border-t border-ink/15 py-2.5">
               <dt className="eyebrow text-stone">{fact.label}</dt>
-              <dd className="mt-1 font-display text-base leading-snug xl:text-lg text-ink lining-nums [&:lang(ka)]:text-base">{fact.value}</dd>
+              <dd className="mt-1 font-display text-base leading-snug xl:text-lg text-ink lining-nums uncased:text-base">{fact.value}</dd>
             </div>
           ))}
         </motion.dl>
@@ -216,7 +216,7 @@ export default function WineHero({ wine }: WineHeroProps) {
               {wine.pairing.map((dish, index) => (
                 <li key={dish} className="flex items-baseline gap-2.5">
                   <span className="text-[0.625rem] tracking-[0.2em] text-bronze tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="font-display text-lg leading-snug text-ink [&:lang(ka)]:text-base">{dish}</span>
+                  <span className="font-display text-lg leading-snug text-ink uncased:text-base">{dish}</span>
                 </li>
               ))}
             </ol>

@@ -3,6 +3,7 @@
 // wine's page. Run it against a running site whenever the wine data changes:
 //   npx next start -p 3100          (or `npm run dev`)
 //   BASE=http://localhost:3100 node scripts/generate-wine-sheets.mjs
+//   (add LANGS=zh and/or SLUGS=rkatsiteli to print only some sheets)
 // Prints with a locally installed Chromium browser (Edge or Chrome) in
 // headless mode; set BROWSER to its path if it isn't found.
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync } from "node:fs";
@@ -26,8 +27,12 @@ const browser = [
 if (!browser) throw new Error("No Chromium browser found; set BROWSER to its path.");
 
 // The slugs, read from the wine data (a TypeScript file).
-const slugs = [...readFileSync("components/data/wines.ts", "utf8").matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
-const languages = ["en", "ka", "ru"];
+const slugs = [...readFileSync("components/data/wines.ts", "utf8").matchAll(/slug: "([^"]+)"/g)]
+  .map((m) => m[1])
+  // SLUGS=rkatsiteli limits the run to some wines.
+  .filter((slug) => !process.env.SLUGS || process.env.SLUGS.split(",").includes(slug));
+// LANGS=zh limits the run to some languages, e.g. after adding one.
+const languages = (process.env.LANGS ?? "en,ka,ru,zh").split(",");
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 
 for (const slug of slugs) {

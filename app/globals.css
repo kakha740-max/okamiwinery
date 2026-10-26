@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Georgian (set in Mtavruli) and Chinese both read without capitals and sit
+   larger than Cormorant's small x-height, so they share their adjustments:
+   `uncased:` applies a utility to text in either language. */
+@custom-variant uncased (&:is(:lang(ka), :lang(zh)));
+
 /* ---------------------------------------------------------------------------
    Georgian typefaces
    Self-hosted (not served through the Google Fonts CSS API) so the Georgian
@@ -58,9 +63,11 @@
 
 @theme inline {
   /* Georgian faces come first: their unicode-range limits them to Georgian
-     characters, so every other script falls through to the next family. */
-  --font-display: "Noto Serif Georgian", var(--font-cormorant), "Times New Roman", serif;
-  --font-sans: "Noto Sans Georgian", var(--font-manrope), system-ui, sans-serif;
+     characters, so every other script falls through to the next family.
+     Chinese characters, which neither Georgian nor Latin face has, fall
+     through to Noto Serif / Sans SC (app/layout.tsx). */
+  --font-display: "Noto Serif Georgian", var(--font-cormorant), var(--font-serif-sc), "Times New Roman", serif;
+  --font-sans: "Noto Sans Georgian", var(--font-manrope), var(--font-sans-sc), system-ui, sans-serif;
 }
 
 /* ---------------------------------------------------------------------------
@@ -135,7 +142,7 @@
     text-transform: uppercase;
   }
 
-  .eyebrow:lang(ka) {
+  .eyebrow:is(:lang(ka), :lang(zh)) {
     font-size: 0.75rem;
     letter-spacing: 0.08em;
   }
@@ -170,25 +177,25 @@
     line-height: 1.15;
   }
 
-  .display-xl:lang(ka) {
+  .display-xl:is(:lang(ka), :lang(zh)) {
     font-size: clamp(2.6rem, 7.5vw, 7rem);
     line-height: 1;
     letter-spacing: 0;
   }
 
-  .display-lg:lang(ka) {
+  .display-lg:is(:lang(ka), :lang(zh)) {
     font-size: clamp(2rem, 4.6vw, 4.2rem);
     line-height: 1.12;
     letter-spacing: 0;
   }
 
-  .display-md:lang(ka) {
+  .display-md:is(:lang(ka), :lang(zh)) {
     font-size: clamp(1.65rem, 3vw, 2.75rem);
     line-height: 1.22;
     letter-spacing: 0;
   }
 
-  .display-sm:lang(ka) {
+  .display-sm:is(:lang(ka), :lang(zh)) {
     font-size: clamp(1.3rem, 1.8vw, 1.65rem);
     line-height: 1.3;
     letter-spacing: 0;
@@ -201,7 +208,7 @@
     line-height: 1.45;
   }
 
-  .lead:lang(ka) {
+  .lead:is(:lang(ka), :lang(zh)) {
     font-size: clamp(1.05rem, 1.4vw, 1.25rem);
     line-height: 1.75;
   }
@@ -211,7 +218,7 @@
     line-height: 1.8;
   }
 
-  .body-copy:lang(ka) {
+  .body-copy:is(:lang(ka), :lang(zh)) {
     font-size: 0.9375rem;
     line-height: 1.95;
   }
@@ -222,7 +229,7 @@
     letter-spacing: 0.06em;
   }
 
-  .caps:lang(ka) {
+  .caps:is(:lang(ka), :lang(zh)) {
     letter-spacing: 0.01em;
   }
 
@@ -235,7 +242,7 @@
     text-transform: uppercase;
   }
 
-  .label:lang(ka) {
+  .label:is(:lang(ka), :lang(zh)) {
     font-size: 0.8125rem;
     letter-spacing: 0.05em;
   }
@@ -300,6 +307,34 @@
   animation: slow-zoom 2.8s var(--ease-luxe) both;
 }
 
+/* On Chinese pages the Chinese faces lead both stacks, so the punctuation
+   Chinese shares with Latin — the name dot in 埃特诺·奥卡米, “quotes”, the
+   dash — takes its centred, full-width Chinese form instead of Cormorant's
+   or Manrope's. (next/font sets these variables on <html>; this outranks it.
+   The second selector covers Chinese inside a page in another language,
+   such as a technical sheet printed with no saved language.) */
+html:lang(zh),
+body [lang|="zh"] {
+  --font-cormorant: var(--font-serif-sc), "Cormorant Garamond";
+  --font-manrope: var(--font-sans-sc), "Manrope";
+  /* The stacks resolve where they are declared and are inherited already
+     resolved, so they are restated here to pick up the faces above. */
+  --font-display: "Noto Serif Georgian", var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: "Noto Sans Georgian", var(--font-manrope), system-ui, sans-serif;
+}
+
+/* Chinese has no italic: the faces have none and a synthesized slant reads
+   as a rendering fault. Unlayered, so it outranks the `italic` utility. */
+:lang(zh) :is(.italic, em, i) {
+  font-style: normal;
+}
+
+/* The Okami pin on the story map: a ring that widens and fades. */
+@keyframes map-pulse {
+  from { transform: scale(1); opacity: 0.9; }
+  to   { transform: scale(3.6); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -338,7 +373,8 @@ html[data-intro-play]:not([data-intro-reveal]) body { overflow: hidden; }
 html:not([data-entry-lang]) .entry-copy[lang="en"],
 html[data-entry-lang="en"] .entry-copy[lang="en"],
 html[data-entry-lang="ka"] .entry-copy[lang="ka"],
-html[data-entry-lang="ru"] .entry-copy[lang="ru"] { display: inline; }
+html[data-entry-lang="ru"] .entry-copy[lang="ru"],
+html[data-entry-lang="zh"] .entry-copy[lang="zh"] { display: inline; }
 .entry-copy[lang="ka"] { font-feature-settings: "case" 1; }
 
 /* `backwards`, not `both`: once it has played, the leaving fade below must apply. */

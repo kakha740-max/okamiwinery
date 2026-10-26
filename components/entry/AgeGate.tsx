@@ -5,11 +5,9 @@ import Image from "next/image";
 
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { translations, type Language } from "@/lib/translations";
+import { languages, translations, type Language } from "@/lib/translations";
 
 import { AGE_STORAGE_KEY, startIntro } from "./entry";
-
-const languages: Language[] = ["ka", "en", "ru"];
 const subscribe = () => () => {};
 
 // Renders the copy in all three languages; CSS shows the one named by

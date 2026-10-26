@@ -171,7 +171,7 @@ export default function AwardsEditorial() {
                     {/* Never break a word: capped so the longest word fits the column (see WineHero). */}
                     <h2
                       style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.82).toFixed(2)})` } as React.CSSProperties}
-                      className="display-lg caps mt-5 text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
+                      className="display-lg caps mt-5 text-ink text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] uncased:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))]"
                     >
                       <KeepWords text={name} />
                     </h2>

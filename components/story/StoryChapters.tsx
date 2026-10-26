@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import ButtonLink from "@/components/ui/ButtonLink";
 import Container from "@/components/ui/Container";
 import ImageReveal from "@/components/ui/ImageReveal";
+import Lightbox from "@/components/ui/Lightbox";
 import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
@@ -15,15 +16,17 @@ import { galleryImage } from "@/components/data/gallery";
 import { localizeWine, wines } from "@/components/data/wines";
 import KeepWords from "@/components/ui/KeepWords";
 
+import OkamiMap from "./OkamiMap";
+
 // Shared editorial type. Georgian sets larger and wider than Cormorant, so
 // the serif sizes step down for it (as the global display scale does).
 // Colour is left to each use, as the story moves between light and dark.
 const lead =
-  "font-display text-[clamp(1.3rem,1.85vw,1.8rem)] leading-[1.55] font-light lining-nums [&:lang(ka)]:text-[clamp(1.08rem,1.4vw,1.35rem)] [&:lang(ka)]:leading-[1.85]";
+  "font-display text-[clamp(1.3rem,1.85vw,1.8rem)] leading-[1.55] font-light lining-nums uncased:text-[clamp(1.08rem,1.4vw,1.35rem)] uncased:leading-[1.85]";
 const statement =
-  "font-display text-[clamp(1.75rem,3.4vw,3.2rem)] leading-[1.22] font-light lining-nums [&:lang(ka)]:text-[clamp(1.35rem,2.4vw,2.2rem)] [&:lang(ka)]:leading-[1.5]";
+  "font-display text-[clamp(1.75rem,3.4vw,3.2rem)] leading-[1.22] font-light lining-nums uncased:text-[clamp(1.35rem,2.4vw,2.2rem)] uncased:leading-[1.5]";
 const quote =
-  "font-display text-[clamp(1.5rem,2.5vw,2.4rem)] leading-[1.3] font-light lining-nums [&:lang(ka)]:text-[clamp(1.2rem,1.8vw,1.7rem)] [&:lang(ka)]:leading-[1.65]";
+  "font-display text-[clamp(1.5rem,2.5vw,2.4rem)] leading-[1.3] font-light lining-nums uncased:text-[clamp(1.2rem,1.8vw,1.7rem)] uncased:leading-[1.65]";
 const body = "body-copy md:text-[1.0625rem] md:leading-[1.9]";
 
 // Sets the given phrases of a paragraph in emphasis, leaving the words as they are.
@@ -49,7 +52,7 @@ function Title({ children, className = "" }: { children: string; className?: str
     <div className="@container">
       <h2
         style={{ "--title-fit": `calc(100cqi / ${(longestWord * 0.58).toFixed(2)})` } as React.CSSProperties}
-        className={`display-lg text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] [&:lang(ka)]:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))] ${className}`}
+        className={`display-lg text-[length:min(clamp(2.6rem,6.4vw,6rem),var(--title-fit))] uncased:text-[length:min(clamp(2rem,4.6vw,4.2rem),var(--title-fit))] ${className}`}
       >
         {children}
       </h2>
@@ -141,6 +144,7 @@ function DriftImage({
 // from messages/*.json ("history"); only its presentation is designed here.
 export default function StoryChapters() {
   const { t, language } = useLanguage();
+  const [mapOpen, setMapOpen] = useState(false);
   const h = t.history;
   const image = (src: string) => galleryImage(src).alt[language];
   // Photograph 45 is not in the gallery, so its description lives here.
@@ -148,6 +152,7 @@ export default function StoryChapters() {
     en: "A chapi drawing wine from a qvevri",
     ka: "ჩაფით ქვევრიდან ღვინის ამოღება",
     ru: "Чапи для забора вина из квеври",
+    zh: "用长柄勺（Chapi）从陶罐中取酒",
   };
 
   return (
@@ -247,33 +252,67 @@ export default function StoryChapters() {
       </section>
 
       {/* 02 — Academic knowledge, in practice */}
-      <section className="pt-28 md:pt-40">
+      <section id="academic" className="scroll-mt-20 pt-28 md:pt-40">
         <Container size="wide">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-            <Reveal className="lg:col-span-5">
+          <div className="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-10">
+            <Reveal className="lg:col-span-7">
               <Chapter number="02" />
               <Title className="mt-8 text-ink">{h.academic.title}</Title>
+              <p className={`${lead} mt-10 max-w-2xl text-ink`}>{h.academic.paragraphs[0]}</p>
             </Reveal>
-            <Reveal delay={0.12} className="lg:col-span-6 lg:col-start-7 lg:pt-20">
-              <p className={`${lead} text-ink`}>{h.academic.paragraphs[0]}</p>
+
+            {/* The university's seal inside a slowly turning gold ring */}
+            <Reveal delay={0.15} as="figure" className="lg:col-span-4 lg:col-start-9">
+              <div className="relative mx-auto aspect-square w-full max-w-[18rem] md:max-w-[22rem]">
+                <svg
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full motion-safe:animate-[spin_90s_linear_infinite]"
+                >
+                  <circle cx="50" cy="50" r="49" fill="none" className="stroke-gold" strokeWidth="0.35" strokeDasharray="0.6 2.2" />
+                </svg>
+                <div className="absolute inset-[7%] rounded-full border border-gold/40" />
+                <div className="absolute inset-[13%] rounded-full bg-white p-[6%] shadow-[0_30px_60px_-30px_rgb(23_19_15/0.35)]">
+                  <div className="relative h-full w-full">
+                    <Image src="/images/brand/ciu-logo.png" alt={h.academic.chain[0]} fill sizes="(min-width: 768px) 260px, 220px" className="object-contain" />
+                  </div>
+                </div>
+              </div>
+              <figcaption className="mt-8 text-center">
+                <p className="eyebrow text-bronze">{h.academic.chain[0]}</p>
+                <p className="body-copy mt-2 text-umber">{h.academic.chain[1]}</p>
+              </figcaption>
             </Reveal>
           </div>
 
-          {/* From the university to a new generation of winemakers */}
-          <Reveal>
-            <ol className="mt-16 grid gap-y-8 sm:grid-cols-2 md:mt-24 lg:grid-cols-4">
+          {/* From the university to a new generation of winemakers: numbered
+              stations on a gold line that draws across as it comes into view;
+              the first, the university itself, set in dark gold */}
+          <Reveal className="relative mt-20 md:mt-28">
+            <motion.span
+              aria-hidden="true"
+              className="absolute top-6 right-0 left-0 hidden h-px origin-left bg-gold/60 lg:block"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "0px 0px -12% 0px" }}
+              transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            />
+            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {h.academic.chain.map((link, index) => (
-                <li
-                  key={link}
-                  className="relative flex items-baseline gap-5 sm:block sm:pr-8 lg:not-first:border-l lg:not-first:border-ink/10 lg:not-first:pl-10"
-                >
-                  <span className="text-[0.6875rem] tracking-[0.12em] text-bronze tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="font-display text-xl leading-snug text-ink sm:mt-6 md:text-2xl [&:lang(ka)]:text-lg md:[&:lang(ka)]:text-xl">{link}</p>
-                  {index < h.academic.chain.length - 1 && (
-                    <span aria-hidden="true" className="absolute top-1/2 -right-2 z-10 hidden h-4 w-4 -translate-y-1/2 items-center justify-center bg-paper text-gold lg:flex">
-                      →
-                    </span>
-                  )}
+                <li key={link} className="relative flex flex-col">
+                  <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-gold bg-paper font-display text-lg text-bronze lining-nums tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div
+                    className={`mt-6 flex flex-1 sm:min-h-[9.5rem] flex-col justify-end gap-6 p-6 md:p-8 ${
+                      index === 0 ? "bg-bronze text-paper" : "bg-bone text-ink"
+                    }`}
+                  >
+                    {index === 0 && (
+                      <Image src="/images/brand/ciu-logo.png" alt="" width={640} height={640} sizes="48px" className="mb-auto h-12 w-12 rounded-full bg-white p-0.5" />
+                    )}
+                    <p className="font-display text-xl leading-snug md:text-2xl uncased:text-lg md:uncased:text-xl">{link}</p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -312,7 +351,7 @@ export default function StoryChapters() {
           <Container size="wide" className="relative w-full pt-48 pb-14 lg:pt-0 lg:pb-24">
             <Reveal className="lg:ml-auto lg:w-4/12">
               <span aria-hidden="true" className="block h-px w-12 bg-gold" />
-              <p className={`${quote} mt-8 text-paper italic [&:lang(ka)]:not-italic`}>{h.academic.paragraphs[3]}</p>
+              <p className={`${quote} mt-8 text-paper italic uncased:not-italic`}>{h.academic.paragraphs[3]}</p>
             </Reveal>
           </Container>
         </figure>
@@ -342,17 +381,53 @@ export default function StoryChapters() {
             </Reveal>
           </div>
 
+          {/* Where the designation lies: the Okami microzone on the map of Georgia */}
+          <div className="mt-20 md:mt-32">
+            <OkamiMap />
+          </div>
+
           <div className="mt-20 grid gap-12 md:mt-32 lg:grid-cols-12 lg:items-center lg:gap-10">
-            {/* The Okami vineyards in black and white: the place the designation names */}
-            <Photo
-              src="/images/heritage/vineyard-bw.jpg"
-              alt=""
-              ratio="aspect-[4/3]"
-              sizes="(min-width: 1536px) 860px, (min-width: 1024px) 58vw, 100vw"
-              focus="50% 60%"
-              className="lg:col-span-7"
+            {/* The microzone itself: the topographic map, shown whole (its
+                labels and legend must not be cropped) as a mounted plate on
+                the page's paper; it opens full size in the lightbox */}
+            <figure className="lg:col-span-6">
+              <div className="bg-paper p-2.5 shadow-[0_40px_80px_-40px_rgb(23_19_15/0.45)] ring-1 ring-ink/10 md:p-4">
+                <button
+                  type="button"
+                  onClick={() => setMapOpen(true)}
+                  aria-label={`${h.pdo.map.topoOpen}: ${h.pdo.map.topoCaption}`}
+                  className="group relative block w-full cursor-zoom-in"
+                >
+                  <ImageReveal className="aspect-[934/1280]">
+                    <Image
+                      src="/images/57.jpeg"
+                      alt={h.pdo.map.topoAlt}
+                      fill
+                      quality={90}
+                      sizes="(min-width: 1536px) 700px, (min-width: 1024px) 48vw, 100vw"
+                      className="object-contain transition-transform duration-[1600ms] ease-[var(--ease-luxe)] group-hover:scale-[1.02]"
+                    />
+                  </ImageReveal>
+                  <span className="label absolute right-3 bottom-3 flex items-center gap-2.5 bg-night/85 px-4 py-2.5 text-paper backdrop-blur-sm transition-colors duration-500 group-hover:bg-bronze md:right-5 md:bottom-5">
+                    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3 w-3">
+                      <path d="M9.5 1.5h5v5M14.5 1.5L9 7M6.5 14.5h-5v-5M1.5 14.5L7 9" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {h.pdo.map.topoOpen}
+                  </span>
+                </button>
+              </div>
+              <figcaption className="mt-6 flex items-center gap-4">
+                <span aria-hidden="true" className="h-px w-8 bg-gold" />
+                <span className="eyebrow text-bronze">{h.pdo.map.topoCaption}</span>
+              </figcaption>
+            </figure>
+            <Lightbox
+              open={mapOpen}
+              index={0}
+              slides={[{ src: "/images/57.jpeg", alt: h.pdo.map.topoAlt }]}
+              onClose={() => setMapOpen(false)}
             />
-            <Reveal delay={0.12} className="lg:col-span-4 lg:col-start-9">
+            <Reveal delay={0.12} className="lg:col-span-5 lg:col-start-8">
               <span aria-hidden="true" className="block h-px w-12 bg-gold" />
               <p className={`${quote} mt-10 text-ink`}>{h.pdo.paragraphs[2]}</p>
               <p className={`${body} mt-10 text-umber`}>{h.pdo.paragraphs[3]}</p>
@@ -397,7 +472,7 @@ export default function StoryChapters() {
                         className="relative mb-[9%] h-[80%] w-auto object-contain transition-transform duration-1000 ease-[var(--ease-luxe)] group-hover:-translate-y-2"
                       />
                     </div>
-                    <p className="mt-5 font-display text-lg leading-snug text-ink transition-colors duration-500 group-hover:text-bronze [&:lang(ka)]:text-base">
+                    <p className="mt-5 font-display text-lg leading-snug text-ink transition-colors duration-500 group-hover:text-bronze uncased:text-base">
                       <KeepWords text={wine.name} />
                     </p>
                     <p className="mt-1.5 text-xs leading-relaxed tracking-[0.04em] text-stone">{wine.subtitle}</p>
@@ -410,10 +485,10 @@ export default function StoryChapters() {
 
         <Container size="wide" className="mt-20 md:mt-28">
           <Reveal className="text-center">
-            <p className="font-display text-[clamp(1.35rem,2.5vw,2.3rem)] leading-[1.45] font-light text-ink [&:lang(ka)]:text-[clamp(1.1rem,1.8vw,1.6rem)] [&:lang(ka)]:leading-[1.7]">
+            <p className="font-display text-[clamp(1.35rem,2.5vw,2.3rem)] leading-[1.45] font-light text-ink uncased:text-[clamp(1.1rem,1.8vw,1.6rem)] uncased:leading-[1.7]">
               {h.wines.list}
             </p>
-            <p className="mt-5 font-display text-lg text-stone italic [&:lang(ka)]:text-base [&:lang(ka)]:not-italic">{h.wines.more}</p>
+            <p className="mt-5 font-display text-lg text-stone italic uncased:text-base uncased:not-italic">{h.wines.more}</p>
             <p className={`${lead} mx-auto mt-14 max-w-3xl text-umber`}>{h.wines.closing}</p>
             <ButtonLink href="/wines" variant="outline" arrow className="mt-12">
               {t.hero.button}
@@ -447,7 +522,7 @@ export default function StoryChapters() {
         <Container size="default" className="text-center">
           <Reveal>
             <span aria-hidden="true" className="mx-auto block h-14 w-px bg-gold/80" />
-            <p className="mx-auto mt-12 max-w-5xl font-display text-[clamp(2.2rem,5vw,4.8rem)] leading-[1.12] font-light text-ink [&:lang(ka)]:text-[clamp(1.6rem,3.4vw,3.2rem)] [&:lang(ka)]:leading-[1.4]">
+            <p className="mx-auto mt-12 max-w-5xl font-display text-[clamp(2.2rem,5vw,4.8rem)] leading-[1.12] font-light text-ink uncased:text-[clamp(1.6rem,3.4vw,3.2rem)] uncased:leading-[1.4]">
               {h.final}
             </p>
           </Reveal>

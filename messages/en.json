@@ -15,7 +15,8 @@
     "languageNames": {
       "ka": "Georgian",
       "en": "English",
-      "ru": "Russian"
+      "ru": "Russian",
+      "zh": "Chinese"
     },
     "notFoundTitle": "Page not found",
     "notFoundText": "The page you are looking for doesn't exist or has moved.",
@@ -35,7 +36,6 @@
   "hero": {
     "eyebrow": "A Legacy of Georgian Winemaking",
     "title": "ETNO OKAMI WINERY",
-    "description": "A unique microzone and natural conditions.",
     "button": "Discover Wines",
     "secondary": "Our Story",
     "location": "Shida Kartli · Georgia",
@@ -48,7 +48,7 @@
     "eyebrow": "Our Story",
     "title": "A Heritage Rooted in Georgia",
     "paragraphs": [
-      "Located in the heart of the historic winemaking region of Shida Kartli, the Etno Okami Microzone is a place where vineyards and wine have been an integral part of Georgian culture and way of life for centuries.",
+      "Located in the heart of the historic winemaking region of Shida Kartli, the Okami microzone is a place where vineyards and wine have been an integral part of Georgian culture and way of life for centuries.",
       "In the 19th century, Ivane Mukhranbatoni played a significant role in advancing viticulture and winemaking in the region. In 1965, Tengiz Kekelidze founded the Etno Okami Winery, connecting centuries-old traditions with modern wine production.",
       "Today, Etno Okami Winery brings together heritage, modern technology, and a partnership with the Caucasus International University, fostering excellence in quality, innovation, and wine education.",
       "Our mission is to preserve Etno Okami's unique heritage — part of Georgian wine's 8,000-year history — and to proudly share with the world the richness of Georgian wine culture and its unique tradition."
@@ -78,7 +78,7 @@
   "featured": {
     "eyebrow": "COLLECTION",
     "title": "Wines",
-    "description": "Discover our selection of exceptional Georgian wines, crafted in the historic Etno Okami Microzone."
+    "description": "Discover our selection of exceptional Georgian wines, crafted in the historic Okami microzone."
   },
   "wines": {
     "eyebrow": "Crafted with Passion",
@@ -116,7 +116,7 @@
   "about": {
     "eyebrow": "About Etno Okami",
     "title": "A winery shaped by place, patience and excellence.",
-    "description": "Our wines are born in the historic Etno Okami Microzone, where the land, climate and heritage come together in every vintage. We honor Georgian traditions while expressing a contemporary point of view through each bottle.",
+    "description": "Our wines are born in the historic Okami microzone, where the land, climate and heritage come together in every vintage. We honor Georgian traditions while expressing a contemporary point of view through each bottle.",
     "feature1Title": "Vineyard heritage",
     "feature1Description": "Deeply connected to the character of the region, our vineyards are cultivated with attention to detail and respect for the land.",
     "feature2Title": "Refined tastings",
@@ -131,7 +131,7 @@
     "actionVisit": "Visit the Estate",
     "actionDiscover": "Discover the Wines",
     "highlight1Title": "Estate-grown character",
-    "highlight1Description": "Every bottle reflects the unique terroir of the Etno Okami Microzone, shaped by heritage and careful craftsmanship.",
+    "highlight1Description": "Every bottle reflects the unique terroir of the Okami microzone, shaped by heritage and careful craftsmanship.",
     "highlight2Title": "Timeless winemaking",
     "highlight2Description": "We combine traditional Georgian methods with a contemporary approach to create wines of precision and depth.",
     "highlight3Title": "Memorable hospitality",
@@ -165,7 +165,8 @@
     "moreWines": "More from Etno Okami",
     "sheetTitle": "Technical sheet",
     "sheetDownload": "Download technical sheet (PDF)",
-    "sheetWeb": "Web"
+    "sheetWeb": "Web",
+    "sheetQr": "Scan to visit our website"
   },
   "tour": {
     "hero": {
@@ -261,7 +262,9 @@
     "addressLabel": "Office Address",
     "follow": "Follow us",
     "copyright": "© 2026 Etno Okami Winery. All Rights Reserved.",
-    "responsible": "Excessive alcohol consumption is harmful to your health."
+    "responsible": "Excessive alcohol consumption is harmful to your health.",
+    "wechatScan": "Scan the code with WeChat to add us as a contact.",
+    "wechatOpen": "Open in WeChat"
   },
   "awards": {
     "eyebrow": "Awards & Achievements",
@@ -312,7 +315,8 @@
     "writeToUs": "Write to us",
     "awardsTitle": "Awards & Recognition",
     "awardsLink": "View all awards",
-    "awardsIntro": "Discover our achievements and awards."
+    "awardsIntro": "Discover our achievements and awards.",
+    "universityLink": "More about the university"
   },
   "storyPage": {
     "chapterMicrozone": "The Microzone",
@@ -378,7 +382,23 @@
       ],
       "highlight": [
         "“Okami” Protected Designation of Origin (PDO)"
-      ]
+      ],
+      "map": {
+        "eyebrow": "The Okami microzone",
+        "title": "In the heart of Kartli",
+        "text": "The Okami microzone lies in Shida Kartli, in Kaspi Municipality, around the village of Okami — about 40 km north-west of Tbilisi.",
+        "region": "Region",
+        "regionValue": "Shida Kartli",
+        "municipality": "Municipality",
+        "municipalityValue": "Kaspi",
+        "okami": "Okami",
+        "tbilisi": "Tbilisi",
+        "legendMunicipality": "Kaspi Municipality",
+        "caption": "Map of Georgia’s regions: Shida Kartli and Kaspi Municipality are highlighted, and the Okami microzone is marked about 40 km north-west of Tbilisi.",
+        "topoCaption": "Topographic map of the Okami microzone",
+        "topoAlt": "Topographic map of the Okami microzone around Kaspi, on both banks of the Mtkvari, with its boundary, villages and rivers",
+        "topoOpen": "View full size"
+      }
     },
     "wines": {
       "title": "Our Wines",

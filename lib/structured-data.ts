@@ -1,7 +1,7 @@
 import en from "@/messages/en.json";
 import { SHOW_VINTAGE, type Wine } from "@/components/data/wines";
 import { awardsForWine, wineNames } from "@/components/data/awards";
-import { DEFAULT_DESCRIPTION, FACEBOOK_URL, PHONE, SITE_NAME, SITE_URL } from "./site";
+import { DEFAULT_DESCRIPTION, FACEBOOK_URL, INSTAGRAM_URL, PHONE, SITE_NAME, SITE_URL } from "./site";
 
 const absolute = (path: string) => `${SITE_URL}${path}`;
 
@@ -23,7 +23,7 @@ export function organizationJsonLd() {
     founder: { "@type": "Person", name: "Tengiz Kekelidze" },
     email: en.footer.email,
     telephone: PHONE,
-    sameAs: [FACEBOOK_URL],
+    sameAs: [FACEBOOK_URL, INSTAGRAM_URL],
     address: {
       "@type": "PostalAddress",
       streetAddress: "2 Ureki Street",

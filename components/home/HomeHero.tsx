@@ -11,7 +11,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 // The film opens on 0.27s of black; playback starts just after it, and the
-// poster is that exact frame (hero-film-start.jpg), so the swap is invisible.
+// poster is that exact frame (hero-film-start-color.jpg), so the swap is invisible.
 const FILM_START = 0.3;
 
 const rise = (delay: number) => ({
@@ -55,15 +55,16 @@ export default function HomeHero() {
       <motion.div
         aria-hidden="true"
         style={{ y: mediaY }}
-        // Brighter, crisper and mostly black and white; one filter for the poster
-        // and the film alike, so the swap between them stays invisible.
-        className="absolute inset-0 will-change-transform [filter:grayscale(0.7)_brightness(1.22)_contrast(1.14)] motion-reduce:transform-none!"
+        // In full colour: the grade is baked into the film and its poster
+        // alike, so the swap between them stays invisible.
+        className="absolute inset-0 will-change-transform motion-reduce:transform-none!"
       >
         <Image
-          src="/images/film/hero-film-start.jpg"
+          src="/images/film/hero-film-start-color.jpg"
           alt=""
           fill
           preload
+          quality={90}
           sizes="100vw"
           className="object-cover"
         />
@@ -93,8 +94,8 @@ export default function HomeHero() {
               playing ? "opacity-100" : "opacity-0"
             }`}
           >
-            <source src={`/video/okami-hero-540.mp4#t=${FILM_START}`} type="video/mp4" media="(max-width: 767px)" />
-            <source src={`/video/okami-hero-1080.mp4#t=${FILM_START}`} type="video/mp4" />
+            <source src={`/video/okami-hero-color-720.mp4#t=${FILM_START}`} type="video/mp4" media="(max-width: 767px)" />
+            <source src={`/video/okami-hero-color-1080.mp4#t=${FILM_START}`} type="video/mp4" />
           </video>
         )}
       </motion.div>
@@ -114,7 +115,7 @@ export default function HomeHero() {
         <Container size="wide" className="relative pb-16 md:pb-12">
           <div className="grid items-end gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <motion.p {...rise(0.3)} className="eyebrow text-gold [&:lang(ka)]:tracking-[0.03em]">
+              <motion.p {...rise(0.3)} className="eyebrow text-gold uncased:tracking-[0.03em]">
                 {t.hero.eyebrow}
               </motion.p>
 
@@ -126,17 +127,13 @@ export default function HomeHero() {
                 )}
                 <span className="display-lg block">{t.hero.wordmark}</span>
                 {!t.hero.kindFirst && (
-                  <span className="label mt-1 block tracking-[0.5em] text-paper/80 [&:lang(ka)]:mt-3 [&:lang(ka)]:tracking-[0.3em]">
+                  <span className="label mt-1 block tracking-[0.5em] text-paper/80 uncased:mt-3 uncased:tracking-[0.3em]">
                     {t.hero.kind}
                   </span>
                 )}
               </motion.h1>
 
-              <motion.p {...rise(0.65)} className="body-copy mt-3 max-w-lg text-paper/80 md:text-lg [&:lang(ka)]:tracking-[-0.01em]">
-                {t.hero.description}
-              </motion.p>
-
-              <motion.div {...rise(0.8)} className="mt-7 flex flex-wrap items-center gap-x-10 gap-y-5">
+              <motion.div {...rise(0.7)} className="mt-9 flex flex-wrap items-center gap-x-10 gap-y-5">
                 <ButtonLink href="/wines" variant="light" arrow>
                   {t.hero.button}
                 </ButtonLink>
