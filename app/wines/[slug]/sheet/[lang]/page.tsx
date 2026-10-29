@@ -71,7 +71,8 @@ export default async function WineSheetPage({ params }: Props) {
     .filter((award) => wineSlugForAward(award) === slug)
     .sort((a, b) => (b.competition.year ?? 0) - (a.competition.year ?? 0));
 
-  const site = SITE_URL.replace(/^https?:\/\//, "");
+  // Printed as the bare domain ("etnookami.com"), which redirects to www.
+  const site = SITE_URL.replace(/^https?:\/\/(www\.)?/, "");
 
   return (
     <main
@@ -195,7 +196,7 @@ export default async function WineSheetPage({ params }: Props) {
               <div className="rounded-[1.5mm] bg-paper p-[1.2mm]">
                 <Image
                   src="/images/brand/site-qr.png"
-                  alt={`QR: ${site}`}
+                  alt={`QR — ${s.sheetQr}`}
                   width={1147}
                   height={1147}
                   unoptimized

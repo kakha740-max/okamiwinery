@@ -1,7 +1,9 @@
 // Site-wide constants shared by metadata, structured data and navigation.
 
+// The site's own domain; etnookami.com redirects to www (set in Vercel).
+// okamiwinery.vercel.app still answers, but canonical links point here.
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://okamiwinery.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.etnookami.com"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Etno Okami Winery";
